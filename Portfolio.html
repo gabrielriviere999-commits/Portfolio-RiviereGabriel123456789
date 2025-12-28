@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* --- Styles généraux --- */
+body {
+    background-color: rgb(0, 125, 255);
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-size: 25px;
+    font-family: "Lato", sans-serif;
+    overflow-x: auto;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* --- Barre de navigation --- */
+.navbar {
+    background-color: rgba(0, 0, 0, .8);
+    position: fixed ;
+    z-index: 1000;
+    padding: 5px;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .tab {
+    margin-top: 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.navbar .tab button {
+    font-size: 14px;
+    padding: 10px 12px;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background: #DDD;
+    color: black;
+}
+
+/* --- Menu latéral --- */
+.sidenav {
+    display: none;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .8);
+    overflow-x: hidden;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+/* --- Onglets --- */
+.tab {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    width: 100%;
+}
+
+.tab button {
+    background-color: rgb(128, 5, 3);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: white;
+}
+
+.tab button:hover {
+    background-color: rgb(29, 153, 40);
+}
+
+.tab button.active {
+    background-color: rgb(24, 128, 33);
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    overflow-x: visible;
+    white-space: nowrap;
+    font-family: Monospace;
+    margin-top: 80px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<div class="navbar">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <button onclick="myFunction()">mode sombre</button>
+
+    <div class="tab" style="margin-top:0;">
+        <button class="tablinks" onclick="openCity(event, 'AAA')">AAA</button>
+        <button class="tablinks" onclick="openCity(event, 'BBB')">BBB</button>
+        <button class="tablinks" onclick="openCity(event, 'CCC')">CCC</button>
+        <button class="tablinks" onclick="openCity(event, 'DDD')">DDD</button>
+        <button class="tablinks" onclick="openCity(event, 'EEE')">EEE</button>
+        <button class="tablinks" onclick="openCity(event, 'FFF')">FFF</button>
+    </div>    
+</div>
+
+<!-- Menu latéral -->
+<div id="mySidenav" class="sidenav">
+    <a><img src="logotoiledaraigneeG.png"height="85%" width="85%"></a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a>Gabriel</a>
+    <a><button onclick="myFunction()">mode sombre</button></a>
+</div>
+
+<!-- Contenu des onglets -->
+<div id="AAA" class="tabcontent">
+    <center><img src=".jpg" style="width: 50vw; min-width: 280px;"></center>
+</div>
+
+<div id="BBB" class="tabcontent">b</div>
+<div id="CCC" class="tabcontent">c</div>
+<div id="DDD" class="tabcontent">d</div>
+<div id="EEE" class="tabcontent">e</div>
+
+<div id="FFF" class="tabcontent">
+<pre>
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+ffffff
+ff
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
++------+------+------+
+| abcd | efgh | ijkl |
++------+------+------+
+| 12   | 34   | 56   |
++------+------+------+
+| 78   |      |      |
++------+------+------+
+</pre>
+</div>
+
+<!-- Scripts -->
+<script>
+function myFunction() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.display = "block";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+
+document.getElementsByClassName('tablinks')[0].click();
+
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+</body>
+</html>
