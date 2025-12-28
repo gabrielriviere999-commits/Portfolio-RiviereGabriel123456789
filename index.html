@@ -95,11 +95,14 @@ body {
 
 /* --- Onglets --- */
 .tab {
-    overflow: hidden;
     display: flex;
     justify-content: flex-start;
     margin-top: 0;
     width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin; /* optionnel : barre de scroll plus fine */
 }
 
 .tab button {
