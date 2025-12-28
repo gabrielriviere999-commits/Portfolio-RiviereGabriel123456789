@@ -7,7 +7,7 @@
 <style>
 /* --- Styles généraux --- */
 body {
-    background-color: rgb(0, 125, 255);
+    background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
     color: black;
@@ -133,6 +133,17 @@ body {
     font-family: Monospace;
     margin-top: 80px;
 }
+
+div.scroll-container {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+}
 </style>
 
 </head>
@@ -168,13 +179,27 @@ body {
 </div>
 
 <div id="Diplômes" class="tabcontent">
-<p><iframe src="Diplomes/Lycee_de_Vincendo/Attestation_de_reussite_intermediaire_en_BAC_PRO.pdf" width="100%" height="600px"></iframe></p>
-<p><iframe src="Diplomes/Lycee_de_Vincendo/Diplome_du_baccalaureat_professionnel.pdf" width="100%" height="600px"></iframe></p>
-<p><iframe src="Diplomes/Lycee_de_Vincendo/Releve_de_notes_baccalaureat_professionnel_20240708 043058.pdf" width="100%" height="600px"></iframe></p>
+<h1>Lycée de Vincendo</h1>
+ <div class="scroll-container">
+	<iframe src="Diplomes/Lycee_de_Vincendo/Attestation_de_reussite_intermediaire_en_BAC_PRO.pdf" width="400" height="300"></iframe>
+	<iframe src="Diplomes/Lycee_de_Vincendo/Diplome_du_baccalaureat_professionnel.pdf" width="400" height="300"></iframe>
+	<iframe src="Diplomes/Lycee_de_Vincendo/Releve_de_notes_baccalaureat_professionnel_20240708_043058.pdf" width="400" height="300"></iframe>
+ </div>
+<h1>Collège Bory de Saint-Vincent</h1>
+ <div class="scroll-container">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" width="400" height="300">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" width="400" height="300">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/Diplome_national_du_brevet.jpg" width="400" height="300">
+	<iframe src="Diplomes/College_Bory_de_Saint_Vincent/Releve_de_notes_diplome_national_du_brevet.pdf" width="400" height="300"></iframe>
+    <img src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg" width="400" height="300">
+ </div>
 </div>
+
 <div id="Documentations" class="tabcontent">c</div>
 <div id="Stages" class="tabcontent">dddddddd</div>
-<div id="Veille technologique" class="tabcontent">e</div>
+<div id="Veille technologique" class="tabcontent">
+<p><iframe src="Veille_technologique/Veille_technologique_les_logiciels_libres_pour_linux.html" width="100%" height="600px"></iframe></p>
+</div>
 
 <div id="MXLinux" class="tabcontent">
 <pre>
