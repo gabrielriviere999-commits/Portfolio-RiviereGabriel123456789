@@ -1,5 +1,0 @@
-1) Enedis1234	MSA1234
-2) \\WIN-DKV7GN6KBTM\CLIC \\WIN-DKV7GN6KBTM\Enedis \\WIN-DKV7GN6KBTM\MSA \\WIN-DKV7GN6KBTM\TRESOR
-4) \\WIN-DKV7GN6KBTM\Enedis
-L'utilisateur Enedis a ajouté le lecteur réseau Enedis avec succès car il a les droits pour y accéder mais MSA ne peut pas car il n'a pas les droits.
-Chaque utilisateur peut accéder au lecteur réseau à leur nom mais pas aux autres.
