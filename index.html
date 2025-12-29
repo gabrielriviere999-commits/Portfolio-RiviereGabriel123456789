@@ -241,9 +241,9 @@ votre_mot_de_passe
 
     <!-- Onglets des établissements -->
     <div class="tab">
-		<button onclick="switchTab('college_bory_de_saint-vincent', 'etablissement')" class="etablissement_btn">Collège Bory de Saint-Vincent</button>
-        <button onclick="switchTab('lycee_vincendo', 'etablissement')" class="etablissement_btn">Lycée de Vincendo</button>
-        <button onclick="switchTab('lycee_poivre', 'etablissement')" class="etablissement_btn">Lycée Pierre Poivre</button>
+		<button onclick="switchTab('college_bory_de_saint-vincent', 'etablissement', this)" class="etablissement_btn">Collège Bory de Saint-Vincent</button>
+        <button onclick="switchTab('lycee_vincendo', 'etablissement', this)" class="etablissement_btn">Lycée de Vincendo</button>
+        <button onclick="switchTab('lycee_poivre', 'etablissement', this)" class="etablissement_btn">Lycée Pierre Poivre</button>
     </div>
 
     <!-- Groupe Collège Bory de Saint-Vincent -->
@@ -271,9 +271,9 @@ votre_mot_de_passe
     <!-- Groupe Vincendo -->
     <div id="lycee_vincendo" class="etablissement" style="display:none;">
         <div class="tab">
-            <button onclick="switchTab('v_stage_muta_optique_saint-joseph', 'v_stage')" class="v_stage_btn">Muta Optique Saint-Joseph</button>
-            <button onclick="switchTab('v_stage_optic_2000', 'v_stage')" class="v_stage_btn">Optic 2000</button>
-            <button onclick="switchTab('v_stage_optique_de_bourbon', 'v_stage')" class="v_stage_btn">Optique de Bourbon</button>
+            <button onclick="switchTab('v_stage_muta_optique_saint-joseph', 'v_stage', this)" class="v_stage_btn">Muta Optique Saint-Joseph</button>
+            <button onclick="switchTab('v_stage_optic_2000', 'v_stage', this)" class="v_stage_btn">Optic 2000</button>
+            <button onclick="switchTab('v_stage_optique_de_bourbon', 'v_stage', this)" class="v_stage_btn">Optique de Bourbon</button>
         </div>
 
         <div id="v_stage_muta_optique_saint-joseph" class="v_stage" style="display:none;">
@@ -483,8 +483,8 @@ imprimé des papiers.
     <!-- Groupe Pierre Poivre -->
     <div id="lycee_poivre" class="etablissement" style="display:none;">
         <div class="tab">
-            <button onclick="switchTab('p_stage_bts1', 'p_stage')" class="p_stage_btn">BTS 1</button>
-            <button onclick="switchTab('p_stage_bts2', 'p_stage')" class="p_stage_btn">BTS 2</button>
+            <button onclick="switchTab('p_stage_bts1', 'p_stage', this)" class="p_stage_btn">BTS 1</button>
+            <button onclick="switchTab('p_stage_bts2', 'p_stage', this)" class="p_stage_btn">BTS 2</button>
         </div>
 
         <div id="p_stage_bts1" class="p_stage" style="display:none;">
@@ -620,14 +620,24 @@ function openSubTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
 }
 
-function switchTab(showId, groupClass) {
-    // cacher tous les éléments du groupe
-    document.querySelectorAll('.' + groupClass).forEach(el => {
-        el.style.display = 'none';
-    });
+function switchTab(tabName, group, elmnt) {
+    // Cacher tous les contenus du groupe
+    var contents = document.getElementsByClassName(group);
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].style.display = "none";
+    }
 
-    // afficher celui demandé
-    document.getElementById(showId).style.display = 'block';
+    // Enlever la classe active de tous les boutons du groupe
+    var buttons = document.getElementsByClassName(group + "_btn");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    // Afficher le contenu demandé
+    document.getElementById(tabName).style.display = "block";
+
+    // Ajouter la classe active au bouton cliqué
+    if (elmnt) elmnt.classList.add("active");
 }
 </script>
 
