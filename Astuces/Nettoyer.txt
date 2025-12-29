@@ -1,0 +1,136 @@
+# 🧭 Guide complet de nettoyage MX Linux  
+*(Flatpak, APT, Steam, caches, noyaux)*
+
+## 1. 🔍 Vérifier l’espace utilisé dans `/var`
+Pour comprendre ce qui prend de la place :
+sudo du -sh /var/* | sort -h
+
+Le plus souvent, le dossier lourd est :
+/var/lib
+C’est normal : Flatpak stocke tout ici.
+
+---
+
+# 2. 🧹 Nettoyage Flatpak
+## 2.1. Supprimer les runtimes inutilisés
+Flatpak garde des dépendances même après désinstallation d’applis (ex : Steam).
+
+Voir ce qui serait supprimé :
+flatpak uninstall --unused --dry-run
+
+Nettoyer réellement :
+flatpak uninstall --unused
+
+---
+
+## 2.2. Nettoyer le dépôt OSTree (repo)
+C’est là que Steam laisse le plus de traces.
+sudo flatpak repair
+
+Cela supprime les objets inutiles dans :
+/var/lib/flatpak/repo
+
+---
+
+## 2.3. Vérifier les runtimes encore installés
+flatpak list --runtime
+
+Ce qui reste après nettoyage = utilisé par tes applis actuelles.
+
+---
+
+## 2.4. Supprimer les données utilisateur Flatpak
+Certaines applis laissent des dossiers dans ton home.
+Lister :
+du -sh ~/.var/app/*
+
+Supprimer un dossier d’une appli désinstallée :
+rm -rf ~/.var/app/ID_DE_L_APPLI
+
+---
+
+# 3. 🧹 Suppression complète des traces de Steam
+Steam en Flatpak laisse des traces à trois endroits.
+## 3.1. Runtimes Steam (déjà supprimés par `--unused`)
+Steam utilisait Freedesktop 23.08, KDE 5.15, Mesa 23.x, etc.  
+Tu les as déjà supprimés.
+
+---
+
+## 3.2. Données utilisateur Steam
+Vérifier :
+du -sh ~/.var/app/*
+
+Si tu vois :
+com.valvesoftware.Steam
+
+Supprimer :
+rm -rf ~/.var/app/com.valvesoftware.Steam
+
+---
+
+## 3.3. Dossiers Steam dans `.local/share` ou `.steam`
+du -sh ~/.local/share/Steam
+ls -la ~ | grep steam
+
+Supprimer si présent :
+rm -rf ~/.local/share/Steam
+rm -rf ~/.steam
+
+---
+
+# 4. 🧹 Nettoyage APT (MX Linux)
+## 4.1. Voir les paquets orphelins
+sudo apt autoremove --dry-run
+
+Si la liste te semble correcte :
+sudo apt autoremove
+
+---
+
+## 4.2. Nettoyer le cache APT
+Voir la taille :
+du -sh /var/cache/apt/archives
+
+Nettoyer :
+sudo apt clean
+
+---
+
+## 4.3. Vérifier les paquets cassés
+sudo apt -f install
+
+---
+
+# 5. 🧹 Nettoyage des caches utilisateur (XFCE)
+Miniatures :
+rm -rf ~/.cache/thumbnails/*
+
+Cache général :
+rm -rf ~/.cache/*
+Tout se recrée automatiquement.
+
+---
+
+# 6. 🧹 Nettoyage des dossiers temporaires
+sudo rm -rf /tmp/*
+sudo rm -rf /var/tmp/*
+
+---
+
+# 7. 🧹 Vérifier les noyaux Linux inutiles
+Lister :
+dpkg --list | grep linux-image
+
+MX Linux garde parfois plusieurs noyaux.  
+Tu peux supprimer les anciens, mais **jamais le noyau en cours d’utilisation**.
+
+---
+
+# 8. 🧹 Vérifier les gros dossiers dans ton home
+du -sh ~/* | sort -h
+Permet de repérer :
+
+- vidéos lourdes
+- dossiers oubliés
+- caches d’applications

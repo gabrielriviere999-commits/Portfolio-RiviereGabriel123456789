@@ -1,0 +1,98 @@
+🧾 Documentation : Script ocr_batch.sh pour OCR en lot avec OCRmyPDF
+📌 Objectif
+Automatiser la conversion de plusieurs fichiers PDF en PDF texte avec reconnaissance
+optique des caractères (OCR), en utilisant le moteur Tesseract via OCRmyPDF, sans interface graphique.
+
+🧰 Prérequis
+Assurez-vous que les outils suivants sont installés :
+sudo apt update
+sudo apt install ocrmypdf tesseract-ocr tesseract-ocr-fra
+    • ocrmypdf : outil principal pour appliquer l’OCR
+    • tesseract-ocr : moteur de reconnaissance optique
+    • tesseract-ocr-fra : langue française pour Tesseract
+
+🖥️ Contenu du script ocr_batch.sh
+
+#!/bin/bash
+
+# Dossier contenant les PDF à convertir
+INPUT_DIR="./pdf_input"
+# Dossier de sortie
+OUTPUT_DIR="./pdf_output"
+
+# Crée les dossiers si nécessaires
+mkdir -p "$INPUT_DIR"
+mkdir -p "$OUTPUT_DIR"
+
+# Langue OCR (modifiable)
+LANG="fra"
+
+# Traitement de chaque fichier PDF
+for file in "$INPUT_DIR"/*.pdf; do
+    filename=$(basename "$file")
+    output_file="$OUTPUT_DIR/$filename"
+    
+    echo "Conversion OCR : $filename"
+    
+    ocrmypdf --force-ocr --rotate-pages --deskew -l "$LANG" "$file" "$output_file"
+    
+    echo "Fichier traité : $output_file"
+done
+
+echo "Tous les fichiers PDF ont été convertis avec OCR."
+
+🧪 Fonctionnement
+    1. Le script vérifie et crée les dossiers nécessaires.
+    2. Il parcourt tous les fichiers .pdf dans pdf_input.
+    3. Pour chaque fichier, il applique l’OCR avec les options suivantes :
+        ◦ --force-ocr : force l’OCR même si le PDF contient déjà du texte 
+        ◦ --rotate-pages : corrige l’orientation des pages 
+        ◦ --deskew : redresse les pages inclinées 
+        ◦ -l fra : utilise la langue française 
+    4. Les fichiers convertis sont enregistrés dans pdf_output.
+
+▶️ Utilisation
+    1. Place tes fichiers PDF dans pdf_input 
+    2. Sauvegarde le script dans un fichier nommé ocr_batch.sh 
+    3. Rends-le exécutable : 
+chmod +x ocr_batch.sh
+    4. Lance-le : 
+./ocr_batch.sh
+
+📦 Résultat
+Tu obtiendras dans pdf_output des fichiers PDF avec une couche texte OCR, consultables et
+sélectionnables dans n’importe quel lecteur PDF.
+
+
+Tu peux ajouter ton script ocr_batch.sh au menu des applications de MX Linux en créant un fichier .desktop. Voici comment faire étape par étape :
+
+🧾 Ajouter un script Bash au menu des applications MX Linux
+📁 1. Crée un fichier .desktop
+Ouvre un terminal et tape :
+nano ~/.local/share/applications/ocr_batch.desktop
+Colle ce contenu :
+
+[Desktop Entry]
+Type=Application
+Name=OCR Batch PDF
+Comment=Convertit tous les PDF du dossier en PDF texte OCR
+Exec=/chemin/vers/ocr_batch.sh
+Icon=accessories-text-editor
+Terminal=true
+Categories=Utility;
+
+Remplace /chemin/vers/ocr_batch.sh par le chemin absolu de ton script, par exemple /home/toto/ocr/ocr_batch.sh
+
+📦 2. Rends le script exécutable
+chmod +x /chemin/vers/ocr_batch.sh
+
+🧠 3. Vérifie dans le menu
+    • Ouvre le menu MX Linux 
+    • Cherche OCR Batch PDF 
+    • Clique dessus → ton script devrait s’exécuter dans un terminal 
+
+🎨 Astuce : changer l’icône
+Tu peux remplacer Icon=accessories-text-editor par une autre icône disponible dans ton système, comme :
+    • Icon=utilities-terminal 
+    • Icon=document-send 
+    • Ou le chemin vers une icône personnalisée : Icon=/home/toto/ocr/icon.png

@@ -1,0 +1,35 @@
+Il faut coller le texte en utilisant une méthode de frappe simulée.
+Créer un fichier coller_tapper.sh
+Coller ce contenu :
+
+#!/bin/bash
+# coller_tapper_clipboard.sh
+
+echo "Clique sur la fenêtre cible (xdotool attend ton clic)..."
+win_id=$(xdotool selectwindow)
+[ -z "$win_id" ] && echo "Aucune fenêtre sélectionnée." && exit 1
+
+sleep 1
+xdotool windowfocus "$win_id"
+
+# Lire le presse-papiers (xclip ou xsel)
+if command -v xclip >/dev/null 2>&1; then
+    clipboard=$(xclip -o -selection clipboard)
+elif command -v xsel >/dev/null 2>&1; then
+    clipboard=$(xsel --clipboard)
+else
+    echo "Ni xclip ni xsel n'est installé."
+    exit 1
+fi
+
+# Lecture ligne par ligne et frappe
+while IFS= read -r ligne || [ -n "$ligne" ]; do
+    xdotool type --window "$win_id" --clearmodifiers --delay 50 -- "$ligne"
+    xdotool key --window "$win_id" Return
+done <<< "$clipboard"
+
+Ouvrir un terminal :
+chmod +x coller_tapper.sh
+On peut ajouter ce fichier à la barre des tâches et/ou un raccourci clavier.
+Il faut copier le texte voule dans le presse papier, puis exécuter le fichier
+et enfin cliquer dans la VM et le texte est tappé automatiquement. 
