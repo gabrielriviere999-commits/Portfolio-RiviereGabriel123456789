@@ -149,6 +149,21 @@ div.scroll-container {
 div.scroll-container img {
   padding: 10px;
 }
+
+.dl-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.dl-btn:hover {
+    background-color: #3e8e41;
+}
 </style>
 
 </head>
@@ -165,7 +180,7 @@ div.scroll-container img {
         <button class="tablinks" onclick="openCity(event, 'Documentations')">Documentations</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
         <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
-        <button class="tablinks" onclick="openCity(event, 'MXLinux')">MXLinux</button>
+        <button class="tablinks" onclick="openCity(event, 'Astuces')">Astuces</button>
     </div>    
 </div>
 
@@ -599,7 +614,46 @@ la maternelle, cette structure peut accueillir 9 enfants.
 <p><iframe src="Veille_technologique/Veille_technologique_les_logiciels_libres_pour_linux.html" width="100%" height="800px"></iframe></p>
 </div>
 
-<div id="MXLinux" class="tabcontent">
+<div id="Astuces" class="tabcontent">
+<h2>MXLinux</h2>
+ <div class="scroll-container">
+	<iframe src="Astuces/Installer_MXLinux_en_dualboot.pdf" width="400" height="300"></iframe>
+	<img src="Astuces/20251106_202806.jpg" width="400" height="300">
+	<iframe src="Astuces/Installer_OCR_converter_sur_MXlinux.txt" width="600" height="300"></iframe>
+	<iframe src="Astuces/Installer_OCR_on_screen_sur_linuxMX.txt" width="600" height="300"></iframe>
+	<iframe src="Astuces/Coller_du_texte_dans_des_VM.txt" width="600" height="300"></iframe>
+	<iframe src="Astuces/Installer_Recoll.txt" width="600" height="300"></iframe>
+	<iframe src="Astuces/Activer_python_pour_geany.txt" width="400" height="300"></iframe>
+	<iframe src="Astuces/Configurer_samba_sur_mxLinux.txt" width="400" height="300"></iframe>
+	<iframe src="Astuces/Nettoyer.txt" width="400" height="300"></iframe>
+	<iframe src="Astuces/Installer_Steam_sur_Linux.txt" width="400" height="300"></iframe>
+ </div>
+<p>Scripts</p>
+<select id="downloadSelect" onchange="downloadFile()">
+    <option value="">Choisir un fichier...</option>
+    <option value="Astuces/Scripts_python/tableau_ascii/tableau_clipboard_linux.py">
+        tableau_clipboard_linux.py
+    </option>
+    <option value="Astuces/Scripts_python/Casse_caracteres/minuscule.py">
+        minuscule.py
+    </option>
+    <option value="Astuces/Scripts_python/Casse_caracteres/majuscule.py">
+        majuscule.py
+    </option>
+    <option value="Astuces/Scripts_python/Casse_caracteres/inverser_casse.py">
+        inverser_casse.py
+    </option>
+    <option value="Astuces/ocr_batch.sh">
+        ocr_batch.sh
+    </option>
+    <option value="Astuces/ocr_capture.sh">
+        ocr_capture.sh
+    </option>
+    <option value="Astuces/coller_tapper_clipboard.sh">
+        coller_tapper_clipboard.sh
+    </option>
+</select>
+
 </div>
 
 <!-- Scripts -->
@@ -659,6 +713,18 @@ function switchTab(tabName, group, elmnt) {
 
     // Ajouter la classe active au bouton cliqué
     if (elmnt) elmnt.classList.add("active");
+}
+</script>
+
+<script>
+function downloadFile() {
+    const file = document.getElementById("downloadSelect").value;
+    if (file) {
+        const a = document.createElement("a");
+        a.href = file;
+        a.download = file.split("/").pop();
+        a.click();
+    }
 }
 </script>
 
