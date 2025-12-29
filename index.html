@@ -21,6 +21,11 @@ body {
     color: white;
 }
 
+.dark-mode iframe {
+    background-color: white ;
+    filter: invert(0) ;
+}
+
 /* --- Barre de navigation --- */
 .navbar {
     background-color: rgba(0, 0, 0, .8);
@@ -135,7 +140,7 @@ body {
 }
 
 div.scroll-container {
-  background-color: #333;
+  background-color: #999;
   overflow: auto;
   white-space: nowrap;
   padding: 10px;
@@ -197,6 +202,39 @@ div.scroll-container img {
 </div>
 
 <div id="Documentations" class="tabcontent">
+<h2>GLPI</h2>
+<pre style="font-size:14px;">
+Debian
+ip a
+inet
+Mot de passe de la machine Windows vboxuser : vboxuser
+sur windows cmd : ssh administrateur@172.16.0.178
+Étape 1 Configuration base de données
+MariaDB
+127.0.0.1
+Gabriel
+votre_mot_de_passe
+</pre>
+ <div class="scroll-container">
+	<iframe src="Documentations/GLPI/Installer_Nginx_avec_php-fpm_et_mariaDB.html" width="400" height="300"></iframe>
+	<iframe src="Documentations/GLPI/Installer_GLPI_avec_Nginx_sans_apache.html" width="400" height="300"></iframe>
+ </div>
+&nbsp;
+ <h2>SQL</h2>
+ <div class="scroll-container">
+	<iframe src="Documentations/SQL/1_-_Le_sql_LID.pdf" width="400" height="300"></iframe>
+	<iframe src="Documentations/SQL/3_-_Le_sql_LDD.pdf" width="400" height="300"></iframe>
+	<iframe src="Documentations/SQL/Evaluation_SQL/Evaluation_SQL_Partie1.pdf" width="400" height="300"></iframe>
+	<iframe src="Documentations/SQL/Evaluation_SQL/Correction evaluation SQL1.pdf" width="400" height="300"></iframe>
+ </div>
+&nbsp;
+ <h2>Cybersécurité</h2>
+ <div class="scroll-container">
+	<iframe src="Documentations/Cybersecurite/Chapitre_5_Mission_1_Active_Directory_dossiers_partages/Pages_115_116_119_120-122_207_208.pdf" width="400" height="300"></iframe>
+	<img src="Documentations/Cybersecurite/Chapitre_5_Mission_1_Active_Directory_dossiers_partages/Capture_d_ecran_du_2025-04-07_16-41-41.png" width="400" height="300">
+	<iframe src="Documentations/Cybersecurite/Chapitre_5_Mission_1_Active_Directory_dossiers_partages/Nouveau_fichier.txt" width="400" height="300"></iframe>
+	<iframe src="Documentations/Cybersecurite/Force_brute_pages_94-96.pdf" width="400" height="300"></iframe>
+ </div>
 </div>
 
 <div id="Stages" class="tabcontent">
@@ -541,9 +579,6 @@ la maternelle, cette structure peut accueillir 9 enfants.
 </div>
 
 <div id="MXLinux" class="tabcontent">
-<pre>
-
-</pre>
 </div>
 
 <!-- Scripts -->
@@ -594,7 +629,6 @@ function switchTab(showId, groupClass) {
     // afficher celui demandé
     document.getElementById(showId).style.display = 'block';
 }
-
 </script>
 
 </body>
