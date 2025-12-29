@@ -1,0 +1,10 @@
+Debian
+ip a
+inet
+Mot de passe de la machine Windows vboxuser : vboxuser
+sur windows cmd : ssh administrateur@172.16.0.178
+Étape 1 Configuration base de données
+MariaDB
+127.0.0.1
+Gabriel
+votre_mot_de_passe
