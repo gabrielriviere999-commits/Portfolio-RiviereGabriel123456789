@@ -113,21 +113,25 @@ body {
 }
 
 .tab button {
-    background-color: rgb(128, 5, 3);
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 12px;
+    font-family: monospace;
     font-size: 14px;
-    color: white;
+    padding: 6px 12px;
+    background: #C0C0C0; /* gris Windows 98 */
+    border: 2px solid;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF; /* effet 3D */
+    cursor: pointer;
+    margin-right: 2px;
+    box-sizing: border-box;
+    color: black;
 }
 
 .tab button:hover {
-    background-color: rgb(29, 153, 40);
+    background: #D8D8D8; /* léger éclaircissement */
 }
 
 .tab button.active {
-    background-color: rgb(24, 128, 33);
+    border-color: #808080 #FFFFFF #FFFFFF #808080; /* bouton enfoncé */
+    background: #B0B0B0;
 }
 
 .tabcontent {
