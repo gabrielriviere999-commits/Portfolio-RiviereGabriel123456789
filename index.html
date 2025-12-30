@@ -65,6 +65,24 @@ body {
     color: black;
 }
 
+/* --- Bouton d'ouverture du menu latéral --- */
+.win98-menu-btn {
+    font-family: monospace;
+    font-size: 22px;
+    padding: 4px 10px;
+    background: #C0C0C0; /* gris Win98 */
+    border: 2px solid;
+    border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief 3D */
+    cursor: pointer;
+    box-sizing: border-box;
+    color: black;
+}
+
+.win98-menu-btn:active {
+    border-color: #808080 #FFFFFF #FFFFFF #808080; /* bouton enfoncé */
+    background: #B0B0B0;
+}
+
 /* --- Menu latéral --- */
 .sidenav {
     display: none;
@@ -143,6 +161,7 @@ body {
     margin-top: 80px;
 }
 
+/* --- Galerie défilante --- */
 div.scroll-container {
   background-color: #C0C0C0;
   overflow: auto;
@@ -154,6 +173,7 @@ div.scroll-container img {
   padding: 10px;
 }
 
+/* --- Bouton de téléchargement --- */
 .dl-btn {
     display: inline-block;
     padding: 10px 15px;
@@ -175,7 +195,7 @@ div.scroll-container img {
 
 <!-- Barre de navigation -->
 <div class="navbar">
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <span class="win98-menu-btn" onclick="openNav()">&#9776;</span>
 
     <div class="tab" style="margin-top:0;">
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
