@@ -290,7 +290,7 @@ div.scroll-container img {
 </div>
 
 <div id="Diplômes" class="tabcontent">
-
+<h2>Lycée de Vincendo</h2>
 <div class="slideshow-container" data-group="lycee">
 
     <div class="mySlide" data-group="lycee" style="display:block;">
@@ -310,19 +310,11 @@ div.scroll-container img {
 </div>
 
 <div class="thumbnail-row">
-    <img class="thumbnail" data-group="lycee" src="Diplomes/Lycee_de_Vincendo/Attestation.jpg" onclick="currentSlide(1, 'lycee')">
-    <img class="thumbnail" data-group="lycee" src="Diplomes/Lycee_de_Vincendo/Diplome.jpg" onclick="currentSlide(2, 'lycee')">
-    <img class="thumbnail" data-group="lycee" src="Diplomes/Lycee_de_Vincendo/Releve.jpg" onclick="currentSlide(3, 'lycee')">
+    <img class="thumbnail" data-group="lycee" src=" " onclick="currentSlide(1, 'lycee')">
+    <img class="thumbnail" data-group="lycee" src=" " onclick="currentSlide(2, 'lycee')">
+    <img class="thumbnail" data-group="lycee" src=" " onclick="currentSlide(3, 'lycee')">
 </div>
-
-<h2>Lycée de Vincendo</h2>
- <div class="scroll-container">
-	<iframe src="Diplomes/Lycee_de_Vincendo/Attestation_de_reussite_intermediaire_en_BAC_PRO.pdf" width="400" height="300"></iframe>
-	<iframe src="Diplomes/Lycee_de_Vincendo/Diplome_du_baccalaureat_professionnel.pdf" width="400" height="300"></iframe>
-	<iframe src="Diplomes/Lycee_de_Vincendo/Releve_de_notes_baccalaureat_professionnel_20240708_043058.pdf" width="400" height="300"></iframe>
- </div>
 &nbsp;
-
 <h2>Collège Bory de Saint-Vincent</h2>
 
 <div class="slideshow-container" data-group="college">
@@ -355,13 +347,49 @@ div.scroll-container img {
     <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" onclick="currentSlide(1, 'college')">
     <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" onclick="currentSlide(2, 'college')">
     <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/Diplome_national_du_brevet.jpg" onclick="currentSlide(3, 'college')">
-    <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/Releve.jpg" onclick="currentSlide(4, 'college')">
+    <img class="thumbnail" data-group="college" src="" onclick="currentSlide(4, 'college')">
     <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg" onclick="currentSlide(5, 'college')">
 </div>
 &nbsp
 </div>
 
 <div id="Documentations" class="tabcontent">
+<h2>IP et routage</h2>
+<div class="slideshow-container" data-group="IP_et_routage">
+
+    <div class="mySlide" data-group="IP_et_routage" style="display:block;">
+        <iframe src="Documentations/IP_et_routage/Devoir_N°1_-_Les_conversions_et_l_adressage_lPV4.pdf"></iframe>
+    </div>
+
+    <div class="mySlide" data-group="IP_et_routage">
+        <iframe src="Documentations/IP_et_routage/Correction_devoir_N°1_-_Les_conversions_et_l_adressage_IPV4.pdf"></iframe>
+    </div>
+
+    <div class="mySlide" data-group="IP_et_routage">
+        <iframe src="Documentations/IP_et_routage/Les_commandes_de_base_des_équipements_Cisco.pdf"></iframe>
+    </div>
+    <div class="mySlide" data-group="IP_et_routage">
+        <iframe src="Documentations/IP_et_routage/fiche_memo_routage_statique.pdf"></iframe>
+    </div>
+    <div class="mySlide" data-group="IP_et_routage">
+        <iframe src="Documentations/IP_et_routage/Le_routage_dynamique.pdf"></iframe>
+    </div>
+    <div class="mySlide" data-group="IP_et_routage">
+        <img src="Documentations/IP_et_routage/Poster_IPv6_Gabriel_et_Wissam.png">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1, 'IP_et_routage')"><</a>
+    <a class="next" onclick="plusSlides(1, 'IP_et_routage')">></a>
+</div>
+
+<div class="thumbnail-row">
+    <img class="thumbnail" data-group="IP_et_routage" src=" " onclick="currentSlide(1, 'IP_et_routage')">
+    <img class="thumbnail" data-group="IP_et_routage" src=" " onclick="currentSlide(2, 'IP_et_routage')">
+    <img class="thumbnail" data-group="IP_et_routage" src=" " onclick="currentSlide(3, 'IP_et_routage')">
+    <img class="thumbnail" data-group="IP_et_routage" src=" " onclick="currentSlide(4, 'IP_et_routage')">
+    <img class="thumbnail" data-group="IP_et_routage" src=" " onclick="currentSlide(5, 'IP_et_routage')">
+</div>
+
 <h2>IP et routage</h2>
 <div class="scroll-container">
 	<iframe src="Documentations/IP_et_routage/Devoir_N°1_-_Les_conversions_et_l_adressage_lPV4.pdf" width="400" height="300"></iframe>
@@ -910,6 +938,7 @@ let slideIndex = {
 
 showSlides(1, 'college');
 showSlides(1, 'lycee');
+showSlides(1, 'IP_et_routage');
 
 function plusSlides(n, group) {
   showSlides(slideIndex[group] += n, group);
