@@ -231,6 +231,23 @@ div.scroll-container img {
  </div>
 &nbsp;
 <h2>Collège Bory de Saint-Vincent</h2>
+
+<div style="display:flex; align-items:center; gap:6px;">
+
+    <button class="win98-btn" onclick="scrollLeft98()">←</button>
+    <button class="win98-btn" onclick="scrollRight98()">→</button>
+
+    <div id="galerie98" class="scroll-container">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" width="400" height="300">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" width="400" height="300">
+	<img src="Diplomes/College_Bory_de_Saint_Vincent/Diplome_national_du_brevet.jpg" width="400" height="300">
+	<iframe src="Diplomes/College_Bory_de_Saint_Vincent/Releve_de_notes_diplome_national_du_brevet.pdf" width="400" height="300"></iframe>
+    <img src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg" width="400" height="300">
+    </div>
+
+</div>
+
+
  <div class="scroll-container">
 	<img src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" width="400" height="300">
 	<img src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" width="400" height="300">
@@ -771,5 +788,16 @@ function downloadFile() {
 }
 </script>
 
+<script>
+function scrollLeft98() {
+    var g = document.getElementById("galerie98");
+    g.scrollLeft -= 150;
+}
+
+function scrollRight98() {
+    var g = document.getElementById("galerie98");
+    g.scrollLeft += 150;
+}
+</script>
 </body>
 </html>
