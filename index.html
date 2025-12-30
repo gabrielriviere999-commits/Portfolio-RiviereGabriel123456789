@@ -219,6 +219,27 @@ div.scroll-container img {
   opacity: 0.7;
 }
 
+.thumbnail.active {
+  border: 2px solid #00f; /* bleu Windows 98 */
+  opacity: 1;
+}
+
+.prev, .next {
+  background: #C0C0C0; /* gris Windows 98 */
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief 3D */
+  font-family: monospace;
+  font-size: 22px;
+  color: black;
+  padding:2px 10px; /* plus petit pour ne pas cacher l’image */
+}
+
+/* Effet bouton enfoncé */
+.prev:active, .next:active {
+  border-color: #808080 #FFFFFF #FFFFFF #808080;
+  background: #B0B0B0;
+}
+
 /* --- Bouton de téléchargement --- */
 .dl-btn {
     display: inline-block;
@@ -300,8 +321,10 @@ div.scroll-container img {
         <img src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg">
     </div>    
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+&nbsp;
+<a class="prev" onclick="plusSlides(-1)"><</a>
+&nbsp;
+<a class="next" onclick="plusSlides(1)">></a>
 </div>
 <div class="thumbnail-row">
 
@@ -876,14 +899,27 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-  let i;
   let slides = document.getElementsByClassName("mySlide");
+  let thumbnails = document.getElementsByClassName("thumbnail");
+
   if (n > slides.length) { slideIndex = 1 }
   if (n < 1) { slideIndex = slides.length }
-  for (i = 0; i < slides.length; i++) {
+
+  // cacher toutes les slides
+  for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
+
+  // retirer .active de toutes les vignettes
+  for (let i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].classList.remove("active");
+  }
+
+  // afficher la slide actuelle
   slides[slideIndex - 1].style.display = "block";
+
+  // activer la vignette correspondante
+  thumbnails[slideIndex - 1].classList.add("active");
 }
 </script>
 
