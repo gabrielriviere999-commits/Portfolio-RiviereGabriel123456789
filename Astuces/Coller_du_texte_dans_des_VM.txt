@@ -1,4 +1,5 @@
-Il faut coller le texte en utilisant une méthode de frappe simulée.
+Pour coller du texte dans une VM, il faut le coller en utilisant
+une méthode de frappe simulée.
 Créer un fichier coller_tapper.sh
 Coller ce contenu :
 
@@ -30,6 +31,7 @@ done <<< "$clipboard"
 
 Ouvrir un terminal :
 chmod +x coller_tapper.sh
+
 On peut ajouter ce fichier à la barre des tâches et/ou un raccourci clavier.
-Il faut copier le texte voule dans le presse papier, puis exécuter le fichier
+Il faut copier le texte voulu dans le presse papier, puis exécuter le fichier
 et enfin cliquer dans la VM et le texte est tappé automatiquement. 
