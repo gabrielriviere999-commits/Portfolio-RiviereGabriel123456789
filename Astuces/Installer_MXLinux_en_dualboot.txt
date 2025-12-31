@@ -50,7 +50,7 @@ pouvoir réduire jusqu’à 50 Go.
  c. Fichier d’échange
  • Retourne dans Mémoire virtuelle → coche Gestion automatique → OK.
 
-Astuce bonus : Défragmentation🠀
+Astuce bonus : Défragmentation
 • Tape Défragmenter dans le menu Démarrer.
 • Lance l’outil sur le disque C: → clique sur Optimiser.
 Cela aide à regrouper les fichiers et libérer de l’espace contigu.
