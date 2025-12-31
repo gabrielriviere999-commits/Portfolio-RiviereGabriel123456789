@@ -25,7 +25,7 @@ empêche Windows de réduire le volume.
  • Sélectionne le disque C: → clique sur Configurer.
  • Coche Désactiver la protection du système → Appliquer.
 
- c. Désactiver le fichier d’échange (mémoire virtuelle)🠀
+ c. Désactiver le fichier d’échange (mémoire virtuelle)
  • Ouvre Paramètres système avancés → onglet Avancé → section Performances →
    Paramètres.
  • Onglet Avancé → Mémoire virtuelle → Modifier.
@@ -33,7 +33,7 @@ empêche Windows de réduire le volume.
    d’échange → Définir → OK.
    Redémarre ton PC après ces modifications pour libérer l’espace contigu.
 
-3. Réduire le volume avec "Gestion des disques"🠀
+3. Réduire le volume avec "Gestion des disques"
 • Appuie sur Win + X → Gestion des disques.
 • Clic droit sur le disque C: → Réduire le volume.
 • Windows te proposera la taille maximale possible. Tu devrais maintenant
