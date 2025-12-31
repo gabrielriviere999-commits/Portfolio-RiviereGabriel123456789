@@ -1,6 +1,6 @@
 Pour installer Recoll sur Linux (y compris MX Linux), vous pouvez suivre la documentation
 officielle ou les guides communautaires. Voici les ressources les plus utiles et fiables.
-Application de recherche de doxuments par leur contenu.
+Application de recherche de documents par leurs contenus.
 ## Documentation officielle d’installation de Recoll
 
 ### [Recoll Downloads & Installation Guide (site officiel)](https://www.recoll.org/pages/download.html)
