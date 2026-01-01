@@ -14,4 +14,6 @@ Point de montage : /media/mxlinux/YOSHI
 S'identifier comme : UUID=3864-6162
 
 Maintenant il faut démonter la clé, la débrancher, la rebrancher et remonter.
-Et lorsque vous copierez des ficheirs, il y aura parfois des erreurs comme erre
+Et lorsque vous copierez des fichiers, il y aura parfois des erreurs comme erreur
+d'entrée/sortie. Il faudra cliquer sur Réessayer puis Appliquer l'action à tous les fichiers
+et dossiers et Remplacer.
