@@ -1,7 +1,10 @@
 name: Générer les listes de fichiers
 
 on:
-  workflow_dispatch:   # <-- déclenchement manuel uniquement
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
