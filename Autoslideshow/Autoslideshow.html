@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Slideshow multimédia GitHub Pages</title>
+
+<style>
+body {
+    background-color: #C0C0C0;
+    margin: 0;
+    padding: 20px;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.mySlide {
+  display: none;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.mySlide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.mySlide iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.thumbnail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E0E0E0;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail.active {
+  border: 2px solid #00f;
+}
+
+.prev, .next {
+  background: #C0C0C0;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief normal */
+  font-family: monospace;
+  font-size: 22px;
+  color: black;
+  padding: 1px 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.prev:active, .next:active {
+  border-color: #808080 #FFFFFF #FFFFFF #808080; /* effet bouton pressé */
+  background: #B0B0B0;
+}
+
+.prev:focus, .next:focus {
+  outline: none;
+}
+
+.prev::selection, .next::selection {
+  background: transparent;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Documents/images ajoutés</h2>
+
+<div class="slideshow-container">
+    <div id="slides"></div>
+    <a class="prev" onclick="plusSlides(-1)"><</a>
+    <a class="next" onclick="plusSlides(1)">></a>
+</div>
+
+<div class="thumbnail-row" id="thumbs"></div>
+
+<script>
+let slideIndex = 1;
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    const slides = document.querySelectorAll(".mySlide");
+    const thumbs = document.querySelectorAll(".thumbnail");
+
+    if (slides.length === 0) return;
+
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+
+    slides.forEach(s => s.style.display = "none");
+    thumbs.forEach(t => t.classList.remove("active"));
+
+    slides[slideIndex - 1].style.display = "block";
+    thumbs[slideIndex - 1].classList.add("active");
+}
+
+/* ============================= */
+/*   SLIDESHOW MULTIFORMAT       */
+/* ============================= */
+
+function autoSlideshow(folder, maxFiles = 200) {
+    const container = document.getElementById("slides");
+    const thumbContainer = document.getElementById("thumbs");
+
+    const extensions = ["jpg", "jpeg", "png", "webp", "gif", "pdf", "txt", "html", "htm"];
+
+    let index = 1;
+    let thumbIndex = 1;
+
+    function tryNext() {
+        if (index > maxFiles) return;
+
+        const candidates = extensions.map(ext => `${folder}/${index}.${ext}`);
+
+        function tryCandidate(i) {
+            if (i >= candidates.length) {
+                index++;
+                tryNext();
+                return;
+            }
+
+            const url = candidates[i];
+
+            fetch(url, { method: "HEAD" })
+                .then(res => {
+                    if (res.ok) loadFile(url);
+                    else tryCandidate(i + 1);
+                })
+                .catch(() => tryCandidate(i + 1));
+        }
+
+        function loadFile(url) {
+            const slide = document.createElement("div");
+            slide.className = "mySlide";
+
+            let element;
+
+            if (url.match(/\.(jpg|jpeg|png|webp|gif)$/)) {
+                element = document.createElement("img");
+                element.src = url;
+            } else {
+                element = document.createElement("iframe");
+                element.src = url;
+            }
+
+            slide.appendChild(element);
+            container.appendChild(slide);
+
+            const thumb = document.createElement("div");
+            thumb.className = "thumbnail";
+
+            if (url.match(/\.(jpg|jpeg|png|webp|gif)$/)) {
+                const img = document.createElement("img");
+                img.src = url;
+                thumb.appendChild(img);
+            } else if (url.endsWith(".pdf")) {
+                thumb.textContent = "[PDF]";
+            } else if (url.endsWith(".txt")) {
+                thumb.textContent = "[TXT]";
+            } else {
+                thumb.textContent = "[HTML]";
+            }
+
+            const thisIndex = thumbIndex;
+            thumb.onclick = () => currentSlide(thisIndex);
+
+            thumbContainer.appendChild(thumb);
+
+            thumbIndex++;
+            index++;
+            tryNext();
+        }
+
+        tryCandidate(0);
+    }
+
+    tryNext();
+}
+
+autoSlideshow("./");
+
+setTimeout(() => showSlides(1), 300);
+</script>
+
+</body>
+</html>
