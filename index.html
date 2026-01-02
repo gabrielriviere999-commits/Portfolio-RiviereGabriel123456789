@@ -1225,14 +1225,24 @@ function downloadFile(select) {
     const file = select.value;
     if (!file) return;
 
+    // Teste si le navigateur supporte l'attribut download
     const a = document.createElement("a");
-    a.href = file;
-    a.download = "";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    const supportsDownload = "download" in a;
 
-    select.value = ""; // remet le menu à zéro
+    if (supportsDownload) {
+        // Mode normal : téléchargement
+        a.href = file;
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    } else {
+        // Mode fallback (3DS, vieux navigateurs) : ouvrir dans un nouvel onglet
+        window.open(file, "_blank");
+    }
+
+    // Réinitialise le menu
+    select.value = "";
 }
 </script>
 
