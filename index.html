@@ -1234,10 +1234,15 @@ function downloadFile(select) {
         a.href = file;
         a.download = "";
         document.body.appendChild(a);
-        a.click();
-        a.remove();
+
+        // Petit délai pour stabiliser Firefox Android
+        setTimeout(() => {
+            a.click();
+            a.remove();
+        }, 50);
+
     } else {
-        // Mode fallback (3DS, vieux navigateurs) : ouvrir dans un nouvel onglet
+        // Mode fallback (3DS, vieux navigateurs)
         window.open(file, "_blank");
     }
 
