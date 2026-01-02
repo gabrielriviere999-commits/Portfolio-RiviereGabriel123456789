@@ -1003,7 +1003,7 @@ la maternelle, cette structure peut accueillir 9 enfants.
     </div>
 
     <div class="mySlide" data-group="MXLinux">
-        <img src="Astuces/20251106_202806.webp">
+        <img src="Astuces/Montage_partitions_efi_et_root.webp">
     </div>
 
     <div class="mySlide" data-group="MXLinux">
@@ -1059,7 +1059,7 @@ la maternelle, cette structure peut accueillir 9 enfants.
 
 <div class="thumbnail-row">
     <img class="thumbnail" data-group="MXLinux" src="" onclick="currentSlide(1, 'MXLinux')">
-    <img class="thumbnail" data-group="MXLinux" src="Astuces/20251106_202806.webp" onclick="currentSlide(2, 'MXLinux')">
+    <img class="thumbnail" data-group="MXLinux" src="Astuces/Montage_partitions_efi_et_root.webp" onclick="currentSlide(2, 'MXLinux')">
     <img class="thumbnail" data-group="MXLinux" src="" onclick="currentSlide(3, 'MXLinux')">
     <img class="thumbnail" data-group="MXLinux" src="Astuces/Correction_probleme_fichiers_coupes/gnome-disk-utility.webp" onclick="currentSlide(4, 'MXLinux')">   
     <img class="thumbnail" data-group="MXLinux" src="Astuces/Correction_probleme_fichiers_coupes/Reessayer.webp" onclick="currentSlide(5, 'MXLinux')">
@@ -1073,9 +1073,9 @@ la maternelle, cette structure peut accueillir 9 enfants.
     <img class="thumbnail" data-group="MXLinux" src="" onclick="currentSlide(13, 'MXLinux')">
     <img class="thumbnail" data-group="MXLinux" src="" onclick="currentSlide(14, 'MXLinux')">
 </div>
-<p>Scripts</p>
-<select id="downloadSelect" onchange="downloadFile()">
-    <option value="">Choisir un fichier...</option>
+<p>Télécharger</p>
+<select id="downloadScripts" onchange="downloadFile(this)">
+    <option value="">Script...</option>
     <option value="Astuces/ocr_batch.sh">
         ocr_batch.sh
     </option>
@@ -1106,7 +1106,55 @@ la maternelle, cette structure peut accueillir 9 enfants.
     <option value="Astuces/Scripts_python/GenererCleDeHashage.py">
         GenererCleDeHashage.py
     </option>
-    
+    <option value="Astuces/Scripts.zip">
+        --Tous les scripts--
+    </option>    
+</select>
+
+<select id="downloadDocs" onchange="downloadFile(this)">
+    <option value="">Doc...</option>
+    <option value="Astuces/Installer_MXLinux_en_dualboot.txt">
+        Installer_MXLinux_en_dualboot.txt
+    </option>
+    <option value="Astuces/Montage_partitions_efi_et_root.webp">
+        Montage_partitions_efi_et_root.webp
+    </option>
+    <option value="Astuces/Correction_probleme_fichiers_coupes/Correction_probleme_fichiers_coupes.txt">
+        Correction_probleme_fichiers_coupes.txt
+    </option>
+    <option value="Astuces/Correction_probleme_fichiers_coupes/gnome-disk-utility.webp">
+        gnome-disk-utility.webp
+    </option>
+    <option value="Astuces/Correction_probleme_fichiers_coupes/Reessayer.webp">
+        Reessayer.webp
+    </option>
+    <option value="Astuces/Correction_probleme_fichiers_coupes/Tout_remplacer.webp">
+        Tout_remplacer.webp
+    </option>
+    <option value="Astuces/Installer_OCR_converter_sur_MXlinux.txt">
+        Installer_OCR_converter_sur_MXlinux.txt
+    </option>
+    <option value="Astuces/Installer_OCR_on_screen_sur_linuxMX.txt">
+        Installer_OCR_on_screen_sur_linuxMX.txt
+    </option>
+    <option value="Astuces/Coller_du_texte_dans_des_VM.txt">
+        Coller_du_texte_dans_des_VM.txt
+    </option>
+    <option value="Astuces/Installer_Recoll.txt">
+        Installer_Recoll.txt
+    <option value="Astuces/Activer_python_pour_geany.txt">
+        Activer_python_pour_geany.txt   
+    <option value="Astuces/Configurer_samba_sur_mxLinux.txt">
+        Configurer_samba_sur_mxLinux.txt
+    <option value="Astuces/Nettoyer.txt">
+        Nettoyer.txt
+    </option>
+    <option value="Astuces/Installer_Steam_sur_Linux.txt">
+        Installer_Steam_sur_Linux.txt
+    </option>
+    <option value="Astuces/Docs.zip">
+        --Toutes les docs--
+    </option>
 </select>
 <p>&nbsp;</p>
 </div>
@@ -1172,14 +1220,18 @@ function switchTab(tabName, group, elmnt) {
 </script>
 
 <script>
-function downloadFile() {
-    const file = document.getElementById("downloadSelect").value;
-    if (file) {
-        const a = document.createElement("a");
-        a.href = file;
-        a.download = file.split("/").pop();
-        a.click();
-    }
+function downloadFile(select) {
+    const file = select.value;
+    if (!file) return;
+
+    const a = document.createElement("a");
+    a.href = file;
+    a.download = "";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    select.value = ""; // remet le menu à zéro
 }
 </script>
 
