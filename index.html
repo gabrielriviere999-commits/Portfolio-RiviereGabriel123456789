@@ -263,6 +263,7 @@ body {
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
         <button class="tablinks" onclick="openCity(event, 'Diplômes')">Diplômes</button>
         <button class="tablinks" onclick="openCity(event, 'Documentations')">Documentations</button>
+        <button class="tablinks" onclick="openCity(event, 'Infra_BTS')">Infra BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
         <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
         <button class="tablinks" onclick="openCity(event, 'Astuces')">Astuces</button>
@@ -579,6 +580,65 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="ITSM_NG" src="" onclick="currentSlide(1, 'ITSM-NG')">
 </div>
 <a href="Documentations/Documentations.zip" download>Télécharger toutes les docs</a>
+</div>
+
+<div id="Infra_BTS" class="tabcontent">
+<div class="slideshow-container" data-group="Infra_BTS">
+
+    <div class="mySlide" data-group="Infra_BTS" style="display:block;">
+        <iframe src="Infra_BTS/Projet.pdf"></iframe>
+    </div>
+
+    <div class="mySlide" data-group="Infra_BTS">
+        <img src="Infra_BTS/Shema_Reseau_2025-2026.png">
+    </div>
+
+    <div class="mySlide" data-group="Infra_BTS">
+        <iframe src="Infra_BTS/Tableau_IP_Haproxy_glpi_et_zabbix.txt"></iframe>
+    </div>
+    
+    <div class="mySlide" data-group="Infra_BTS">
+        <iframe src="Infra_BTS/Installation_de_base_d_un_serveur_web.pdf"></iframe>
+    </div>
+    
+    <div class="mySlide" data-group="Infra_BTS">
+        <iframe src="Infra_BTS/Documentation_d_installation_et_de_configuration_de_GLPI.pdf"></iframe>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1, 'Infra_BTS')"><</a>
+    <a class="next" onclick="plusSlides(1, 'Infra_BTS')">></a>
+</div>
+
+<div class="thumbnail-row">
+    <img class="thumbnail" data-group="Infra_BTS" src="" onclick="currentSlide(1, 'Infra_BTS')">
+    <img class="thumbnail" data-group="Infra_BTS" src="Infra_BTS/Shema_Reseau_2025-2026.png" onclick="currentSlide(2, 'Infra_BTS')">
+    <img class="thumbnail" data-group="Infra_BTS" src="" onclick="currentSlide(3, 'Infra_BTS')">
+    <img class="thumbnail" data-group="Infra_BTS" src="" onclick="currentSlide(4, 'Infra_BTS')">
+    <img class="thumbnail" data-group="Infra_BTS" src="" onclick="currentSlide(5, 'Infra_BTS')">
+</div>
+
+<select id="downloadInfra_BTS" onchange="downloadFile(this)">
+    <option value="">Télécharger...</option>
+    <option value="Infra_BTS/Projet.pdf">
+        Projet.pdf
+    </option>
+    <option value="Infra_BTS/Shema_Reseau_2025-2026.png">
+        Shema_Reseau_2025-2026.png
+    </option>
+    <option value="Infra_BTS/Tableau_IP_Haproxy_glpi_et_zabbix.txt">
+        Tableau_IP_Haproxy_glpi_et_zabbix.txt
+    </option>
+    <option value="Infra_BTS/Installation_de_base_d_un_serveur_web.pdf">
+        Installation_de_base_d_un_serveur_web.pdf
+    </option>
+    <option value="Infra_BTS/Documentation_d_installation_et_de_configuration_de_GLPI.pdf">
+        Documentation_d_installation_et_de_configuration_de_GLPI.pdf
+    </option>
+    <option value="Infra_BTS/Infra_BTS.zip">
+        --Tous les documents--
+    </option>    
+</select>
+
 </div>
 
 <div id="Stages" class="tabcontent">
@@ -1254,6 +1314,7 @@ let slideIndex = {
   Cybersecurite: 1,
   Premiers_AP: 1,
   ITSM_NG: 1,
+  Infra_BTS: 1,
   MXLinux: 1,
 };
 
@@ -1267,6 +1328,7 @@ showSlides(1, 'Cours_HTML_et_CSS');
 showSlides(1, 'Cybersecurite');
 showSlides(1, 'Premiers_AP');
 showSlides(1, 'ITSM_NG');
+showSlides(1, 'Infra_BTS');
 showSlides(1, 'MXLinux');
 
 function plusSlides(n, group) {
