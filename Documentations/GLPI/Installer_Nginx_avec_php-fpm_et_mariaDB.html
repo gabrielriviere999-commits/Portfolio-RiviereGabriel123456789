@@ -1,170 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 7.4.7.2 (Linux)"/>
-	<meta name="created" content="2024-10-25T14:35:10"/>
-	<meta name="changed" content="2025-04-25T19:53:04"/>
-	<style type="text/css">
-		@page { size: 21cm 29.7cm; margin: 2cm }
-		p { margin-bottom: 0.21cm; background: transparent }
-	</style>
-</head>
-<body lang="fr-FR" link="#000080" vlink="#800000" dir="ltr"><p align="center" style="margin-bottom: 0cm">
-<font color="#ff0000"><font face="DejaVu Serif, serif"><b>Configurer
-un serveur avec Nginx, PHP-FPM et MariaDB sous Debian</b></font></font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>1)
-Mise à jour du système</b></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-apt update &amp;&amp; <font color="#ff6600">sudo</font> apt upgrade
--y</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>2)
-Installation de Nginx</b></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif">sudo
-apt install nginx -y</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Vérifiez
-que Nginx fonctionne :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl status nginx</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Si
-besoin, démarrez et activez Nginx :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl start nginx</font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl <font color="#ff6600">enable</font> nginx</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>3)
-Installation de MariaDB</b></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-apt install mariadb-server -y</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Sécurisez
-l’installation :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-mysql_secure_installation</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Testez
-l’accès :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-mysql -u root -p</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>4)
-Installation de PHP-FPM</b></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-apt install php-fpm php-mysql -y</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Vérifiez
-le service :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl status php-fpm</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Activez
-et démarrez PHP-FPM :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl start php-fpm</font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl <font color="#ff6600">enable</font> php-fpm</font></p>
-
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>5)
-Configuration de Nginx pour utiliser PHP-FPM</b></font></p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Créez
-un fichier de configuration pour votre site :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-nano /etc/nginx/sites-available/votresite</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Ajoutez
-cette configuration de base :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif">server
-{</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">listen
-80;</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">server_name
-votresite.com;</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">root
-/var/www/votresite;</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">index
-index.php index.html;</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">location
-/ {</font></p>
-<p style="margin-bottom: 0cm">        <font face="DejaVu Serif, serif">try_files
-$uri $uri/ =404;</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">}</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">location
-~ \.php$ {</font></p>
-<p style="margin-bottom: 0cm">        <font face="DejaVu Serif, serif">include
-snippets/fastcgi-php.conf;</font></p>
-<p style="margin-bottom: 0cm">        <font face="DejaVu Serif, serif">fastcgi_pass
-unix:/run/php/php8.2-fpm.sock; <font color="#666666">#</font><font color="#666666"><font size="2" style="font-size: 9pt">
-Vérifiez la version exacte de PHP</font></font></font></p>
-<p style="margin-bottom: 0cm">        <font face="DejaVu Serif, serif">fastcgi_param
-SCRIPT_FILENAME $document_root$fastcgi_script_name;</font></p>
-<p style="margin-bottom: 0cm">        <font face="DejaVu Serif, serif">include
-fastcgi_params;</font></p>
-<p style="margin-bottom: 0cm">    <font face="DejaVu Serif, serif">}</font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif">}</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Activez
-la configuration :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo
-ln</font> -s /etc/nginx/sites-available/votresite
-/etc/nginx/sites-enabled/</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Redémarrez
-Nginx :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">sudo</font>
-systemctl restart nginx</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><b>6)
-Test avec un fichier PHP</b></font></p>
-<p style="margin-bottom: 0cm"><font color="#0000ff"><font face="DejaVu Serif, serif">Créez
-un fichier test :</font></font></p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif"><font color="#ff6600">echo</font>
-<font color="#009900">&quot;&lt;?php phpinfo(); ?&gt;&quot;</font> |
-<font color="#ff6600">sudo tee</font> /var/www/votresite/index.php</font></p>
-<p style="margin-bottom: 0cm"><br/>
-
-</p>
-<p style="margin-bottom: 0cm"><font face="DejaVu Serif, serif">Ouvrez
-votre navigateur et accédez à http://votresite.com/index.php pour
-vérifier que PHP fonctionne correctement.</font></p>
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.--><head profile="http://dublincore.org/documents/dcmi-terms/"><meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/><title xml:lang="en-US">- no title specified</title><meta name="DCTERMS.title" content="" xml:lang="en-US"/><meta name="DCTERMS.language" content="en-US" scheme="DCTERMS.RFC4646"/><meta name="DCTERMS.source" content="http://xml.openoffice.org/odf2xhtml"/><meta name="DCTERMS.issued" content="2024-10-25T14:35:10" scheme="DCTERMS.W3CDTF"/><meta name="DCTERMS.modified" content="2026-01-03T19:20:29.445061440" scheme="DCTERMS.W3CDTF"/><meta name="xsl:vendor" content="libxslt"/><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" hreflang="en"/><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" hreflang="en"/><link rel="schema.DCTYPE" href="http://purl.org/dc/dcmitype/" hreflang="en"/><link rel="schema.DCAM" href="http://purl.org/dc/dcam/" hreflang="en"/><style>
+    table { border-collapse:collapse; border-spacing:0; empty-cells:show }
+    td, th { vertical-align:top; font-size:12pt;}
+    h1, h2, h3, h4, h5, h6 { clear:both;}
+    ol, ul { margin:0; padding:0;}
+    li { list-style: none; margin:0; padding:0;}
+    span.footnodeNumber { padding-right:1em; }
+    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }
+    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}
+    .P1 { font-size:12pt; font-family:'DejaVu Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .P2 { font-size:12pt; font-family:'DejaVu Serif'; writing-mode:horizontal-tb; direction:ltr;font-weight:bold; }
+    .P3 { font-size:12pt; font-family:'DejaVu Serif'; writing-mode:horizontal-tb; direction:ltr;text-align:center ! important; color:#ff0000; font-weight:bold; }
+    .P4 { font-size:12pt; font-family:'DejaVu Serif'; writing-mode:horizontal-tb; direction:ltr;color:#0000ff; }
+    .T1 { color:#ff6600; }
+    .T2 { color:#009900; }
+    .T3 { color:#666666; }
+    .T4 { color:#666666; font-size:9pt; }
+    /* ODF styles with no properties representable as CSS:
+    .dp1  { } */
+</style></head><body dir="ltr" style="max-width:21.001cm;margin-top:2cm; margin-bottom:2cm; margin-left:2cm; margin-right:2cm; "><p class="P3">Configurer un serveur avec Nginx, PHP-FPM et MariaDB sous Debian</p><p class="P1"> </p><p class="P2">1) Mise à jour du système</p><p class="P1"><span class="T1">sudo</span> apt update &amp;&amp; <span class="T1">sudo</span> apt upgrade -y</p><p class="P1"> </p><p class="P2">2) Installation de Nginx</p><p class="P1">sudo apt install nginx -y</p><p class="P1"> </p><p class="P4">Vérifiez que Nginx fonctionne :</p><p class="P1"><span class="T1">sudo</span> systemctl status nginx</p><p class="P1"> </p><p class="P4">Si besoin, démarrez et activez Nginx :</p><p class="P1"><span class="T1">sudo</span> systemctl start nginx</p><p class="P1"><span class="T1">sudo</span> systemctl <span class="T1">enable</span> nginx</p><p class="P1"> </p><p class="P2">3) Installation de MariaDB</p><p class="P1"><span class="T1">sudo</span> apt install mariadb-server -y</p><p class="P1"> </p><p class="P4">Sécurisez l’installation :</p><p class="P1"><span class="T1">sudo</span> mysql_secure_installation</p><p class="P1"> </p><p class="P4">Testez l’accès :</p><p class="P1"><span class="T1">sudo</span> mysql -u root -p</p><p class="P1"> </p><p class="P2">4) Installation de PHP-FPM</p><p class="P1"><span class="T1">sudo</span> apt install php-fpm php-mysql -y</p><p class="P1"> </p><p class="P4">Vérifiez le service :</p><p class="P1"><span class="T1">sudo</span> systemctl status php-fpm</p><p class="P1"> </p><p class="P4">Activez et démarrez PHP-FPM :</p><p class="P1"><span class="T1">sudo</span> systemctl start php-fpm</p><p class="P1"><span class="T1">sudo</span> systemctl <span class="T1">enable</span> php-fpm</p><p class="P1"> </p><p class="P2">5) Configuration de Nginx pour utiliser PHP-FPM</p><p class="P4">Créez un fichier de configuration pour votre site :</p><p class="P1"><span class="T1">sudo</span> nano /etc/nginx/sites-available/votresite</p><p class="P1"> </p><p class="P4">Ajoutez cette configuration de base :</p><p class="P1">server {</p><p class="P1">    listen 80;</p><p class="P1">    server_name votresite.com;</p><p class="P1">    root /var/www/votresite;</p><p class="P1">    index index.php index.html;</p><p class="P1"> </p><p class="P1">    location / {</p><p class="P1">        try_files $uri $uri/ =404;</p><p class="P1">    }</p><p class="P1"> </p><p class="P1">    location ~ \.php$ {</p><p class="P1">        include snippets/fastcgi-php.conf;</p><p class="P1">        fastcgi_pass unix:/run/php/php8.2-fpm.sock; <span class="T3">#</span><span class="T4"> Vérifiez la version exacte de PHP</span></p><p class="P1">        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</p><p class="P1">        include fastcgi_params;</p><p class="P1">    }</p><p class="P1">}</p><p class="P1"> </p><p class="P4">Activez la configuration :</p><p class="P1"><span class="T1">sudo ln</span> -s /etc/nginx/sites-available/votresite /etc/nginx/sites-enabled/</p><p class="P1"> </p><p class="P4">Redémarrez Nginx :</p><p class="P1"><span class="T1">sudo</span> systemctl restart nginx</p><p class="P1"> </p><p class="P2">6) Test avec un fichier PHP</p><p class="P4">Créez un fichier test :</p><p class="P1"><span class="T1">echo</span> <span class="T2">"&lt;?php phpinfo(); ?&gt;"</span> | <span class="T1">sudo tee</span> /var/www/votresite/index.php</p><p class="P1"> </p><p class="P1">Ouvrez votre navigateur et accédez à http://votresite.com/index.php pour vérifier que PHP fonctionne correctement.</p></body></html>
