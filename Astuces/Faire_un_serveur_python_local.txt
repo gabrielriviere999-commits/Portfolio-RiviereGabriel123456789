@@ -1,3 +1,5 @@
+Faire un serveur python local
+
 Sur la machine hôte :
 cd L'emplacement souhaité ou clic droit ouvrir dans un terminal
 sudo ufw allow 8000/tcp
