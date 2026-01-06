@@ -87,6 +87,10 @@ body {
     background: #B0B0B0;
 }
 
+.win98-menu-btn:hover {
+    background: #D8D8D8; /* léger éclaircissement */
+}
+
 /* --- Menu latéral --- */
 .sidenav {
     display: none;
@@ -1061,7 +1065,43 @@ la maternelle, cette structure peut accueillir 9 enfants.
 </div>
 
 <div id="Astuces" class="tabcontent">
+<p style="text-align:left;">
+  <a href="donations.html"
+     style="
+       font-family: monospace;
+       font-size: 22px;
+       padding: 4px 10px;
+       background: #FFD700; /* or clair */
+       border: 2px solid;
+       border-color: #FFFFFF #808000 #808000 #FFFFFF; /* relief normal */
+       cursor: pointer;
+       box-sizing: border-box;
+       color: black;
+       text-decoration: none;
+       display: inline-block;
+     "
+     onmouseover="
+       this.style.background='#FFEA00'; /* or brillant (hover) */
+     "
+     onmouseout="
+       this.style.background='#FFD700'; /* retour or clair */
+       this.style.borderColor='#FFFFFF #808000 #808000 #FFFFFF'; /* relief normal */
+     "
+     onmousedown="
+       this.style.background='#DAA520'; /* or foncé (pressé) */
+       this.style.borderColor='#808000 #FFFFFF #FFFFFF #808000'; /* relief inversé */
+     "
+     onmouseup="
+       this.style.background='#FFEA00'; /* retour hover si la souris est dessus */
+       this.style.borderColor='#FFFFFF #808000 #808000 #FFFFFF'; /* relief normal */
+     "
+  >
+    Soutenir le site
+  </a>
+</p>
+
 <h2>MXLinux</h2>
+
 <div class="slideshow-container" data-group="MXLinux">
 
     <div class="mySlide" data-group="MXLinux">
