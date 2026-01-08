@@ -205,8 +205,26 @@ body {
 }
 
 .thumbnail-row {
-  text-align: left;
+  display: flex;              /* aligne les vignettes en ligne */
+  overflow-x: auto;           /* active la barre de défilement horizontale */
+  overflow-y: hidden;         /* pas de scroll vertical */
+  white-space: nowrap;        /* évite le retour à la ligne */
+  max-width: 100%;            /* limite à la largeur de l’écran */
+  padding: 4px;
   margin-top: 10px;
+  box-sizing: border-box;
+}
+
+/* Style rétro scrollbar (optionnel, Windows 98-like) */
+.thumbnail-row::-webkit-scrollbar {
+  height: 12px;
+  background: #C0C0C0; /* gris Win98 */
+}
+
+.thumbnail-row::-webkit-scrollbar-thumb {
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief 3D */
+  background: #B0B0B0;
 }
 
 .thumbnail {
