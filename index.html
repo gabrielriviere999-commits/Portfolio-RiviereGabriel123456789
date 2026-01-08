@@ -198,30 +198,38 @@ body {
   object-fit: contain;
 }
 
-/* Empêche l’iframe de bloquer les gestes horizontaux */
+/* Iframe: ne pas bloquer les gestes horizontaux du conteneur */
 .mySlide iframe {
   width: 100%;
   height: 100%;
   border: none;
-  touch-action: none; /* évite que l’iframe capture le scroll horizontal */
+  /* Retire la règle touch-action: none; pour ne pas casser l’interaction interne
+     et laisse le JS gérer le drag sur la rangée */
 }
 
 .thumbnail-row {
-  display: flex;              /* aligne les vignettes en ligne */
-  overflow-x: auto;           /* active la barre de défilement horizontale */
-  overflow-y: hidden;         /* pas de scroll vertical */
-  white-space: nowrap;        /* évite le retour à la ligne */
-  max-width: 100%;            /* limite à la largeur de l’écran */
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  max-width: 100%;
   padding: 4px;
-  margin-top: 10px;           /* espace au-dessus */
+  margin-top: 10px;
   box-sizing: border-box;
 
-  /* Défilement fluide et gestuel sur mobile/tablette */
+  /* Gestes et confort */
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;        /* autorise le glissement horizontal */
+  touch-action: pan-x;           /* autorise le glissement horizontal */
+  overscroll-behavior: contain;  /* évite que la page entière bouge */
+  cursor: grab;
+  user-select: none;
 }
 
-/* Style rétro scrollbar (Windows 98-like) */
+.thumbnail-row.dragging {
+  cursor: grabbing;
+}
+
+/* Scrollbar rétro (WebKit) */
 .thumbnail-row::-webkit-scrollbar {
   height: 12px;
   background: #C0C0C0; /* gris Win98 */
@@ -1500,6 +1508,77 @@ function showSlides(n, group) {
     activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
   }
 }
+
+(function() {
+  const row = document.querySelector('.thumbnail-row');
+  if (!row) return;
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let dragged = false;
+
+  // Empêche la page/iframe de voler le scroll
+  row.style.overscrollBehavior = 'contain';
+
+  // Souris
+  row.addEventListener('mousedown', (e) => {
+    isDown = true;
+    dragged = false;
+    row.classList.add('dragging');
+    startX = e.pageX - row.offsetLeft;
+    scrollLeft = row.scrollLeft;
+  });
+
+  row.addEventListener('mouseleave', () => {
+    isDown = false;
+    row.classList.remove('dragging');
+  });
+
+  row.addEventListener('mouseup', () => {
+    isDown = false;
+    row.classList.remove('dragging');
+  });
+
+  row.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - row.offsetLeft;
+    const walk = (x - startX); // distance
+    if (Math.abs(walk) > 3) dragged = true;
+    row.scrollLeft = scrollLeft - walk;
+  });
+
+  // Tactile
+  row.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    isDown = true;
+    dragged = false;
+    startX = t.pageX - row.offsetLeft;
+    scrollLeft = row.scrollLeft;
+  }, { passive: true });
+
+  row.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const t = e.touches[0];
+    const x = t.pageX - row.offsetLeft;
+    const walk = (x - startX);
+    if (Math.abs(walk) > 3) dragged = true;
+    row.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
+
+  row.addEventListener('touchend', () => {
+    isDown = false;
+  });
+
+  // Évite le clic sur une vignette si on a “drag”
+  row.addEventListener('click', (e) => {
+    if (dragged) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+})();
 </script>
 
 </body>
