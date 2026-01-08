@@ -1468,9 +1468,9 @@ function showSlides(n, group) {
       iframe.src = iframe.dataset.src;
   }
 
-if (thumbnails.length > 0) {
-  thumbnails[slideIndex[group] - 1].classList.add("active");
-}
+  if (thumbnails.length > 0) {
+    thumbnails[slideIndex[group] - 1].classList.add("active");
+  }
 }
 </script>
 
