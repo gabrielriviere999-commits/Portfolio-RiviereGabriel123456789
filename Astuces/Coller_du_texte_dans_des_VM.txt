@@ -1,5 +1,7 @@
 Pour coller du texte dans une VM, il faut le coller en utilisant
 une méthode de frappe simulée.
+Installer xdotool
+Installer xclip ou xsel
 Créer un fichier coller_tapper.sh
 Coller ce contenu :
 
