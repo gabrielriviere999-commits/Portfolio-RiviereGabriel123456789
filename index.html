@@ -248,6 +248,12 @@ body {
   background: #B0B0B0;
 }
 
+.slide-counter {
+  position: absolute;
+  transform: translateY(-90%);
+  right: 10px; /* juste à droite de la flèche */
+}
+
 /* --- Bouton de téléchargement --- */
 .dl-btn {
     display: inline-block;
@@ -299,9 +305,8 @@ body {
 </div>
 
 <div id="Diplômes" class="tabcontent">
-<h2>Lycée de Vincendo</h2>
+<h3>Lycée de Vincendo</h3>
 <div class="slideshow-container" data-group="lycee">
-	<div id="counter-lycee" class="slide-counter"></div>
 
     <div class="mySlide" data-group="lycee">
         <iframe data-src="Diplomes/Lycee_de_Vincendo/Attestation_de_reussite_intermediaire_en_BAC_PRO.pdf"></iframe>
@@ -317,6 +322,7 @@ body {
 
     <a class="prev" onclick="plusSlides(-1, 'lycee')"><</a>
     <a class="next" onclick="plusSlides(1, 'lycee')">></a>
+    <div id="counter-lycee" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -325,10 +331,9 @@ body {
     <img class="thumbnail" data-group="lycee" src="" onclick="currentSlide(3, 'lycee')">
 </div>
 &nbsp;
-<h2>Collège Bory de Saint-Vincent</h2>
+<h3>Collège Bory de Saint-Vincent</h3>
 
 <div class="slideshow-container" data-group="college">
-	<div id="counter-college" class="slide-counter"></div>
 
     <div class="mySlide" data-group="college">
         <img src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" loading="lazy">
@@ -352,6 +357,7 @@ body {
 
     <a class="prev" onclick="plusSlides(-1, 'college')"><</a>
     <a class="next" onclick="plusSlides(1, 'college')">></a>
+    <div id="counter-college" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -364,9 +370,8 @@ body {
 </div>
 
 <div id="Docs_BTS" class="tabcontent">
-<h2>IP et routage</h2>
+<h3>IP et routage</h3>
 <div class="slideshow-container" data-group="IP_et_routage">
-	<div id="counter-IP_et_routage" class="slide-counter"></div>
 
     <div class="mySlide" data-group="IP_et_routage">
         <iframe data-src="Docs_BTS/IP_et_routage/Devoir_Num1_-_Les_conversions_et_l_adressage_lPV4.pdf"></iframe>
@@ -394,6 +399,7 @@ body {
     
     <a class="prev" onclick="plusSlides(-1, 'IP_et_routage')"><</a>
     <a class="next" onclick="plusSlides(1, 'IP_et_routage')">></a>
+    <div id="counter-IP_et_routage" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -405,9 +411,8 @@ body {
     <img class="thumbnail" data-group="IP_et_routage" src="Docs_BTS/IP_et_routage/Poster_IPv6_Gabriel_et_Wissam.png" loading="lazy" onclick="currentSlide(6, 'IP_et_routage')">
 </div>
 &nbsp;
-<h2>HAProxy</h2>
+<h3>HAProxy</h3>
 <div class="slideshow-container" data-group="HAProxy">
-	<div id="counter-HAProxy" class="slide-counter"></div>
 
     <div class="mySlide" data-group="HAProxy">
         <iframe data-src="Docs_BTS/HAProxy/Documentation_HAProxy_WEB1_et_WEB2_avec_MySQL.pdf"></iframe>
@@ -423,6 +428,7 @@ body {
     
     <a class="prev" onclick="plusSlides(-1, 'HAProxy')"><</a>
     <a class="next" onclick="plusSlides(1, 'HAProxy')">></a>
+    <div id="counter-HAProxy" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -431,7 +437,7 @@ body {
     <img class="thumbnail" data-group="HAProxy" src="" onclick="currentSlide(3, 'HAProxy')">
 </div>
 &nbsp;
-<h2>GLPI</h2>
+<h3>GLPI</h3>
 <pre style="font-size:14px;">
 Debian
 ip a
@@ -445,7 +451,6 @@ Gabriel
 votre_mot_de_passe
 </pre>
 <div class="slideshow-container" data-group="GLPI">
-	<div id="counter-GLPI" class="slide-counter"></div>
 
     <div class="mySlide" data-group="GLPI">
         <iframe src="Docs_BTS/GLPI/Installer_Nginx_avec_php-fpm_et_mariaDB.txt"></iframe>
@@ -456,6 +461,7 @@ votre_mot_de_passe
     </div>
     <a class="prev" onclick="plusSlides(-1, 'GLPI')"><</a>
     <a class="next" onclick="plusSlides(1, 'GLPI')">></a>
+    <div id="counter-GLPI" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -463,9 +469,8 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="GLPI" src="" onclick="currentSlide(2, 'GLPI')">
 </div>
 &nbsp;
-<h2>SQL</h2>
+<h3>SQL</h3>
 <div class="slideshow-container" data-group="SQL">
-	<div id="counter-SQL" class="slide-counter"></div>
 
     <div class="mySlide" data-group="SQL">
         <iframe data-src="Docs_BTS/SQL/1_-_Le_sql_LID.pdf"></iframe>
@@ -485,6 +490,7 @@ votre_mot_de_passe
     
     <a class="prev" onclick="plusSlides(-1, 'SQL')"><</a>
     <a class="next" onclick="plusSlides(1, 'SQL')">></a>
+    <div id="counter-SQL" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -494,9 +500,8 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="SQL" src="" onclick="currentSlide(4, 'SQL')">
 </div>
 &nbsp;
-<h2>Cours HTML et CSS</h2>
+<h3>Cours HTML et CSS</h3>
 <div class="slideshow-container" data-group="Cours_HTML_et_CSS">
-	<div id="counter-Cours_HTML_et_CSS" class="slide-counter"></div>
 
     <div class="mySlide" data-group="Cours_HTML_et_CSS">
         <iframe data-src="Docs_BTS/Cours_HTML_CSS/1.1_-_Le_WEB.pdf"></iframe>
@@ -524,6 +529,7 @@ votre_mot_de_passe
 
     <a class="prev" onclick="plusSlides(-1, 'Cours_HTML_et_CSS')"><</a>
     <a class="next" onclick="plusSlides(1, 'Cours_HTML_et_CSS')">></a>
+    <div id="counter-Cours_HTML_et_CSS" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -535,9 +541,8 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="Cours_HTML_et_CSS" src="" onclick="currentSlide(6, 'Cours_HTML_et_CSS')">
 </div>
 &nbsp;
-<h2>Cybersecurité</h2>
+<h3>Cybersecurité</h3>
 <div class="slideshow-container" data-group="Cybersecurite">
-	<div id="counter-Cybersecurite" class="slide-counter"></div>
 
     <div class="mySlide" data-group="Cybersecurite">
         <iframe data-src="Docs_BTS/Cybersecurite/Chapitre_5_Mission_1_Active_Directory_dossiers_partages/Pages_115_116_119_120-122_207_208.pdf"></iframe>
@@ -557,6 +562,7 @@ votre_mot_de_passe
 
     <a class="prev" onclick="plusSlides(-1, 'Cybersecurite')"><</a>
     <a class="next" onclick="plusSlides(1, 'Cybersecurite')">></a>
+    <div id="counter-Cybersecurite" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -566,9 +572,8 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="Cybersecurite" src="" onclick="currentSlide(4, 'Cybersecurite')">
 </div>
 &nbsp;
-<h2>Premiers AP en AT Professionnalisation</h2>
+<h3>Premiers AP en AT Professionnalisation</h3>
 <div class="slideshow-container" data-group="Premiers_AP">
-	<div id="counter-Premiers_AP" class="slide-counter"></div>
 
     <div class="mySlide" data-group="Premiers_AP">
         <iframe data-src="Docs_BTS/Premiers_AP_en_At_Professionnalisation/A_-_consigne_AP_1.1_AP_1.2_AP_1.3.pdf"></iframe>
@@ -580,6 +585,7 @@ votre_mot_de_passe
 
     <a class="prev" onclick="plusSlides(-1, 'Premiers_AP')"><</a>
     <a class="next" onclick="plusSlides(1, 'Premiers_AP')">></a>
+    <div id="counter-Premiers_AP" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -587,9 +593,8 @@ votre_mot_de_passe
     <img class="thumbnail" data-group="Premiers_AP" src="" onclick="currentSlide(2, 'Premiers_AP')">
 </div>
 &nbsp;
-<h2>ITSM-NG</h2>
+<h3>ITSM-NG</h3>
 <div class="slideshow-container" data-group="ITSM_NG">
-	<div id="counter-ITSM_NG" class="slide-counter"></div>
 
     <div class="mySlide" data-group="ITSM_NG">
         <iframe data-src="Docs_BTS/ITSM-NG.pdf"></iframe>
@@ -597,6 +602,7 @@ votre_mot_de_passe
 
     <a class="prev" onclick="plusSlides(-1, 'ITSM_NG')"><</a>
     <a class="next" onclick="plusSlides(1, 'ITSM_NG')">></a>
+    <div id="counter-ITSM_NG" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -607,7 +613,6 @@ votre_mot_de_passe
 
 <div id="Infra_BTS" class="tabcontent">
 <div class="slideshow-container" data-group="Infra_BTS">
-	<div id="counter-Infra_BTS" class="slide-counter"></div>
 
     <div class="mySlide" data-group="Infra_BTS">
         <iframe data-src="Infra_BTS/Projet.pdf"></iframe>
@@ -631,6 +636,7 @@ votre_mot_de_passe
 
     <a class="prev" onclick="plusSlides(-1, 'Infra_BTS')"><</a>
     <a class="next" onclick="plusSlides(1, 'Infra_BTS')">></a>
+    <div id="counter-Infra_BTS" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
@@ -685,7 +691,7 @@ votre_mot_de_passe
 
     <!-- Groupe Collège Bory de Saint-Vincent -->
     <div id="college_bory_de_saint-vincent" class="etablissement" style="display:none;">
-	<h2>Ferme Équestre de Saint-Philippe</h2>
+	<h3>Ferme Équestre de Saint-Philippe</h3>
 <pre style="font-size:14px;">
 +----------------------+--------------------------------------------------+------------------------------+-------------+
 | Jour                 | Tâches observées ou effectuées                   | Matériaux/Outils utilisés    | Autonomie   |
@@ -995,7 +1001,7 @@ On clique sur la date + heure voulue et on clique sur créer le rendez-vous.
         </div>
 
         <div id="p_stage_bts1" class="p_stage" style="display:none;">
-            <h2>Mairie de Saint-Philippe</h2>
+            <h3>Mairie de Saint-Philippe</h3>
 <pre>
 Lundi 2 juin 2025 : Découverte des lieux.
 Mardi 3 juin 2025 : Synthèse de l'histoire de Saint-Philippe.
@@ -1074,7 +1080,7 @@ la maternelle, cette structure peut accueillir 9 enfants.
         </div>
 
         <div id="p_stage_bts2" class="p_stage" style="display:none;">
-            <h2>Mairie de Saint-Joseph</h2>
+            <h3>Mairie de Saint-Joseph</h3>
         </div>
     </div>
 </div>
@@ -1120,10 +1126,9 @@ la maternelle, cette structure peut accueillir 9 enfants.
   </a>
 </p>
 
-<h2>MXLinux</h2>
+<h3>MXLinux</h3>
 
 <div class="slideshow-container" data-group="MXLinux">
-	<div id="counter-MXLinux" class="slide-counter"></div>
 
     <div class="mySlide" data-group="MXLinux">
         <iframe src="Astuces/Installer_MXLinux_en_dualboot.txt"></iframe>
@@ -1186,6 +1191,7 @@ la maternelle, cette structure peut accueillir 9 enfants.
 
     <a class="prev" onclick="plusSlides(-1, 'MXLinux')"><</a>
     <a class="next" onclick="plusSlides(1, 'MXLinux')">></a>
+    <div id="counter-MXLinux" class="slide-counter"></div>
 </div>
 
 <div class="thumbnail-row">
