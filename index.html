@@ -204,7 +204,11 @@ body {
 }
 
 .thumbnail-row {
-  text-align: left;
+  display: flex;
+  flex-wrap: wrap;     /* les vignettes passent à la ligne */
+  gap: 6px;            /* espace entre les vignettes */
+  padding: 6px;
+  box-sizing: border-box;
   margin-top: 10px;
 }
 
@@ -212,7 +216,6 @@ body {
   width: 80px;
   height: 60px;
   object-fit: cover;
-  margin: 3px;
   border: 2px solid #000;
   cursor: pointer;
 }
