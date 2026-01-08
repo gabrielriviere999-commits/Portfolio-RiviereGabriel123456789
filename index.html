@@ -184,12 +184,6 @@ body {
   height: 70vh;
   overflow: hidden;
   text-align: left;
-  /* Bordure interne style Windows 98 */
-  box-sizing: border-box;
-  border: 2px solid;
-  border-color: #808080 #FFFFFF #FFFFFF #808080; /* inversé pour effet enfoncé */
-  background-color: #C0C0C0; /* gris clair Win98 */
-  padding: 4px; /* espace pour la bordure interne */
 }
 
 .mySlide img {
@@ -273,7 +267,7 @@ body {
     <div class="tab" style="margin-top:0;">
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
         <button class="tablinks" onclick="openCity(event, 'Diplômes')">Diplômes</button>
-        <button class="tablinks" onclick="openCity(event, 'Docs_BTS')">Docs_BTS</button>
+        <button class="tablinks" onclick="openCity(event, 'Docs_BTS')">Docs BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Infra_BTS')">Infra BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
         <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
@@ -359,7 +353,7 @@ body {
 </div>
 </div>
 
-<div id="Docs BTS" class="tabcontent">
+<div id="Docs_BTS" class="tabcontent">
 <h2>IP et routage</h2>
 <div class="slideshow-container" data-group="IP_et_routage">
 
@@ -1304,7 +1298,7 @@ la maternelle, cette structure peut accueillir 9 enfants.
     <option value="Astuces/Windows_et_Android/Android/inverser_casse_android.py">
         inverser_casse_android.py
     </option>
-	<option disabled>
+    <option disabled>
 	    Android 4.4 Python2
     </option>
     <option value="https://apkpure.com/pydroid-educational-ide-for-python-2/ru.iiec.pydroid2/download/1.01">
