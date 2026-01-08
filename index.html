@@ -1487,8 +1487,12 @@ function showSlides(n, group) {
   }
 
   if (thumbnails.length > 0) {
-    thumbnails[slideIndex[group] - 1].classList.add("active");
-  }
+  const activeThumb = thumbnails[slideIndex[group] - 1];
+  activeThumb.classList.add("active");
+
+  // Assure que la vignette active est visible dans la zone scrollable
+  activeThumb.scrollIntoView({ behavior: "smooth", inline: "center" });
+}
 }
 </script>
 
