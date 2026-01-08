@@ -198,10 +198,12 @@ body {
   object-fit: contain;
 }
 
+/* Empêche l’iframe de bloquer les gestes horizontaux */
 .mySlide iframe {
   width: 100%;
   height: 100%;
   border: none;
+  touch-action: none; /* évite que l’iframe capture le scroll horizontal */
 }
 
 .thumbnail-row {
@@ -213,6 +215,10 @@ body {
   padding: 4px;
   margin-top: 10px;           /* espace au-dessus */
   box-sizing: border-box;
+
+  /* Défilement fluide et gestuel sur mobile/tablette */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;        /* autorise le glissement horizontal */
 }
 
 /* Style rétro scrollbar (Windows 98-like) */
