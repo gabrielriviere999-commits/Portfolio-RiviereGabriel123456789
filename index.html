@@ -67,6 +67,31 @@ body {
     color: black;
 }
 
+/* Quand la navbar est réduite */
+.navbar.collapsed {
+    top: -120px; /* Ajuste selon la hauteur réelle de la navbar */
+}
+
+/* Le bouton reste visible même quand la navbar est réduite */
+.nav-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+    
+    width: 48px;      /* largeur */
+    height: 48px;     /* hauteur identique → carré parfait */
+    line-height: 48px;/* centre verticalement le symbole */
+    text-align: center;
+
+    background: rgba(0,0,0,0.3);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;       /* important : pas de padding sinon ça casse le carré */
+}
+
 /* --- Bouton d'ouverture du menu latéral --- */
 .win98-menu-btn {
     font-family: monospace;
@@ -277,6 +302,7 @@ body {
 <!-- Barre de navigation -->
 <div class="navbar">
     <button class="win98-menu-btn" onclick="openNav()">≡</button>
+    <button class="nav-toggle" onclick="toggleNavbar()">▲</button>
 
     <div class="tab" style="margin-top:0;">
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
@@ -1497,6 +1523,21 @@ function showSlides(n, group) {
   if (counter) {
     counter.textContent = slideIndex[group] + " / " + slides.length;
   }
+}
+</script>
+
+<script>
+function toggleNavbar() {
+    var nav = document.querySelector(".navbar");
+    var btn = document.querySelector(".nav-toggle");
+
+    if (nav.className.indexOf("collapsed") === -1) {
+        nav.className += " collapsed";
+        btn.innerHTML = "▼"; // Icône pour ré-ouvrir
+    } else {
+        nav.className = nav.className.replace(" collapsed", "");
+        btn.innerHTML = "▲"; // Icône pour réduire
+    }
 }
 </script>
 
