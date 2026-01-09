@@ -18,14 +18,26 @@ body {
     overflow-x: auto;
 }
 
+/* Dark mode natif */
 .dark-mode {
     background-color: black;
     color: white;
 }
 
+/* Iframes externes = inversion */
 .dark-mode iframe {
-    background-color: white ;
-    filter: invert(0) ;
+    background-color: white;
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Exclusions */
+.dark-mode iframe[src$=".pdf"],
+.dark-mode iframe[src$=".jpg"],
+.dark-mode iframe[src$=".png"],
+.dark-mode iframe[src$=".gif"],
+.dark-mode iframe[src$=".webp"],
+.dark-mode iframe[src$=".svg"] {
+    filter: none;
 }
 
 .dark-mode .thumbnail {
