@@ -26,11 +26,10 @@ body {
 
 /* Iframes HTML/TXT uniquement */
 .dark-mode iframe:not([src$=".pdf"]):not([src$=".jpg"]):not([src$=".png"]):not([src$=".gif"]):not([src$=".webp"]):not([src$=".svg"]) {
-    filter: invert(0.9) contrast(0.9);
+    filter: invert(1);
     background-color: white;
     will-change: filter;
 }
-
 
 /* Miniatures : jamais inversées */
 .dark-mode .thumbnail iframe {
