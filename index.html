@@ -26,7 +26,7 @@ body {
 
 /* Iframes HTML/TXT uniquement */
 .dark-mode iframe:not([src$=".pdf"]):not([src$=".jpg"]):not([src$=".png"]):not([src$=".gif"]):not([src$=".webp"]):not([src$=".svg"]) {
-    filter: invert(1);
+    filter: invert(1) hue-rotate(180deg);
     background-color: white;
     will-change: filter;
 }
