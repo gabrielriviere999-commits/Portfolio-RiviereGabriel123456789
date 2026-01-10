@@ -297,7 +297,6 @@ body {
 
     <div class="tab" style="margin-top:0;">
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
-        <button class="tablinks" onclick="openCity(event, 'Diplômes')">Diplômes</button>
         <button class="tablinks" onclick="openCity(event, 'Docs_BTS')">Docs BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Infra_BTS')">Infra BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
@@ -321,71 +320,6 @@ body {
 <div id="Accueil" class="tabcontent">
 <p><iframe src="Accueil/tableau_synthese_E5-2025_rempli.html" width="100%" height="800"></iframe></p>
 <p><iframe src="Accueil/CV_Riviere_Gabriel.pdf" width="100%" height="800"></iframe></p>
-</div>
-
-<div id="Diplômes" class="tabcontent">
-<h3>Lycée de Vincendo</h3>
-<div class="slideshow-container" data-group="lycee">
-
-    <div class="mySlide" data-group="lycee">
-        <iframe data-src="Diplomes/Lycee_de_Vincendo/Attestation_de_reussite_intermediaire_en_BAC_PRO.pdf"></iframe>
-    </div>
-
-    <div class="mySlide" data-group="lycee">
-        <iframe data-src="Diplomes/Lycee_de_Vincendo/Diplome_du_baccalaureat_professionnel.pdf"></iframe>
-    </div>
-
-    <div class="mySlide" data-group="lycee">
-        <iframe data-src="Diplomes/Lycee_de_Vincendo/Releve_de_notes_baccalaureat_professionnel_20240708_043058.pdf"></iframe>
-    </div>
-
-    <button class="prev" onclick="plusSlides(-1, 'lycee')"><</button>
-    <button class="next" onclick="plusSlides(1, 'lycee')">></button>
-    <div id="counter-lycee" class="slide-counter"></div>
-</div>
-
-<div class="thumbnail-row">
-    <img class="thumbnail" data-group="lycee" src="" onclick="currentSlide(1, 'lycee')">
-    <img class="thumbnail" data-group="lycee" src="" onclick="currentSlide(2, 'lycee')">
-    <img class="thumbnail" data-group="lycee" src="" onclick="currentSlide(3, 'lycee')">
-</div>
-&nbsp;
-<h3>Collège Bory de Saint-Vincent</h3>
-
-<div class="slideshow-container" data-group="college">
-
-    <div class="mySlide" data-group="college">
-        <img src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" loading="lazy">
-    </div>
-
-    <div class="mySlide" data-group="college">
-        <img src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" loading="lazy">
-    </div>
-
-    <div class="mySlide" data-group="college">
-        <img src="Diplomes/College_Bory_de_Saint_Vincent/Diplome_national_du_brevet.jpg" loading="lazy">
-    </div>
-
-    <div class="mySlide" data-group="college">
-        <iframe data-src="Diplomes/College_Bory_de_Saint_Vincent/Releve_de_notes_diplome_national_du_brevet.pdf"></iframe>
-    </div>
-
-    <div class="mySlide" data-group="college">
-        <img src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg" loading="lazy">
-    </div>
-
-    <button class="prev" onclick="plusSlides(-1, 'college')"><</button>
-    <button class="next" onclick="plusSlides(1, 'college')">></button>
-    <div id="counter-college" class="slide-counter"></div>
-</div>
-
-<div class="thumbnail-row">
-    <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/Diploma_2019_The_Big_Challenge.jpg" loading="lazy" onclick="currentSlide(1, 'college')">
-    <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/The_Big_Challenge_2019_certificate.jpg" loading="lazy" onclick="currentSlide(2, 'college')">
-    <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/Diplome_national_du_brevet.jpg" loading="lazy" onclick="currentSlide(3, 'college')">
-    <img class="thumbnail" data-group="college" src="" onclick="currentSlide(4, 'college')">
-    <img class="thumbnail" data-group="college" src="Diplomes/College_Bory_de_Saint_Vincent/ASSR².jpg" loading="lazy" onclick="currentSlide(5, 'college')">
-</div>
 </div>
 
 <div id="Docs_BTS" class="tabcontent">
@@ -1466,8 +1400,6 @@ function downloadFile(select) {
 
 <script>
 let slideIndex = {
-  college: 0,
-  lycee: 0,
   IP_et_routage: 0,
   HAProxy: 0,
   GLPI: 0,
