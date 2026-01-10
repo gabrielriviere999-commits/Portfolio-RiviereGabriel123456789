@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://gabrielriviere999-commits.github.io/Portfolio-RiviereGabriel123456789/sitemap.xml
