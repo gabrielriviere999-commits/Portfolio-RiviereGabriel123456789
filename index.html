@@ -340,18 +340,18 @@ body {
     <button class="win98-menu-btn" onclick="openNav()">≡</button>
 
     <div class="tab" style="margin-top:0;">
-		<select class="win98-select" onchange="openCity(event, this.value); this.selectedIndex = 0;">
+		<select class="win98-select" onchange="activateTab(this.value); this.selectedIndex = 0;">
             <option value="">tab</option>
             <option value="Accueil">Accueil</option>
-            <option value="Docs_BTS">Docs BTS</option>
-            <option value="Infra_BTS">Infra BTS</option>
+            <option value="Docs BTS">Docs BTS</option>
+            <option value="Infra BTS">Infra BTS</option>
             <option value="Stages">Stages</option>
             <option value="Veille technologique">Veille technologique</option>
             <option value="Astuces">Astuces</option>
         </select>
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
-        <button class="tablinks" onclick="openCity(event, 'Docs_BTS')">Docs BTS</button>
-        <button class="tablinks" onclick="openCity(event, 'Infra_BTS')">Infra BTS</button>
+        <button class="tablinks" onclick="openCity(event, 'Docs BTS')">Docs BTS</button>
+        <button class="tablinks" onclick="openCity(event, 'Infra BTS')">Infra BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
         <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
         <button class="tablinks" onclick="openCity(event, 'Astuces')">Astuces</button>
@@ -375,7 +375,7 @@ body {
 <p><iframe src="Accueil/CV_Riviere_Gabriel.pdf" width="100%" height="800"></iframe></p>
 </div>
 
-<div id="Docs_BTS" class="tabcontent">
+<div id="Docs BTS" class="tabcontent">
 <h2>Docs BTS</h2>
 <h3>IP et routage</h3>
 <div class="slideshow-container" data-group="IP_et_routage">
@@ -618,7 +618,7 @@ votre_mot_de_passe
 <a href="Docs_BTS/Docs_BTS.zip" download>Télécharger toutes les docs</a>
 </div>
 
-<div id="Infra_BTS" class="tabcontent">
+<div id="Infra BTS" class="tabcontent">
 <h2>Infra BTS</h2>
 <div class="slideshow-container" data-group="Infra_BTS">
 
@@ -1384,20 +1384,13 @@ function closeNav() {
     document.getElementById("mySidenav").style.display = "none";
 }
 
-document.getElementsByClassName('tablinks')[0].click();
-
 function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    activateTab(cityName);
+
+    // Si c'est un clic sur un bouton onglet
+    if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add("active");
     }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
 }
 
 function openSubTab(evt, tabName) {
@@ -1428,6 +1421,34 @@ function switchTab(tabName, group, elmnt) {
     // Ajouter la classe active au bouton cliqué
     if (elmnt) elmnt.classList.add("active");
 }
+
+function activateTab(cityName) {
+    var i, tabcontent, tablinks;
+
+    // Masquer tous les contenus
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Désactiver tous les onglets
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Afficher le contenu demandé
+    document.getElementById(cityName).style.display = "block";
+
+    // Activer le bouton correspondant
+    for (i = 0; i < tablinks.length; i++) {
+        if (tablinks[i].textContent.trim() === cityName) {
+            tablinks[i].classList.add("active");
+            break;
+        }
+    }
+}
+activateTab(document.getElementsByClassName('tablinks')[0].textContent.trim());
 </script>
 
 <script>
