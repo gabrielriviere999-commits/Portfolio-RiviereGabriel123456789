@@ -265,20 +265,24 @@ body {
 }
 
 .thumbnail-row {
-  display: flex;
-  flex-wrap: wrap;     /* les vignettes passent à la ligne */
-  gap: 6px;            /* espace entre les vignettes */
-  padding: 6px;
+  display: block;
+  white-space: normal;
+  padding: 4px;
   box-sizing: border-box;
   margin-top: 10px;
+  font-size: 0;
 }
 
 .thumbnail {
+  display: inline-block;
+  vertical-align: top;
   width: 80px;
   height: 60px;
+  margin: 2px; /* espace réduit */
   object-fit: cover;
   border: 2px solid #000;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .thumbnail:hover {
@@ -311,8 +315,9 @@ body {
 
 .slide-counter {
   position: absolute;
-  transform: translateY(-90%);
-  right: 10px; /* juste à droite de la flèche */
+  bottom: 0px;   /* stable partout */
+  right: 10px;
+  font-size: 25px;
 }
 
 /* --- Bouton de téléchargement --- */
@@ -1478,7 +1483,7 @@ function downloadFile(select) {
 </script>
 
 <script>
-let slideIndex = {
+var slideIndex = {
   IP_et_routage: 0,
   HAProxy: 0,
   GLPI: 0,
@@ -1488,42 +1493,79 @@ let slideIndex = {
   Premiers_AP: 0,
   ITSM_NG: 0,
   Infra_BTS: 0,
-  MXLinux: 0,
+  MXLinux: 0
 };
 
 function plusSlides(n, group) {
-  showSlides(slideIndex[group] += n, group);
+  slideIndex[group] = slideIndex[group] + n;
+  showSlides(slideIndex[group], group);
 }
 
 function currentSlide(n, group) {
-  showSlides(slideIndex[group] = n, group);
+  slideIndex[group] = n;
+  showSlides(slideIndex[group], group);
 }
 
 function showSlides(n, group) {
-  let slides = document.querySelectorAll('.mySlide[data-group="' + group + '"]');
-  let thumbnails = document.querySelectorAll('.thumbnail[data-group="' + group + '"]');
+  var allSlides = document.getElementsByClassName("mySlide");
+  var slides = [];
+  var i;
 
-  if (n > slides.length) slideIndex[group] = 1;
-  if (n < 1) slideIndex[group] = slides.length;
+  // Filtrer par data-group
+  for (i = 0; i < allSlides.length; i++) {
+    if (allSlides[i].getAttribute("data-group") === group) {
+      slides.push(allSlides[i]);
+    }
+  }
 
-  slides.forEach(s => s.style.display = "none");
-  thumbnails.forEach(t => t.classList.remove("active"));
+  var allThumbs = document.getElementsByClassName("thumbnail");
+  var thumbs = [];
 
-  const current = slides[slideIndex[group] - 1];
+  for (i = 0; i < allThumbs.length; i++) {
+    if (allThumbs[i].getAttribute("data-group") === group) {
+      thumbs.push(allThumbs[i]);
+    }
+  }
+
+  if (slides.length === 0) {
+    return;
+  }
+
+  if (n > slides.length) {
+    slideIndex[group] = 1;
+  }
+  if (n < 1) {
+    slideIndex[group] = slides.length;
+  }
+
+  // Masquer tous les slides du groupe
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  // Désactiver toutes les miniatures du groupe
+  for (i = 0; i < thumbs.length; i++) {
+    thumbs[i].className = thumbs[i].className.replace(" active", "");
+  }
+
+  var current = slides[slideIndex[group] - 1];
   current.style.display = "block";
 
-  // Lazy‑load du PDF : charge seulement quand le slide devient visible
-  const iframe = current.querySelector("iframe");
-  if (iframe && !iframe.src && iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
+  // Lazy-load PDF
+  var iframes = current.getElementsByTagName("iframe");
+  if (iframes.length > 0) {
+    var iframe = iframes[0];
+    var dataSrc = iframe.getAttribute("data-src");
+    if (iframe && !iframe.src && dataSrc) {
+      iframe.src = dataSrc;
+    }
   }
 
-  if (thumbnails.length > 0) {
-    thumbnails[slideIndex[group] - 1].classList.add("active");
+  if (thumbs.length > 0 && thumbs[slideIndex[group] - 1]) {
+    thumbs[slideIndex[group] - 1].className += " active";
   }
 
-  // Mise à jour du compteur
-  const counter = document.getElementById("counter-" + group);
+  var counter = document.getElementById("counter-" + group);
   if (counter) {
     counter.textContent = slideIndex[group] + " / " + slides.length;
   }
