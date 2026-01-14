@@ -6,18 +6,18 @@
   <style>
     body {
       font-family: monospace;   /* police monospace */
-      font-size: 12px;          /* taille 12px */
+      font-size: 12px;          /* taille rétro */
       margin: 0;
       padding: 0.5em;
     }
-    pre {
+    .ascii {
+      white-space: pre;         /* conserve les retours à la ligne */
       overflow-x: auto;         /* scroll horizontal si nécessaire */
-      white-space: nowrap;      /* empêche les retours à la ligne */
     }
   </style>
 </head>
 <body>
-  <pre>
+  <div class="ascii">
 Wazuh est une plateforme SIEM Open Source.
 Elle permet de détecter des intrusions (HIDS) et de surveiller pour la sécurité et la conformité réglementaire.
 Wazuh s'applique aussi bien sur les postes de travails, serveurs et environnements cloud.
@@ -42,6 +42,6 @@ Comparaison rapide : Wazuh vs autres SIEM (Security Information and Event Manage
 +---------------------------+-----------------------+---------------------+-------------------------------------+
 | Complexité d’installation | Moyenne               | Élevée              | Moyenne                             |
 +---------------------------+-----------------------+---------------------+-------------------------------------+
-  </pre>
+  </div>
 </body>
 </html>

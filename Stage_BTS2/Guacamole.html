@@ -6,18 +6,18 @@
   <style>
     body {
       font-family: monospace;   /* police monospace */
-      font-size: 12px;          /* taille 12px */
+      font-size: 12px;          /* taille rétro */
       margin: 0;
       padding: 0.5em;
     }
-    pre {
+    .ascii {
+      white-space: pre;         /* conserve les retours à la ligne */
       overflow-x: auto;         /* scroll horizontal si nécessaire */
-      white-space: nowrap;      /* empêche les retours à la ligne */
     }
   </style>
 </head>
 <body>
-  <pre>
+  <div class="ascii">
 Apache Guacamole est open source et est une application de bureau à distance, bastion de connexion.
 Elle ne nécessite pas de logiciel client, tout se passe sur le navigateur avec l'interface web HTML5
 intuitive.
@@ -114,6 +114,6 @@ firewall, SOC, EDR/XDR et MFA informatique.
 |          | - Facile à mettre en place pour les utilisateurs | réduite                                                               |
 |          |                                                  | - Nécessite une bonne adoption par les utilisateurs                   |
 +----------+--------------------------------------------------+-----------------------------------------------------------------------+
-  </pre>
+  </div>
 </body>
 </html>
