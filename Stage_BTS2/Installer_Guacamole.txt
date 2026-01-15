@@ -163,4 +163,5 @@ Accès :
 ## ✅ Résumé
 - **Avec JDBC** → nécessite le `.jar` + schémas SQL.  
 - **Sans JDBC** → fonctionne avec `user-mapping.xml` pour tester rapidement.  
-- Les `.jar` ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC ou Maven Central.
+- Les `.jar` ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC
+ou Maven Central.
