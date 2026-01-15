@@ -38,6 +38,7 @@ On peut ajouter ce fichier à la barre des tâches et/ou un raccourci clavier.
 Il faut copier le texte voulu dans le presse papier, puis exécuter le fichier
 et enfin cliquer dans la VM et le texte est tappé automatiquement. 
 
-Note : vers certaines VM comme Windows ou des linux sans interface graphique, des caractères comme
-< et > peuvent poser problèmes, il faut les remplacer par d'autres caractères (ex : GGG et DDD) avant
-de copier, puis après avoir collé il faut les remplacer par les caractères voulus (< et >).
+Note : vers certaines VM comme Windows ou des linux sans interface graphique, (n'utilisant pas X11),
+des caractères comme < et > peuvent poser problèmes, il faut les remplacer par d'autres caractères
+(ex : GGG et DDD) avant de copier, puis après avoir collé il faut les remplacer par les caractères
+voulus (< et >).
