@@ -85,8 +85,8 @@ cat *.sql | mysql -u guacamole_user -p guacamole_db
 ---
 
 ## 6. Déployer le module JDBC
-⚠️ Les `.jar` ne sont pas dans les archives source. Il faut récupérer l’archive **binaire JDBC**
-(ou copier manuellement le `.jar` depuis Maven Central).  
+⚠️ Les '.jar' ne sont pas dans les archives source. Il faut récupérer l’archive **binaire JDBC**
+(ou copier manuellement le '.jar' depuis Maven Central).  
 Exemple :
 sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 
@@ -94,7 +94,7 @@ sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 ---
 
 ## 7. Alternative sans JDBC (simple test)
-Si tu veux tester sans base SQL, utilise `user-mapping.xml` :
+Si tu veux tester sans base SQL, utilise 'user-mapping.xml' :
 mkdir -p /etc/guacamole
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
@@ -110,12 +110,12 @@ sudo nano /etc/guacamole/user-mapping.xml
 
 
 
-Vérifier que `guacd` est installé
+Vérifier que 'guacd' est installé
 which guacd
 
-Tu dois voir `/usr/local/sbin/guacd`.
+Tu dois voir '/usr/local/sbin/guacd'.
 
-Créer un service systemd pour `guacd`
+Créer un service systemd pour 'guacd'
 Crée le fichier :
 sudo nano /etc/systemd/system/guacd.service
 
@@ -156,12 +156,12 @@ sudo systemctl restart tomcat10
 
 
 Accès :  
-`http://<IP_SERVEUR>:8080/guacamole`
+'http://<IP_SERVEUR>:8080/guacamole'
 
 ---
 
 ## ✅ Résumé
-- **Avec JDBC** → nécessite le `.jar` + schémas SQL.  
-- **Sans JDBC** → fonctionne avec `user-mapping.xml` pour tester rapidement.  
-- Les `.jar` ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC
+- **Avec JDBC** → nécessite le '.jar' + schémas SQL.  
+- **Sans JDBC** → fonctionne avec 'user-mapping.xml' pour tester rapidement.  
+- Les '.jar' ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC
 ou Maven Central.
