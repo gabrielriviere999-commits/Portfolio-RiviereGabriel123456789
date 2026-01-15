@@ -85,7 +85,8 @@ cat *.sql | mysql -u guacamole_user -p guacamole_db
 ---
 
 ## 6. Déployer le module JDBC
-⚠️ Les `.jar` ne sont pas dans les archives source. Il faut récupérer l’archive **binaire JDBC** (ou copier manuellement le `.jar` depuis Maven Central).  
+⚠️ Les `.jar` ne sont pas dans les archives source. Il faut récupérer l’archive **binaire JDBC**
+(ou copier manuellement le `.jar` depuis Maven Central).  
 Exemple :
 sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 
@@ -162,6 +163,4 @@ Accès :
 ## ✅ Résumé
 - **Avec JDBC** → nécessite le `.jar` + schémas SQL.  
 - **Sans JDBC** → fonctionne avec `user-mapping.xml` pour tester rapidement.  
-- Les `.jar` ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC ou Maven Central.  
-
----
+- Les `.jar` ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC ou Maven Central.
