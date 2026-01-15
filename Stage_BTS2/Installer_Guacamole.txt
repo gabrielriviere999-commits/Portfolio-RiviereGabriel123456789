@@ -155,8 +155,7 @@ sudo systemctl start guacd
 sudo systemctl restart tomcat10
 
 
-Accès :  
-'http://<IP_SERVEUR>:8080/guacamole'
+Accès : http://<IP_SERVEUR>:8080/guacamole
 
 ---
 
