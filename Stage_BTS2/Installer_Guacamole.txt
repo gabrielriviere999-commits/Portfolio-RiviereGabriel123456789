@@ -170,12 +170,19 @@ sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 ## 9. Alternative sans JDBC
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
-    <authorize username="admin" password="admin123" admin="true">
+    <authorize username="compte1" password="compte1" admin="true">
         <connection name="Test SSH">
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
             <param name="port">22</param>
             <param name="username">guacamole</param>
+        </connection>
+    </authorize>
+    <authorize username="compte2" password="compte2" admin="true">
+        <connection name="Serveur SSH">
+            <protocol>ssh</protocol>
+            <param name="hostname">127.0.0.1</param>
+            <param name="port">22</param>
         </connection>
     </authorize>
 </user-mapping>
