@@ -183,6 +183,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
             <param name="port">22</param>
+            <param name="username">guacamole</param>
         </connection>
     </authorize>
 </user-mapping>
