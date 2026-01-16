@@ -186,6 +186,23 @@ sudo nano /etc/guacamole/user-mapping.xml
             <param name="username">guacamole</param>
         </connection>
     </authorize>
+
+    <authorize username="compte1a" password="compte1" admin="true">
+        <connection name="Debian SSH">
+            <protocol>ssh</protocol>
+            <param name="hostname">192.168.194.30</param>
+            <param name="port">22</param>
+            <param name="username">compte1</param>
+        </connection>
+    </authorize>
+    <authorize username="compte2a" password="compte2" admin="true">
+        <connection name="Debian SSH">
+            <protocol>ssh</protocol>
+            <param name="hostname">192.168.194.30</param>
+            <param name="port">22</param>
+            <param name="username">compte2</param>
+        </connection>
+    </authorize>    
 </user-mapping>
 
 ---
