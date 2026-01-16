@@ -1,4 +1,4 @@
-# Guide d’installation Guacamole 1.6.0 (Tomcat10 + MySQL)
+# 🚀 Guide d’installation Guacamole 1.6.0 (Tomcat9 + MySQL)
 
 ## 0. Nettoyer l’existant
 sudo systemctl stop tomcat9 tomcat10 guacd
@@ -7,7 +7,6 @@ sudo apt autoremove -y
 sudo rm -rf /etc/guacamole /var/lib/tomcat*/webapps/guacamole* /usr/share/tomcat*/webapps/guacamole*
 sudo rm -rf /etc/tomcat*/Catalina/localhost/guacamole.xml
 
-
 ---
 
 ## 1. Installer les dépendances
@@ -15,113 +14,77 @@ sudo apt update
 sudo apt install build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev \
 libossp-uuid-dev libavcodec-dev libavutil-dev libswscale-dev freerdp2-dev \
 libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev \
-libssl-dev libvorbis-dev libwebp-dev tomcat10 mysql-server -y
+libssl-dev libvorbis-dev libwebp-dev mysql-server openjdk-17-jdk -y
 
+⚠️ **Ne pas installer Tomcat10** → on utilisera Tomcat9.
 
 ---
 
-## 2. Installer Guacamole Server
+## 2. Installer Tomcat 9 manuellement
+cd /tmp
+wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.82/bin/apache-tomcat-9.0.82.tar.gz
+tar -xvzf apache-tomcat-9.0.82.tar.gz
+sudo mv apache-tomcat-9.0.82 /opt/tomcat9
+sudo ln -s /opt/tomcat9 /opt/tomcat
+
+---
+
+## 3. Créer un service systemd pour Tomcat9
+sudo nano /etc/systemd/system/tomcat9.service
+
+Contenu :
+[Unit]
+Description=Apache Tomcat 9
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+Environment=CATALINA_HOME=/opt/tomcat9
+Environment=CATALINA_BASE=/opt/tomcat9
+Environment=CATALINA_PID=/opt/tomcat9/tomcat.pid
+
+ExecStart=/opt/tomcat9/bin/startup.sh
+ExecStop=/opt/tomcat9/bin/shutdown.sh
+
+User=www-data
+Group=www-data
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+⚠️ Vérifie que 'JAVA_HOME' correspond bien à ton installation ('ls /usr/lib/jvm/' → 'java-17-openjdk-amd64').
+
+Applique les droits :
+sudo chown -R www-data:www-data /opt/tomcat9
+sudo chmod -R 755 /opt/tomcat9
+
+Recharge systemd :
+sudo systemctl daemon-reexec
+sudo systemctl enable tomcat9
+sudo systemctl start tomcat9
+
+👉 Vérifie avec :
+ps aux | grep tomcat
+
+Tu dois voir '-Dcatalina.base=/opt/tomcat9' et '-Dcatalina.home=/opt/tomcat9'.
+
+---
+
+## 4. Installer Guacamole Server
+cd /tmp
 wget https://downloads.apache.org/guacamole/1.6.0/source/guacamole-server-1.6.0.tar.gz
 tar -xvzf guacamole-server-1.6.0.tar.gz
 cd guacamole-server-1.6.0
-./configure --with-init-dir=/etc/init.d
-sudo make
+./configure
+make
 sudo make install
 sudo ldconfig
 
-
----
-
-## 3. Installer le client web
-wget https://downloads.apache.org/guacamole/1.6.0/binary/guacamole-1.6.0.war
-sudo mv guacamole-1.6.0.war /var/lib/tomcat10/webapps/guacamole.war
-sudo systemctl restart tomcat10
-
-
----
-
-## 4. Configurer Guacamole
-Créer le répertoire :
-sudo mkdir -p /etc/guacamole/extensions /etc/guacamole/lib
-
-
-sudo nano /etc/guacamole/guacamole.properties
-properties
-guacd-hostname: localhost
-guacd-port: 4822
-
-# Si JDBC est utilisé :
-mysql-hostname: localhost
-mysql-port: 3306
-mysql-database: guacamole_db
-mysql-username: guacamole_user
-mysql-password: motdepasse
-
-# Activer JDBC
-auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
-
-
-Définir la variable d’environnement :
-echo "GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/default/tomcat10
-sudo systemctl restart tomcat10
-
-
----
-
-## 5. Configurer la base MySQL
-sudo mysql
-CREATE DATABASE guacamole_db;
-CREATE USER 'guacamole_user'@'localhost' IDENTIFIED BY 'motdepasse';
-GRANT ALL PRIVILEGES ON guacamole_db.* TO 'guacamole_user'@'localhost';
-FLUSH PRIVILEGES;
-exit
-
-
-Importer les schémas SQL (si JDBC est présent) :
-cd guacamole-auth-jdbc-1.6.0/mysql/schema
-cat *.sql | mysql -u guacamole_user -p guacamole_db
-
-
----
-
-## 6. Déployer le module JDBC
-⚠️ Les '.jar' ne sont pas dans les archives source. Il faut récupérer l’archive **binaire JDBC**
-(ou copier manuellement le '.jar' depuis Maven Central).  
-Exemple :
-sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
-
-
----
-
-## 7. Alternative sans JDBC (simple test)
-Si tu veux tester sans base SQL, utilise 'user-mapping.xml' :
-mkdir -p /etc/guacamole
-sudo nano /etc/guacamole/user-mapping.xml
-<user-mapping>
-    <authorize username="admin" password="admin123">
-        <connection name="Serveur SSH">
-            <protocol>ssh</protocol>
-            <param name="hostname">192.168.1.10</param>
-            <param name="port">22</param>
-            <param name="username">root</param>
-        </connection>
-    </authorize>
-</user-mapping>
-
-
-
-Vérifier que 'guacd' est installé
-which guacd
-
-Tu dois voir '/usr/local/sbin/guacd'.
-
-Créer un service systemd pour 'guacd'
-Crée le fichier :
+Créer un service systemd pour 'guacd' :
 sudo nano /etc/systemd/system/guacd.service
-
-
-Colle ceci :
-ini
 [Unit]
 Description=Guacamole proxy daemon (guacd)
 After=network.target
@@ -135,32 +98,106 @@ Group=guacd
 [Install]
 WantedBy=multi-user.target
 
-Créer l’utilisateur système
-sudo useradd -r -s /bin/false guacd
-
-Activer et démarrer le service
+si l'utilisateur guacd n'existe pas : sudo useradd -r -s /bin/false guacd
 sudo systemctl daemon-reexec
 sudo systemctl enable guacd
 sudo systemctl start guacd
-
-Vérifier
 systemctl status guacd
 
 ---
 
+## 5. Installer le client web
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.6.0/binary/guacamole-1.6.0.war
+sudo mv guacamole-1.6.0.war /opt/tomcat9/webapps/guacamole.war
+sudo systemctl restart tomcat9
 
-## 8. Lancer Guacamole
-sudo systemctl enable guacd
-sudo systemctl start guacd
-sudo systemctl restart tomcat10
+Vérifie :
+ls /opt/tomcat9/webapps/
 
+Tu dois voir :
 
-Accès : http://<IP_SERVEUR>:8080/guacamole
+guacamole.war
+guacamole/
+ROOT
 
 ---
 
-## ✅ Résumé
-- **Avec JDBC** → nécessite le '.jar' + schémas SQL.  
-- **Sans JDBC** → fonctionne avec 'user-mapping.xml' pour tester rapidement.  
-- Les '.jar' ne sont pas dans les archives source → il faut les récupérer depuis l’archive binaire JDBC
-ou Maven Central.
+## 6. Configurer Guacamole
+sudo mkdir -p /etc/guacamole/extensions /etc/guacamole/lib
+
+sudo nano /etc/guacamole/guacamole.properties
+guacd-hostname: localhost
+guacd-port: 4822
+
+# Si JDBC est utilisé :
+mysql-hostname: localhost
+mysql-port: 3306
+mysql-database: guacamole_db
+mysql-username: guacamole_user
+mysql-password: motdepasse
+
+auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
+
+Définir la variable d’environnement :
+sudo mkdir -p /etc/systemd/system/tomcat9.service.d
+sudo nano /etc/systemd/system/tomcat9.service.d/guacamole.conf
+
+Contenu :
+[Service]
+Environment=GUACAMOLE_HOME=/etc/guacamole
+
+---
+
+## 7. Configurer la base MySQL
+sudo mysql
+CREATE DATABASE guacamole_db;
+CREATE USER 'guacamole_user'@'localhost' IDENTIFIED BY 'motdepasse';
+GRANT ALL PRIVILEGES ON guacamole_db.* TO 'guacamole_user'@'localhost';
+FLUSH PRIVILEGES;
+
+Importer les schémas SQL :
+cat guacamole-auth-jdbc-1.6.0/mysql/schema/*.sql | mysql -u guacamole_user -p guacamole_db
+
+---
+
+## 8. Déployer le module JDBC
+curl -O https://repo.maven.apache.org/maven2/org/apache/guacamole/guacamole-auth-jdbc-mysql/1.6.0/guacamole-auth-jdbc-mysql-1.6.0.jar
+sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
+
+---
+
+## 9. Alternative sans JDBC
+sudo nano /etc/guacamole/user-mapping.xml
+<user-mapping>
+    <authorize username="admin" password="admin123">
+        <connection name="Test SSH">
+            <protocol>ssh</protocol>
+            <param name="hostname">127.0.0.1</param>
+            <param name="port">22</param>
+            <param name="username">guacamole</param>
+        </connection>
+    </authorize>
+</user-mapping>
+
+---
+
+## 10. Lancer Guacamole
+sudo systemctl daemon-reexec
+sudo systemctl enable guacd
+sudo systemctl start guacd
+sudo systemctl restart tomcat9
+
+Accès : http://<IP_SERVEUR>:8080/guacamole/
+Sans JDBC : 
+admin
+admin123
+
+---
+
+## ✅ Résumé corrigé
+- Guacamole 1.6.0 **n’est pas compatible avec Tomcat10** → utiliser Tomcat9.  
+- Ton erreur 404 venait du fait que Tomcat utilisait encore '/opt/tomcat3'.  
+- Corrige le service systemd pour pointer vers '/opt/tomcat9'.  
+- Vérifie que 'ps aux | grep tomcat' montre bien '-Dcatalina.base=/opt/tomcat9'.  
+- Ensuite, le '.war' sera déployé et '/guacamole/' accessible.
