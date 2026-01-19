@@ -136,7 +136,6 @@ mysql-port: 3306
 mysql-database: guacamole_db
 mysql-username: guacamole_user
 mysql-password: motdepasse
-
 auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
 
 Définir la variable d’environnement :
@@ -157,6 +156,7 @@ GRANT ALL PRIVILEGES ON guacamole_db.* TO 'guacamole_user'@'localhost';
 FLUSH PRIVILEGES;
 
 Importer les schémas SQL :
+cd /tmp/guacamole-auth-jdbc-mysql-1.6.0/mysql/schema
 cat guacamole-auth-jdbc-1.6.0/mysql/schema/*.sql | mysql -u guacamole_user -p guacamole_db
 
 ---
@@ -167,7 +167,25 @@ sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 
 ---
 
-## 9. Alternative sans JDBC
+## 9. Créer un utilisateur Guacamole
+⚠️ Ce n’est pas un compte MySQL, mais un compte Guacamole stocké dans la table guacamole_user.
+Exemple simple (mot de passe = compteA) :
+INSERT INTO guacamole_user (username, password_hash, password_salt, disabled, expired)
+VALUES ('compteA', UNHEX(SHA2('compteA', 256)), NULL, 0, 0);
+
+Connexion web : compteA/compteA
+
+---
+
+## 10. Lancer Guacamole
+sudo systemctl daemon-reexec
+sudo systemctl enable guacd
+sudo systemctl start guacd
+sudo systemctl restart tomcat9
+
+---
+
+## 11. Alternative sans JDBC
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
     <authorize username="compteA" password="compteA" admin="true">
@@ -206,12 +224,6 @@ sudo nano /etc/guacamole/user-mapping.xml
 </user-mapping>
 
 ---
-
-## 10. Lancer Guacamole
-sudo systemctl daemon-reexec
-sudo systemctl enable guacd
-sudo systemctl start guacd
-sudo systemctl restart tomcat9
 
 Accès : http://<IP_SERVEUR>:8080/guacamole/
 Sans JDBC :
