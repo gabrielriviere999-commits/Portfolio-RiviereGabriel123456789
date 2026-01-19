@@ -192,7 +192,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
             <param name="port">22</param>
-            <param name="username">compte1</param>
+            <param name="username">compteA</param>
         </connection>
     </authorize>
     <authorize username="compteB1" password="compteB" admin="true">
@@ -200,7 +200,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
             <param name="port">22</param>
-            <param name="username">compte2</param>
+            <param name="username">compteB</param>
         </connection>
     </authorize>    
 </user-mapping>
