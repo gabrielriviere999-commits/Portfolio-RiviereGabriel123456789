@@ -242,6 +242,7 @@ puis le mot de passe de la machine Debian.
 - Corrige le service systemd pour pointer vers '/opt/tomcat9'.  
 - Vérifie que 'ps aux | grep tomcat' montre bien '-Dcatalina.base=/opt/tomcat9'.  
 - Ensuite, le '.war' sera déployé et '/guacamole/' accessible.
+- JDBC nécessite : base MySQL + schémas SQL importés + extension .jar.
 
 ---
 
