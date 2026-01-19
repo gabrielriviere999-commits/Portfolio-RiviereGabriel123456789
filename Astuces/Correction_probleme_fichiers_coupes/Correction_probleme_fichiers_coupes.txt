@@ -3,6 +3,7 @@ fat32 et peut-étre d'autres. Les NTFS ne semblent pas impactés.
 Pour limiter le problème, il faut installer gnome-disk-utility.
 Cliquer sur le disque en question, puis la partition.
 Cliquer sur les rouages Options de partition supplémentaires.
+Cliquer sur Modifier les options de montage...
 Éteindre l'interrupteur Réglages par défaut de la session utilisateur.
 
 Et mettre ces options :
