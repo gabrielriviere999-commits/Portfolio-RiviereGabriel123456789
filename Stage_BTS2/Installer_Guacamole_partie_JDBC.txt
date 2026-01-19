@@ -1,0 +1,98 @@
+# 🛠️ Guide JDBC + SQL pour Guacamole 1.6.0
+
+## 1. Installer MySQL et créer la base
+sudo apt install mysql-server -y
+sudo mysql
+
+Dans MySQL :
+CREATE DATABASE guacamole_db;
+CREATE USER 'guacamole_user'@'localhost' IDENTIFIED BY 'motdepasse';
+GRANT ALL PRIVILEGES ON guacamole_db.* TO 'guacamole_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+---
+
+## 2. Télécharger l’extension JDBC
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.6.0/binary/guacamole-auth-jdbc-mysql-1.6.0.tar.gz
+tar -xvzf guacamole-auth-jdbc-mysql-1.6.0.tar.gz
+
+---
+
+## 3. Importer les schémas SQL
+cd guacamole-auth-jdbc-mysql-1.6.0/mysql/schema
+cat *.sql | mysql -u guacamole_user -p guacamole_db
+
+👉 Vérifie ensuite :
+mysql -u guacamole_user -p guacamole_db
+SHOW TABLES;
+Tu dois voir guacamole_user, guacamole_connection, etc.
+
+---
+
+## 4. Déployer le module JDBC
+Copie le .jar dans le dossier des extensions :
+sudo cp /tmp/guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
+
+---
+
+## 5. Configurer guacamole.properties
+sudo nano /etc/guacamole/guacamole.properties :
+guacd-hostname: localhost
+guacd-port: 4822
+
+mysql-hostname: localhost
+mysql-port: 3306
+mysql-database: guacamole_db
+mysql-username: guacamole_user
+mysql-password: motdepasse
+
+auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
+
+---
+
+## 6. Définir l’environnement Tomcat
+sudo mkdir -p /etc/systemd/system/tomcat9.service.d
+sudo nano /etc/systemd/system/tomcat9.service.d/guacamole.conf
+
+Contenu :
+[Service]
+Environment=GUACAMOLE_HOME=/etc/guacamole
+
+Recharge systemd :
+sudo systemctl daemon-reexec
+sudo systemctl restart tomcat9
+
+---
+
+## 7. Créer un utilisateur Guacamole dans la base
+⚠️ Ce n’est pas un compte MySQL, mais un compte **Guacamole** stocké dans guacamole_user.
+
+Exemple simple (mot de passe en clair pour tester) :
+INSERT INTO guacamole_user (username, password_hash, password_salt, disabled, expired)
+VALUES ('gabriel', UNHEX(SHA2('gabriel', 256)), NULL, 0, 0);
+
+👉 Tu pourras te connecter avec :
+- **Utilisateur** : gabriel
+- **Mot de passe** : gabriel
+
+---
+
+## 8. Redémarrer les services
+sudo systemctl restart guacd
+sudo systemctl restart tomcat9
+
+---
+
+## 9. Connexion web
+Accède à :
+http://<IP_SERVEUR>:8080/guacamole
+Connecte-toi avec l’utilisateur créé (gabriel/gabriel).
+
+---
+
+## ✅ Résumé
+- Les identifiants MySQL (guacamole_user/motdepasse) servent uniquement à Guacamole pour accéder à la base.  
+- Les **utilisateurs Guacamole** doivent être créés dans la table guacamole_user.  
+- Tu peux tester avec un mot de passe en clair (`UNHEX(SHA2(...))`) puis passer ensuite à une version sécurisée avec **hash + salt**.
