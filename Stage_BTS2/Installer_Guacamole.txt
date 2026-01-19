@@ -170,7 +170,7 @@ sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 ## 9. Alternative sans JDBC
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
-    <authorize username="gabriel" password="gabriel" admin="true">
+    <authorize username="compteA" password="compteA" admin="true">
         <connection name="Guacamole SSH">
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
@@ -178,7 +178,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <param name="username">guacamole</param>
         </connection>
     </authorize>
-    <authorize username="nohan" password="nohan" admin="true">
+    <authorize username="compteB" password="compteB" admin="true">
         <connection name="Guacamole SSH">
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
@@ -187,20 +187,20 @@ sudo nano /etc/guacamole/user-mapping.xml
         </connection>
     </authorize>
 
-    <authorize username="gabriel2" password="gabriel" admin="true">
+    <authorize username="compteA2" password="compteA" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
-            <param name="hostname">192.168.194.30</param>
+            <param name="hostname">Adresse IP de la machine Debian</param>
             <param name="port">22</param>
-            <param name="username">gabriel</param>
+            <param name="username">compteA</param>
         </connection>
     </authorize>
-    <authorize username="nohan2" password="nohan" admin="true">
+    <authorize username="compteB2" password="compteB" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
-            <param name="hostname">192.168.194.30</param>
+            <param name="hostname">Adresse IP de la machine Debian</param>
             <param name="port">22</param>
-            <param name="username">nohan</param>
+            <param name="username">compteB</param>
         </connection>
     </authorize>    
 </user-mapping>
@@ -216,10 +216,10 @@ sudo systemctl restart tomcat9
 Accès : http://<IP_SERVEUR>:8080/guacamole/
 Sans JDBC :
 Pour la machine guacamole :
-gabriel/gabriel ou nohan/nohan
+compteA/compteA ou compteB/compteB
 puis le mot de passe de la machine guacamole.
 Pour la machine Debian :
-gabriel2/gabriel ou nohan2/nohan
+compteA2/compteA ou compteB2/compteB
 puis le mot de passe de la machine Debian.
 
 ---
