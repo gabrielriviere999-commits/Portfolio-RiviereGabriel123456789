@@ -216,10 +216,10 @@ sudo systemctl restart tomcat9
 Accès : http://<IP_SERVEUR>:8080/guacamole/
 Sans JDBC :
 Pour la machine guacamole :
-compteA/compteA ou compteB/compteB
+gabriel/gabriel ou nohan/nohan
 puis le mot de passe de la machine guacamole.
 Pour la machine Debian :
-compteA2/compteA ou compteB2/compteB
+gabriel2/gabriel ou nohan2/nohan
 puis le mot de passe de la machine Debian.
 
 ---
