@@ -220,7 +220,7 @@ compteA/compteA ou compteB/compteB
 Puis le mot de passe de la machine guacamole.
 Pour la machine Debian :
 compteA1/compteA ou compteB1/compteB
-puis le mot de passe du compteA1 ou compteB1
+puis le mot de passe du compte de la machine Debian.
 
 ---
 
