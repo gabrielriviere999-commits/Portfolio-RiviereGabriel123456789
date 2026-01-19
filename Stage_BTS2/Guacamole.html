@@ -38,26 +38,26 @@ Les protocoles supportés par Guacamole :
 |       |              | (terminal) à un serveur ou poste distant.   | exécution de commandes, transfert sécurisé de   |
 |       |              |                                             | fichiers.                                       |
 +-------+--------------+---------------------------------------------+-------------------------------------------------+
-+--------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
-| Protoc | Performance                                 | Sécurité                                    | Compatibilité                                     |
-| ole    |                                             |                                             |                                                   |
-+--------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
-| RDP    | - Très performant sur Windows grâce à la    | - Supporte le chiffrement TLS.              | - Natif sur Windows.                              |
-|        | compression et optimisation graphique.      | - Vulnérable si mal configuré (exploits     | - Clients disponibles pour Linux/macOS mais moins |
-|        | - Bonne fluidité même sur connexions lentes.| connus sur anciennes versions).             | intégrés.                                         |
-+--------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
-| VNC    | - Moins performant que RDP (transmet des    | - Sécurité limitée par défaut (souvent sans | - Très universel : fonctionne sur Windows, Linux, |
-|        | images brutes du bureau).                   | chiffrement).                               | macOS, et systèmes embarqués.                     |
-|        | - Peut être lent sur connexions faibles.    | - Peut être renforcé via tunnels SSH ou VPN.| - Large choix d’implémentations (RealVNC,         |
-|        |                                             |                                             | TightVNC, TigerVNC).                              |
-+--------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
-| SSH    | - Très léger et rapide (texte uniquement).  | - Très sécurisé : chiffrement fort,         | - Compatible avec tous les systèmes Unix/Linux.   |
-|        | - Idéal pour administration système.        | authentification par clés publiques,        | - Clients disponibles sur Windows et macOS.       |
-|        |                                             | support MFA.                                | - Utilisé aussi pour tunnels et transferts (SCP,  |
-|        |                                             | - Standard de facto pour accès distant      | SFTP).                                            |
-|        |                                             | sécurisé.                                   |                                                   |
-|        |                                             |                                             |                                                   |
-+--------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
++-------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
+| Proto | Performance                                 | Sécurité                                    | Compatibilité                                     |
+| cole  |                                             |                                             |                                                   |
++-------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
+| RDP   | - Très performant sur Windows grâce à la    | - Supporte le chiffrement TLS.              | - Natif sur Windows.                              |
+|       | compression et optimisation graphique.      | - Vulnérable si mal configuré (exploits     | - Clients disponibles pour Linux/macOS mais moins |
+|       | - Bonne fluidité même sur connexions lentes.| connus sur anciennes versions).             | intégrés.                                         |
++-------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
+| VNC   | - Moins performant que RDP (transmet des    | - Sécurité limitée par défaut (souvent sans | - Très universel : fonctionne sur Windows, Linux, |
+|       | images brutes du bureau).                   | chiffrement).                               | macOS, et systèmes embarqués.                     |
+|       | - Peut être lent sur connexions faibles.    | - Peut être renforcé via tunnels SSH ou VPN.| - Large choix d’implémentations (RealVNC,         |
+|       |                                             |                                             | TightVNC, TigerVNC).                              |
++-------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
+| SSH   | - Très léger et rapide (texte uniquement).  | - Très sécurisé : chiffrement fort,         | - Compatible avec tous les systèmes Unix/Linux.   |
+|       | - Idéal pour administration système.        | authentification par clés publiques,        | - Clients disponibles sur Windows et macOS.       |
+|       |                                             | support MFA.                                | - Utilisé aussi pour tunnels et transferts (SCP,  |
+|       |                                             | - Standard de facto pour accès distant      | SFTP).                                            |
+|       |                                             | sécurisé.                                   |                                                   |
+|       |                                             |                                             |                                                   |
++-------+---------------------------------------------+---------------------------------------------+---------------------------------------------------+
 
 Guacamole est équipé de mécanismes d'authenfification robustes (SSO, OTP), qui permettent de sécuriser les
 connexions à distance. L'authentification à deux facteurs est disponible.
