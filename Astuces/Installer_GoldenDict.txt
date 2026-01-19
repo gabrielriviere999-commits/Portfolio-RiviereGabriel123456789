@@ -1,4 +1,4 @@
-## 1 Installer GoldenDict (lecteur de dictionnaire hors ligne)**
+## 1. Installer GoldenDict (lecteur de dictionnaire hors ligne)**
 
 sudo apt update
 sudo apt install goldendict
@@ -8,7 +8,7 @@ goldendict
 
 ---
 
-## 2 Installer un dictionnaire français complet**
+## 2. Installer un dictionnaire français complet**
 
 ### a) Créer le dossier pour les dictionnaires
 
@@ -32,7 +32,7 @@ dict-fr-fr.ifo
 
 ---
 
-## 3 Ajouter le dictionnaire à GoldenDict**
+## 3. Ajouter le dictionnaire à GoldenDict**
 
 1. Ouvre **GoldenDict → Édition → Dictionnaires → Ajouter... → Dossier
 2. Sélectionne le dossier :
@@ -44,7 +44,7 @@ dict-fr-fr.ifo
 
 ---
 
-## 4 Ajouter un dictionnaire Français ↔ Anglais (optionnel)**
+## 4. Ajouter un dictionnaire Français ↔ Anglais (optionnel)**
 
 Pour avoir la traduction hors ligne :
 
@@ -59,13 +59,13 @@ tar xvjf freedict-fra-eng-*.tar.bz2 -C ~/dicos/fra-eng
 
 ---
 
-## 5 Configurer pour une utilisation 100 % hors ligne**
+## 5. Configurer pour une utilisation 100 % hors ligne**
 
 Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-## 6 Tester**
+## 6. Tester**
 
 * Tape un mot français dans GoldenDict
 * Il devrait chercher dans dict-fr-fr
@@ -73,7 +73,7 @@ Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-## 7 Astuce pratique**
+## 7. Astuce pratique**
 
 * Tu peux organiser tous tes dictionnaires dans `~/dicos/` :
 
