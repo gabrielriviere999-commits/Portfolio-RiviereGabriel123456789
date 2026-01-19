@@ -170,7 +170,7 @@ sudo cp guacamole-auth-jdbc-mysql-1.6.0.jar /etc/guacamole/extensions/
 ## 9. Alternative sans JDBC
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
-    <authorize username="compteA" password="compteA" admin="true">
+    <authorize username="gabriel" password="gabriel" admin="true">
         <connection name="Guacamole SSH">
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
@@ -178,7 +178,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <param name="username">guacamole</param>
         </connection>
     </authorize>
-    <authorize username="compteB" password="compteB" admin="true">
+    <authorize username="nohan" password="nohan" admin="true">
         <connection name="Guacamole SSH">
             <protocol>ssh</protocol>
             <param name="hostname">127.0.0.1</param>
@@ -187,20 +187,20 @@ sudo nano /etc/guacamole/user-mapping.xml
         </connection>
     </authorize>
 
-    <authorize username="compteA2" password="compteA" admin="true">
+    <authorize username="gabriel2" password="gabriel" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
             <param name="port">22</param>
-            <param name="username">compteA</param>
+            <param name="username">gabriel</param>
         </connection>
     </authorize>
-    <authorize username="compteB2" password="compteB" admin="true">
+    <authorize username="nohan2" password="nohan" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
             <param name="port">22</param>
-            <param name="username">compteB</param>
+            <param name="username">nohan</param>
         </connection>
     </authorize>    
 </user-mapping>
