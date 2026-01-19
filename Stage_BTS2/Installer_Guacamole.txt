@@ -217,10 +217,10 @@ Accès : http://<IP_SERVEUR>:8080/guacamole/
 Sans JDBC :
 Pour la machine guacamole :
 compteA/compteA ou compteB/compteB
-Puis le mot de passe de la machine guacamole.
+puis le mot de passe de la machine guacamole.
 Pour la machine Debian :
 compteA1/compteA ou compteB1/compteB
-puis le mot de passe du compte de la machine Debian.
+puis le mot de passe de la machine Debian.
 
 ---
 
