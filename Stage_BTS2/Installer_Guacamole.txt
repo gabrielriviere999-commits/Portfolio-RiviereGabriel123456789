@@ -242,3 +242,49 @@ puis le mot de passe de la machine Debian.
 - Corrige le service systemd pour pointer vers '/opt/tomcat9'.  
 - Vérifie que 'ps aux | grep tomcat' montre bien '-Dcatalina.base=/opt/tomcat9'.  
 - Ensuite, le '.war' sera déployé et '/guacamole/' accessible.
+
+---
+
+## 🔐 Création d’un utilisateur sécurisé dans guacamole_user
+
+### 1. Choisir un mot de passe et un sel
+- Mot de passe : MonSuperMotDePasse
+- Sel : SelPersoUnique
+
+Le sel est une chaîne aléatoire que tu choisis pour renforcer la sécurité.
+
+---
+
+### 2. Générer le hash et le sel
+Dans MySQL, on utilise SHA2 pour calculer le hash :
+
+INSERT INTO guacamole_user (username, password_hash, password_salt, disabled, expired)
+VALUES (
+  'compteA',
+  UNHEX(SHA2(CONCAT('MonSuperMotDePasse','SelPersoUnique'),256)),
+  UNHEX(SHA2('SelPersoUnique',256)),
+  0,
+  0
+);
+
+---
+
+### 3. Vérifier l’insertion
+SELECT user_id, username FROM guacamole_user;
+Tu dois voir ton utilisateur compteA.
+
+---
+
+### 4. Connexion dans l’interface web
+- **Utilisateur** : compteA  
+- **Mot de passe** : MonSuperMotDePasse
+
+Guacamole combine le mot de passe saisi avec le sel stocké pour vérifier le hash.
+
+---
+
+## ✅ Résumé
+- Les comptes Guacamole sont créés dans la table guacamole_user.
+- Utilise UNHEX(SHA2(CONCAT(password, salt),256)) pour le hash.
+- Utilise UNHEX(SHA2(salt,256)) pour stocker le sel.
+- Tu peux ensuite te connecter avec le mot de passe en clair que tu as choisi.
