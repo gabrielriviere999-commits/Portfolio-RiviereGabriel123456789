@@ -71,11 +71,11 @@ sudo systemctl restart tomcat9
 
 Exemple simple (mot de passe en clair pour tester) :
 INSERT INTO guacamole_user (username, password_hash, password_salt, disabled, expired)
-VALUES ('gabriel', UNHEX(SHA2('gabriel', 256)), NULL, 0, 0);
+VALUES ('compteA', UNHEX(SHA2('compteA', 256)), NULL, 0, 0);
 
 👉 Tu pourras te connecter avec :
-- **Utilisateur** : gabriel
-- **Mot de passe** : gabriel
+- **Utilisateur** : compteA
+- **Mot de passe** : compteA
 
 ---
 
@@ -88,7 +88,7 @@ sudo systemctl restart tomcat9
 ## 9. Connexion web
 Accède à :
 http://<IP_SERVEUR>:8080/guacamole
-Connecte-toi avec l’utilisateur créé (gabriel/gabriel).
+Connecte-toi avec l’utilisateur créé (compteA/compteA).
 
 ---
 
