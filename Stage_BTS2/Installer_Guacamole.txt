@@ -187,7 +187,7 @@ sudo nano /etc/guacamole/user-mapping.xml
         </connection>
     </authorize>
 
-    <authorize username="compteA1" password="compteA" admin="true">
+    <authorize username="compteA2" password="compteA" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
@@ -195,7 +195,7 @@ sudo nano /etc/guacamole/user-mapping.xml
             <param name="username">compteA</param>
         </connection>
     </authorize>
-    <authorize username="compteB1" password="compteB" admin="true">
+    <authorize username="compteB2" password="compteB" admin="true">
         <connection name="Debian SSH">
             <protocol>ssh</protocol>
             <param name="hostname">192.168.194.30</param>
@@ -219,7 +219,7 @@ Pour la machine guacamole :
 compteA/compteA ou compteB/compteB
 puis le mot de passe de la machine guacamole.
 Pour la machine Debian :
-compteA1/compteA ou compteB1/compteB
+compteA2/compteA ou compteB2/compteB
 puis le mot de passe de la machine Debian.
 
 ---
