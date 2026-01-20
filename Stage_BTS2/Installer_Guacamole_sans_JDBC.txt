@@ -116,7 +116,7 @@ sudo systemctl daemon-reexec
 sudo systemctl enable tomcat9
 sudo systemctl start tomcat9
 
-👉 Vérifie avec :
+Vérifie avec :
 ps aux | grep tomcat
 
 Tu dois voir '-Dcatalina.base=/opt/tomcat9' et '-Dcatalina.home=/opt/tomcat9'.
