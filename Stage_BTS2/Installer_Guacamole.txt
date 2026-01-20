@@ -1,13 +1,53 @@
-# 🚀 Guide d’installation Guacamole 1.6.0 (Tomcat9 + MySQL)
+# 🧹 Nettoyage complet Guacamole + Tomcat9
 
-## 0. Nettoyer l’existant
-sudo systemctl stop tomcat9 tomcat10 guacd
+## 1. Arrêter les services
+sudo systemctl stop tomcat9 guacd
+
+---
+
+## 2. Supprimer les paquets installés
+Si tu avais installé Tomcat via apt :
 sudo apt purge tomcat* guacd -y
 sudo apt autoremove -y
-sudo rm -rf /etc/guacamole /var/lib/tomcat*/webapps/guacamole* /usr/share/tomcat*/webapps/guacamole*
+
+---
+
+## 3. Supprimer les dossiers Tomcat et Guacamole
+sudo rm -rf /opt/tomcat9 /opt/tomcat
+sudo rm -rf /etc/guacamole
+sudo rm -rf /var/lib/tomcat*/webapps/guacamole*
+sudo rm -rf /usr/share/tomcat*/webapps/guacamole*
 sudo rm -rf /etc/tomcat*/Catalina/localhost/guacamole.xml
 
 ---
+
+## 4. Supprimer les services systemd
+sudo rm -f /etc/systemd/system/tomcat9.service
+sudo rm -f /etc/systemd/system/guacd.service
+sudo rm -rf /etc/systemd/system/tomcat9.service.d
+
+Recharge systemd :
+sudo systemctl daemon-reexec
+
+---
+
+## 5. Nettoyer la base MySQL (si tu veux repartir de zéro)
+⚠️ Attention : ça supprime toutes les données Guacamole.
+sudo mysql
+DROP DATABASE guacamole_db;
+DROP USER 'guacamole_user'@'localhost';
+EXIT;
+
+---
+
+## 6. Vérifier qu’il ne reste rien
+ps aux | grep tomcat
+ps aux | grep guacd
+→ Tu ne dois plus voir de processus actifs.
+
+---
+
+# 🚀 Guide d’installation Guacamole 1.6.0 (Tomcat9 + MySQL)
 
 ## 1. Installer les dépendances
 sudo apt update
