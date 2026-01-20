@@ -198,7 +198,7 @@ sudo systemctl restart tomcat9
 
 ---
 
-## 8. Alternative sans JDBC
+## 8. Comptes sans JDBC
 sudo nano /etc/guacamole/user-mapping.xml
 <user-mapping>
     <authorize username="compteA" password="compteA" admin="true">
