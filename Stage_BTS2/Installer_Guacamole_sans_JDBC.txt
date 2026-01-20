@@ -48,14 +48,14 @@ dpkg -l | grep guacamole
 dpkg -l | grep mysql
 dpkg -l | grep openjdk
 
-→ Aucun paquet en état "ii" ne doit apparaître.
+→ Aucun paquet en état "ii" ne doit apparaitre.
 → Si "rc" reste, purge manuelle :
 sudo dpkg --purge <nom_du_paquet>
 
 [9] Vérifier processus
 ps aux | grep tomcat
 ps aux | grep guacd
-→ Aucun processus actif ne doit apparaître.
+→ Aucun processus actif ne doit apparaitre.
 
 ---
 
