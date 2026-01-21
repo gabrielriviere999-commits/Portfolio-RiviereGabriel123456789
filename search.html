@@ -55,16 +55,27 @@
   <script src="docs.js"></script>
 
   <script>
+  console.log(docs); // Debug : vérifier que docs est bien chargé
+
   function doSearch() {
     var q = document.getElementById("search").value.toLowerCase();
     var out = "<ul>";
+    var found = false;
+
     for (var i=0; i<docs.length; i++) {
       if (docs[i].content.toLowerCase().indexOf(q) !== -1) {
         out += "<li><a href='" + docs[i].url + "'>" + docs[i].title + "</a></li>";
+        found = true;
       }
     }
+
     out += "</ul>";
-    document.getElementById("results").innerHTML = out || "Aucun résultat.";
+
+    if (!found) {
+      document.getElementById("results").innerHTML = "Aucun résultat.";
+    } else {
+      document.getElementById("results").innerHTML = out;
+    }
   }
   </script>
 </body>
