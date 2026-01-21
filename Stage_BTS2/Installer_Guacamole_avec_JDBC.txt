@@ -1,14 +1,86 @@
-# 📘 Documentation : Installation et Configuration d’Apache Guacamole avec JDBC
+# 📘 Documentation : Installation et Configuration d’Apache Guacamole avec JDBC sur Ubuntu 24.04 LTS
 
-## 1. Pré-requis
-- Ubuntu 24.04 LTS
-- Tomcat 9 installé dans /opt/tomcat9
-- MariaDB installé et fonctionnel
-- Paquet guacd (daemon Guacamole) installé
+## 1. Installer Tomcat 9 manuellement
+
+cd /tmp
+wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.82/bin/apache-tomcat-9.0.82.tar.gz
+tar -xvzf apache-tomcat-9.0.82.tar.gz
+sudo mv apache-tomcat-9.0.82 /opt/tomcat9
+sudo ln -s /opt/tomcat9 /opt/tomcat
+
+### Créer le service systemd :
+sudo nano /etc/systemd/system/tomcat9.service
+[Unit]
+Description=Apache Tomcat 9
+After=network.target
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+Environment=CATALINA_HOME=/opt/tomcat9
+Environment=CATALINA_BASE=/opt/tomcat9
+Environment=CATALINA_PID=/opt/tomcat9/tomcat.pid
+ExecStart=/opt/tomcat9/bin/startup.sh
+ExecStop=/opt/tomcat9/bin/shutdown.sh
+User=www-data
+Group=www-data
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+### Activer le service :
+sudo chown -R www-data:www-data /opt/tomcat9
+sudo chmod -R 755 /opt/tomcat9
+sudo systemctl daemon-reexec
+sudo systemctl enable tomcat9
+sudo systemctl start tomcat9
 
 ---
 
-## 2. Déploiement du client Guacamole
+## 2. Installer les dépendances Guacamole Server
+
+sudo apt update
+sudo apt install build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev \
+libossp-uuid-dev libavcodec-dev libavutil-dev libswscale-dev freerdp2-dev \
+libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev \
+libssl-dev libvorbis-dev libwebp-dev openjdk-17-jdk -y
+
+## 3. Compiler et installer Guacamole Server
+
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.5.5/source/guacamole-server-1.5.5.tar.gz
+tar -xvzf guacamole-server-1.5.5.tar.gz
+cd guacamole-server-1.5.5
+./configure
+make
+sudo make install
+sudo ldconfig
+
+### Créer le service systemd pour guacd :
+sudo nano /etc/systemd/system/guacd.service
+[Unit]
+Description=Guacamole proxy daemon (guacd)
+After=network.target
+
+[Service]
+ExecStart=/usr/local/sbin/guacd -f
+Restart=always
+User=guacd
+Group=guacd
+
+[Install]
+WantedBy=multi-user.target
+
+### Activer le service :
+sudo useradd -r -s /bin/false guacd   # si l’utilisateur n’existe pas
+sudo systemctl daemon-reexec
+sudo systemctl enable guacd
+sudo systemctl start guacd
+
+---
+
+## 4. Déploiement du client Guacamole
 1. Supprimer les anciens fichiers :
 sudo rm -rf /opt/tomcat9/webapps/guacamole*
 
@@ -20,15 +92,14 @@ wget https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-1.5.5.war
 sudo cp /tmp/guacamole-1.5.5.war /opt/tomcat9/webapps/guacamole.war
 
 4. Redémarrer Tomcat :
-tomcat9-stop
-tomcat9-start
+sudo systemctl restart tomcat9
 
 👉 Vérifier que le dossier /opt/tomcat9/webapps/guacamole/ est créé et que l’interface est accessible via :
 http://<IP_SERVEUR>:8080/guacamole/
 
 ---
 
-## 3. Installation de MariaDB
+## 5. Installation de MariaDB
 sudo apt install mariadb-server
 sudo systemctl enable --now mariadb
 sudo mysql_secure_installation
@@ -41,7 +112,7 @@ FLUSH PRIVILEGES;
 
 ---
 
-## 4. Extension JDBC et Connecteur MySQL
+## 6. Extension JDBC et Connecteur MySQL
 ### Créer les dossiers :
 sudo mkdir -p /etc/guacamole/extensions
 sudo mkdir -p /etc/guacamole/lib
@@ -60,7 +131,7 @@ sudo cp mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar /etc/guacamole/lib/
 
 ---
 
-## 5. Import du schéma SQL
+## 7. Import du schéma SQL
 cd /tmp/guacamole-auth-jdbc-1.5.5/mysql/schema/
 cat *.sql | sudo mysql guacadb
 
@@ -71,7 +142,7 @@ Tu dois voir 23 tables (guacamole_user, guacamole_connection, etc.).
 
 ---
 
-## 6. Configuration de Guacamole
+## 8. Configuration de Guacamole
 sudo nano /etc/guacamole/guacamole.properties
 mysql-hostname: 127.0.0.1
 mysql-port: 3306
@@ -79,16 +150,22 @@ mysql-database: guacadb
 mysql-username: guaca_nachos
 mysql-password: TonMotDePasse
 
+### Définir GUACAMOLE_HOME
+sudo mkdir -p /etc/systemd/system/tomcat9.service.d
+sudo nano /etc/systemd/system/tomcat9.service.d/guacamole.conf
+[Service]
+Environment=GUACAMOLE_HOME=/etc/guacamole
+
 ---
 
-## 7. Redémarrage des services
-tomcat9-stop
-tomcat9-start
+## 9. Redémarrage des services
+sudo systemctl daemon-reexec
+sudo systemctl restart tomcat9
 sudo systemctl restart guacd mariadb
 
 ---
 
-## 8. Connexion par défaut
+## 10. Connexion par défaut
 Accéder à :
 http://<IP_SERVEUR>:8080/guacamole/
 
@@ -100,7 +177,7 @@ Identifiants initiaux :
 
 ---
 
-## 9. Étapes post-installation
+## 11. Étapes post-installation
 - Créer tes propres utilisateurs.
 - Ajouter des connexions RDP/SSH/VNC via l’interface web.
 - (Optionnel) Configurer un reverse proxy Nginx/Apache pour HTTPS.
