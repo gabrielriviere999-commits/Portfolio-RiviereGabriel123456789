@@ -48,7 +48,7 @@ body {
 /* --- Barre de navigation --- */
 .navbar {
     background-color: rgba(0, 0, 0, .8);
-    position: fixed ;
+    position: fixed;
     z-index: 1000;
     padding: 5px;
     top: 0;
@@ -66,124 +66,44 @@ body {
     }
 }
 
-.navbar .tab {
-    margin-top: 0;
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.navbar .tab button {
-    font-size: 14px;
-    padding: 10px 12px;
-}
-
-.navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.navbar a:hover {
-    background: #DDD;
-    color: black;
-}
-
-/* --- Bouton d'ouverture du menu latéral --- */
-.win98-menu-btn {
-    font-family: monospace;
-    font-size: 22px;
-    padding: 4px 10px;
-    background: #C0C0C0; /* gris Win98 */
-    border: 2px solid;
-    border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief 3D */
-    cursor: pointer;
-    box-sizing: border-box;
-    color: black;
-    user-select: none; /* Texte non sélectionnable */
-    -webkit-user-select: none; /* iPhone / Safari */
-    -ms-user-select: none; /* vieux Edge */
-}
-
-.win98-menu-btn:hover {
-    background: #D8D8D8; /* léger éclaircissement */
-}
-
-.win98-menu-btn:active {
-    border-color: #808080 #FFFFFF #FFFFFF #808080; /* bouton enfoncé */
-    background: #B0B0B0;
-}
-
-/* --- Menu latéral --- */
-.sidenav {
-    display: none;
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .8);
-    overflow-y: auto; /* permet le scroll vertical */
-    overflow-x: hidden; /* évite un scroll horizontal inutile */
-    padding-top: 60px;
-    box-sizing: border-box; /* empêche le bas d’être coupé */
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-}
-
 /* --- Onglets --- */
 .tab {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
     margin-top: 0;
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
     white-space: nowrap;
-    scrollbar-width: thin; /* optionnel : barre de scroll plus fine */
-    align-items: center;
+    scrollbar-width: thin;
 }
 
+/* Style général des boutons d’onglets */
 .tab button {
     font-family: monospace;
     font-size: 14px;
     padding: 6px 12px;
-    background: #C0C0C0; /* gris Windows 98 */
+    background: #C0C0C0;
     border: 2px solid;
-    border-color: #FFFFFF #808080 #808080 #FFFFFF; /* effet 3D */
+    border-color: #FFFFFF #808080 #808080 #FFFFFF;
     cursor: pointer;
     margin-right: 2px;
     box-sizing: border-box;
     color: black;
 }
 
-.tab button:hover {
-    background: #D8D8D8; /* léger éclaircissement */
+/* Ajustement spécial pour les onglets dans la navbar (meilleur rendu Win98) */
+.navbar .tab button {
+    padding: 10px 12px; /* augmente la hauteur → plus joli */
 }
 
+/* Hover */
+.tab button:hover {
+    background: #D8D8D8;
+}
+
+/* Bouton actif */
 .tab button.active {
-    border-color: #808080 #FFFFFF #FFFFFF #808080; /* bouton enfoncé */
+    border-color: #808080 #FFFFFF #FFFFFF #808080;
     background: #B0B0B0;
 }
 
@@ -360,9 +280,21 @@ body {
 
 <!-- Barre de navigation -->
 <div class="navbar">
-    <button class="win98-menu-btn" onclick="openNav()">≡</button>
-
-    <div class="tab" style="margin-top:0;">
+<select class="win98-select"
+        onchange="
+            if(this.value==='__darkmode__'){
+                myFunction();
+            } else if(this.value!==''){
+                location.href=this.value;
+            }
+            this.selectedIndex = 0;
+        ">
+    <option value="">≡</option>
+    <option value="liste_fichiers.html">Liste des fichiers</option>
+    <option value="search.html">Rechercher</option>
+    <option value="__darkmode__">Mode sombre</option>
+</select>
+    <div class="tab">
 		<select class="win98-select" onchange="activateTab(this.value); this.selectedIndex = 0;">
             <option value="">tab?</option>
             <option value="Accueil">Accueil</option>
@@ -379,17 +311,6 @@ body {
         <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
         <button class="tablinks" onclick="openCity(event, 'Astuces')">Astuces</button>
     </div>
-</div>
-
-<!-- Menu latéral -->
-<div id="mySidenav" class="sidenav">
-    <a><img src="logotoiledaraigneeG.png" height="85%" width="85%"></a>
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="liste_fichiers.html">Liste des fichiers</a>
-	<a href="search.html">Rechercher</a>
-    <a onclick="myFunction()" tabindex="0" role="button" onkeypress="if(event.key==='Enter' || event.key===' ') myFunction();">
-    Mode sombre
-    </a>
 </div>
 
 <!-- Contenu des onglets -->
