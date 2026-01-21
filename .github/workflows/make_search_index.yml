@@ -1,28 +1,31 @@
-name: Make search index
+name: Générer l’index de recherche
 
 on:
   workflow_dispatch:   # déclenchement manuel uniquement
 
+permissions:
+  contents: write      # nécessaire pour pouvoir pousser les changements
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Récupérer le repo
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Installer Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Generate docs.js
-        run: |
-          python3 make_search_index.py
+      - name: Exécuter le script Python
+        run: python3 make_search_index.py
 
-      - name: Commit docs.js
+      - name: Commit du fichier docs.js généré
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
           git add docs.js
-          git commit -m "Update search index"
+          git commit -m "Mise à jour manuelle de l’index de recherche" || echo "Aucun changement"
           git push
