@@ -11,19 +11,30 @@ docs = []
 
 for root, dirs, files in os.walk(folder):
     for f in files:
+        path = os.path.join(root, f)
+        content = ""
+
+        # Si c'est du HTML ou TXT → on extrait le texte
         if f.endswith(".html") or f.endswith(".txt"):
-            path = os.path.join(root, f)
             try:
                 with open(path, encoding="utf-8") as file:
                     content = file.read()
+                content = strip_tags(content)
             except:
                 content = ""
-            docs.append({
-                "title": f,
-                "url": os.path.relpath(path, folder),
-                "content": strip_tags(content).replace("\n", " ")
-            })
 
+        # Pour les autres fichiers (PDF, images, etc.) → pas de contenu, juste le nom
+        else:
+            content = ""   # on laisse vide pour rester léger
+
+        docs.append({
+            "title": f,
+            "url": os.path.relpath(path, folder),
+            # On indexe aussi le nom du fichier dans "content" pour que la recherche marche dessus
+            "content": (f + " " + content).replace("\n", " ")
+        })
+
+# Écriture directe dans docs.js
 with open(output_file, "w", encoding="utf-8") as out:
     out.write("var docs = [\n")
     for d in docs:
