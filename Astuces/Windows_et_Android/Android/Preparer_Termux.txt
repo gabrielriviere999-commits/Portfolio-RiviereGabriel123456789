@@ -27,4 +27,4 @@ Widget Android (Termux:Widget)
     3. Copie ton script dedans : 
        cp ~/script.py ~/.shortcuts/
     4. Sur Android, ajoute le widget Termux:Widget sur ton écran d’accueil.
-Tu verras ton script apparaître comme un bouton : un simple tap lance la conversion.
+Tu verras ton script apparaitre comme un bouton : un simple tap lance la conversion.
