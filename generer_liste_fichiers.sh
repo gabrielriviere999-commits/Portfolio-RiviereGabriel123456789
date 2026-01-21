@@ -10,6 +10,7 @@ generate_index() {
     {
         echo "<!DOCTYPE html>"
         echo "<html><head><meta charset='utf-8'>"
+        echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
         echo "<title>Liste des fichiers - ${dir}</title>"
         echo "<style>"
         echo "body { background:white; color:black; font-family:sans-serif; }"
