@@ -64,7 +64,7 @@
 
     for (var i=0; i<docs.length; i++) {
       if (docs[i].content.toLowerCase().indexOf(q) !== -1) {
-        out += "<li><a href='" + docs[i].url + "'>" + docs[i].title + "</a></li>";
+        out += "<li><a href='" + docs[i].url + "' target='_blank' rel='noopener noreferrer'>" + docs[i].title + "</a></li>";
         found = true;
       }
     }
