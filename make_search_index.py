@@ -3,9 +3,9 @@ import os, re
 # Fonction pour enlever les balises HTML et le CSS inline
 def strip_tags(html):
     # Supprimer les balises <style> et leur contenu
-    html = re.sub(r'<style.*?>.*?</style>', '', html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<style[^>]*>.*?</style>', '', html, flags=re.DOTALL | re.IGNORECASE)
     # Supprimer les balises <script> et leur contenu
-    html = re.sub(r'<script.*?>.*?</script>', '', html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.DOTALL | re.IGNORECASE)
     # Supprimer les balises HTML classiques
     return re.sub(r'<[^>]*>', '', html)
 
