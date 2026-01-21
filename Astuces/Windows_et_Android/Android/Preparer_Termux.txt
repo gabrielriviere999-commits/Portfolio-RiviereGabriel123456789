@@ -1,6 +1,6 @@
 1. Installer Termux et les dépendances
     1. Installer Termux
-        ◦ Télécharge Termux depuis F-Droid (recommandé) ou le Play Store. 
+        ◦ Télécharge Termux
     2. Installer Termux:API
         ◦ Ce paquet permet d’accéder au presse‑papier Android. 
        pkg install termux-api
