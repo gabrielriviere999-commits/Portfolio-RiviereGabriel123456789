@@ -17,7 +17,7 @@ generate_index() {
         echo "a { 
           color:blue;
           display:inline;            /* pas inline-block → permet le retrait suspendu */
-          overflow-wrap:anywhere
+          overflow-wrap:anywhere;
           word-break:normal; 
           white-space:normal; 
           max-width:100%; 
