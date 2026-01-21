@@ -143,7 +143,7 @@ Sur **web2** :
 
 SHOW DATABASES LIKE 'galera_test';
 
-✅ La base doit apparaître immédiatement.
+✅ La base doit apparaitre immédiatement.
 
 ---
 
