@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Recherche</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 1em;
+    background: #f5f5f5;
+    color: #222;
+  }
+  input {
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+  #results a {
+    display: block;
+    margin: 0.3em 0;
+    text-decoration: none;
+    color: #0066cc;
+  }
+  #results a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <h1>Recherche</h1>
+  <input id="search" onkeyup="doSearch()" placeholder="Tapez un mot...">
+  <div id="results"></div>
+
+  <!-- Inclusion automatique de l’index généré -->
+  <script src="docs.js"></script>
+
+  <script>
+  function doSearch() {
+    var q = document.getElementById("search").value.toLowerCase();
+    var out = "";
+    for (var i=0; i<docs.length; i++) {
+      if (docs[i].content.toLowerCase().indexOf(q) !== -1) {
+        out += "<a href='" + docs[i].url + "'>" + docs[i].title + "</a>";
+      }
+    }
+    document.getElementById("results").innerHTML = out || "Aucun résultat.";
+  }
+  </script>
+</body>
+</html>
