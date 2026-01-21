@@ -48,14 +48,26 @@ dpkg -l | grep guacamole
 dpkg -l | grep mysql
 dpkg -l | grep openjdk
 
-→ Aucun paquet en état "ii" ne doit apparaitre.
+→ Aucun paquet en état "ii" ne doit apparaître.
 → Si "rc" reste, purge manuelle :
 sudo dpkg --purge <nom_du_paquet>
 
 [9] Vérifier processus
 ps aux | grep tomcat
 ps aux | grep guacd
-→ Aucun processus actif ne doit apparaitre.
+→ Aucun processus actif ne doit apparaître.
+
+[10] Logs et PID résiduels
+sudo rm -rf /opt/tomcat9/logs/*
+sudo rm -f /opt/tomcat9/tomcat.pid
+
+[11] Répertoires de configuration MariaDB/MySQL
+sudo rm -rf /etc/mysql /var/lib/mysql
+
+[12] Vérification des utilisateurs système
+getent passwd guacd
+getent passwd tomcat
+et supprimer si nécessaire avec sudo userdel -r guacd
 
 ---
 

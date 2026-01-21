@@ -1,5 +1,76 @@
 # 📘 Documentation : Installation et Configuration d’Apache Guacamole avec JDBC sur Ubuntu 24.04 LTS
 
+## 0. Nettoyage
+[1] Arrêter les services
+sudo systemctl stop tomcat9 tomcat10 guacd
+
+[2] Supprimer Tomcat et Guacamole
+sudo apt purge tomcat* guacd -y
+sudo apt autoremove -y
+sudo rm -rf /opt/tomcat9 /opt/tomcat
+sudo rm -rf /etc/guacamole
+sudo rm -rf /var/lib/tomcat*/webapps/guacamole*
+sudo rm -rf /usr/share/tomcat*/webapps/guacamole*
+sudo rm -rf /etc/tomcat*/Catalina/localhost/guacamole.xml
+
+[3] Supprimer services systemd
+sudo rm -f /etc/systemd/system/tomcat9.service
+sudo rm -f /etc/systemd/system/guacd.service
+sudo rm -rf /etc/systemd/system/tomcat9.service.d
+sudo systemctl daemon-reexec
+
+[4] Supprimer MySQL
+sudo apt purge mysql-server* -y
+sudo apt autoremove -y
+# Si tu veux aussi supprimer la base :
+sudo mysql
+DROP DATABASE guacamole_db;
+DROP USER 'guacamole_user'@'localhost';
+EXIT;
+
+[5] Supprimer Java (optionnel si tu veux repartir de zéro)
+sudo apt purge openjdk-17-jre* openjdk-21-jre* -y
+sudo apt autoremove -y
+
+[6] Supprimer dépendances Guacamole
+sudo apt purge build-essential libcairo2-dev libjpeg-turbo8-dev libpng-dev \
+libossp-uuid-dev libavcodec-dev libavutil-dev libswscale-dev freerdp2-dev \
+libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev \
+libssl-dev libvorbis-dev libwebp-dev -y
+sudo apt autoremove -y
+
+[7] Nettoyer caches
+sudo apt clean
+
+[8] Vérifier qu’il ne reste rien
+dpkg -l | grep tomcat
+dpkg -l | grep guacamole
+dpkg -l | grep mysql
+dpkg -l | grep openjdk
+
+→ Aucun paquet en état "ii" ne doit apparaitre.
+→ Si "rc" reste, purge manuelle :
+sudo dpkg --purge <nom_du_paquet>
+
+[9] Vérifier processus
+ps aux | grep tomcat
+ps aux | grep guacd
+→ Aucun processus actif ne doit apparaitre.
+
+[10] Logs et PID résiduels
+sudo rm -rf /opt/tomcat9/logs/*
+sudo rm -f /opt/tomcat9/tomcat.pid
+
+[11] Répertoires de configuration MariaDB/MySQL
+sudo rm -rf /etc/mysql /var/lib/mysql
+
+[12] Vérification des utilisateurs système
+getent passwd guacd
+getent passwd tomcat
+et supprimer si nécessaire avec sudo userdel -r guacd
+
+---
+
 ## 1. Installer Tomcat 9 manuellement
 
 cd /tmp
