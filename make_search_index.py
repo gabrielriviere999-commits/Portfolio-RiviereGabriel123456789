@@ -11,6 +11,8 @@ docs = []
 
 for root, dirs, files in os.walk(folder):
     for f in files:
+        if f == output_file:
+            continue
         path = os.path.join(root, f)
         content = ""
 
