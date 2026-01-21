@@ -48,7 +48,7 @@ generate_index() {
         fi
 
         if [ -d "$item" ]; then
-            echo "<li>[Dossier] <a href=\"$name/liste_fichiers.html\">$name</a></li>" >> "$output"
+            echo "<li><a href=\"$name/liste_fichiers.html\">[Dossier] $name</a></li>" >> "$output"
             generate_index "$item"   # Récursion
         else
             echo "<li><a href=\"$name\">$name</a></li>" >> "$output"
