@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Recherche</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recherche</title>
 <style>
   body {
     font-family: sans-serif;
@@ -24,11 +24,19 @@
     text-decoration: none;
     color: #0066cc;
     word-wrap: break-word;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word;    
   }
   #results a:hover {
     text-decoration: underline;
   }
+  #results ul {
+  list-style-type: disc;   /* puce ronde classique */
+  padding-left: 1.5em;     /* espace pour la puce */
+  }
+  #results li {
+    margin: 0.3em 0;
+  }
+
 </style>
 </head>
 <body>
@@ -43,12 +51,13 @@
   <script>
   function doSearch() {
     var q = document.getElementById("search").value.toLowerCase();
-    var out = "";
+    var out = "<ul>";
     for (var i=0; i<docs.length; i++) {
       if (docs[i].content.toLowerCase().indexOf(q) !== -1) {
-        out += "<a href='" + docs[i].url + "'>" + docs[i].title + "</a>";
+        out += "<li><a href='" + docs[i].url + "'>" + docs[i].title + "</a></li>";
       }
     }
+    out += "</ul>";
     document.getElementById("results").innerHTML = out || "Aucun résultat.";
   }
   </script>
