@@ -16,7 +16,7 @@ generate_index() {
         echo "body { background:white; color:black; font-family:sans-serif; font-size:18px; line-height:1.5; }"
         echo "a { 
           color:blue;          display:inline;            /* pas inline-block → permet le retrait suspendu */
-          overflow-wrap:anywhere;    /* casse les très longs mots/chemins si besoin */
+          word-wrap:break-word
           word-break:normal; 
           white-space:normal; 
           max-width:100%; 
@@ -34,7 +34,7 @@ generate_index() {
 
     # Lien vers le dossier parent (sauf racine)
     if [ "$dir" != "." ]; then
-        echo "<li><a href=\"../liste_fichiers.html\">⬅️ Retour</a></li>" >> "$output"
+        echo "<li><a href=\"../liste_fichiers.html\">← Retour</a></li>" >> "$output"
     fi
 
     # Parcours des fichiers et dossiers
