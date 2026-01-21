@@ -15,16 +15,15 @@ generate_index() {
         echo "<style>"
         echo "body { background:white; color:black; font-family:sans-serif; font-size:18px; line-height:1; }"
         echo "a { 
-          color:blue; 
-          display:inline-block; 
-          word-wrap:break-word; 
-          overflow-wrap:break-word; 
-          white-space:normal;   /* autorise les retours à la ligne */
-          max-width:100%;       /* limite la largeur au conteneur */
+          color:blue;          display:inline;            /* pas inline-block → permet le retrait suspendu */
+          overflow-wrap:anywhere;    /* casse les très longs mots/chemins si besoin */
+          word-break:normal; 
+          white-space:normal; 
+          max-width:100%; 
           font-size:18px; 
         }"
         echo "a:visited { color:purple; }"
-        echo "ul { margin:0; padding-left:20px; list-style-position:inside; }"
+        echo "ul { margin:0; padding-left:1.2em; list-style-position:outside; }"
         echo "li { margin:4px 0; font-size:18px; }"
         echo "h1 { font-size:22px; }"
         echo "</style>"
