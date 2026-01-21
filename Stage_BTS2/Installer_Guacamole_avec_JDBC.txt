@@ -1,0 +1,141 @@
+Bien sûr 🚀 ! Voici une documentation claire et complète qui reprend toutes les étapes que tu as suivies pour installer et configurer **Apache Guacamole 1.5.5** sur Ubuntu 24.04 LTS avec Tomcat 9 et MariaDB. Tu pourras t’en servir comme guide ou mémo.
+
+---
+
+# 📘 Documentation : Installation et Configuration d’Apache Guacamole
+
+## 1. Pré-requis
+- Ubuntu 24.04 LTS
+- Tomcat 9 installé dans `/opt/tomcat9`
+- MariaDB installé et fonctionnel
+- Paquet `guacd` (daemon Guacamole) installé
+
+---
+
+## 2. Déploiement du client Guacamole
+1. Supprimer les anciens fichiers :
+```bash
+sudo rm -rf /opt/tomcat9/webapps/guacamole*
+```
+
+2. Télécharger le `.war` :
+```bash
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-1.5.5.war
+```
+
+3. Copier dans Tomcat :
+```bash
+sudo cp /tmp/guacamole-1.5.5.war /opt/tomcat9/webapps/guacamole.war
+```
+
+4. Redémarrer Tomcat :
+```bash
+tomcat9-stop
+tomcat9-start
+```
+
+👉 Vérifier que le dossier `/opt/tomcat9/webapps/guacamole/` est créé et que l’interface est accessible via :  
+**http://<IP_SERVEUR>:8080/guacamole/**
+
+---
+
+## 3. Installation de MariaDB
+```bash
+sudo apt install mariadb-server
+sudo systemctl enable --now mariadb
+sudo mysql_secure_installation
+```
+
+### Création de la base et de l’utilisateur
+```sql
+CREATE DATABASE guacadb;
+CREATE USER 'guaca_nachos'@'localhost' IDENTIFIED BY 'TonMotDePasse';
+GRANT SELECT,INSERT,UPDATE,DELETE ON guacadb.* TO 'guaca_nachos'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+---
+
+## 4. Extension JDBC et Connecteur MySQL
+### Créer les dossiers :
+```bash
+sudo mkdir -p /etc/guacamole/extensions
+sudo mkdir -p /etc/guacamole/lib
+```
+
+### Télécharger et installer l’extension JDBC :
+```bash
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.5.5/binary/guacamole-auth-jdbc-1.5.5.tar.gz
+tar -xzf guacamole-auth-jdbc-1.5.5.tar.gz
+sudo cp guacamole-auth-jdbc-1.5.5/mysql/guacamole-auth-jdbc-mysql-1.5.5.jar /etc/guacamole/extensions/
+```
+
+### Télécharger et installer le connecteur MySQL :
+```bash
+cd /tmp
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-9.1.0.tar.gz
+tar -xzf mysql-connector-j-9.1.0.tar.gz
+sudo cp mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar /etc/guacamole/lib/
+```
+
+---
+
+## 5. Import du schéma SQL
+```bash
+cd /tmp/guacamole-auth-jdbc-1.5.5/mysql/schema/
+cat *.sql | sudo mysql guacadb
+```
+
+👉 Vérification :
+```sql
+USE guacadb;
+SHOW TABLES;
+```
+Tu dois voir 23 tables (`guacamole_user`, `guacamole_connection`, etc.).
+
+---
+
+## 6. Configuration de Guacamole
+Créer le fichier `/etc/guacamole/guacamole.properties` :
+```properties
+mysql-hostname: 127.0.0.1
+mysql-port: 3306
+mysql-database: guacadb
+mysql-username: guaca_nachos
+mysql-password: TonMotDePasse
+```
+
+---
+
+## 7. Redémarrage des services
+```bash
+tomcat9-stop
+tomcat9-start
+sudo systemctl restart guacd mariadb
+```
+
+---
+
+## 8. Connexion par défaut
+Accéder à :  
+**http://<IP_SERVEUR>:8080/guacamole/**  
+
+Identifiants initiaux :  
+- **Login :** `guacadmin`  
+- **Mot de passe :** `guacadmin`  
+
+⚠️ Change immédiatement ce mot de passe après la première connexion.
+
+---
+
+## 9. Étapes post-installation
+- Créer tes propres utilisateurs.  
+- Ajouter des connexions RDP/SSH/VNC via l’interface web.  
+- (Optionnel) Configurer un reverse proxy Nginx/Apache pour HTTPS.  
+
+---
+
+👉 Tu as maintenant une doc complète pour installer et configurer Guacamole.  
+Souhaites-tu que je complète cette documentation avec un **exemple pratique de configuration d’une connexion SSH** (vers un serveur Linux) pour que tu aies un cas concret d’utilisation ?
