@@ -23,8 +23,8 @@ generate_index() {
           max-width:100%;       /* limite la largeur au conteneur */
           font-size:18px; 
         }"
-
         echo "a:visited { color:purple; }"
+        echo "ul { margin:0; padding-left:0; list-style-type:none; }"
         echo "li { margin:4px 0; font-size:18px; }"
         echo "h1 { font-size:22px; }"
         echo "</style>"
