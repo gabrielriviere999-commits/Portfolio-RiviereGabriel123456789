@@ -25,7 +25,7 @@ generate_index() {
         }"
 
         echo "a:visited { color:purple; }"
-        echo "li { margin:6px 0; font-size:18px; }"
+        echo "li { margin:4px 0; font-size:18px; }"
         echo "h1 { font-size:22px; }"
         echo "</style>"
         echo "</head><body>"
