@@ -15,7 +15,7 @@ for root, dirs, files in os.walk(folder):
         content = ""
 
         # Si c'est du HTML ou TXT → on extrait le texte
-        if f.endswith((".html", ".txt", ".py", ".sh")):
+        if f.endswith(".html") or f.endswith(".txt") or f.endswith(".py") or f.endswith(".sh"):
             try:
                 with open(path, encoding="utf-8") as file:
                     content = file.read()
