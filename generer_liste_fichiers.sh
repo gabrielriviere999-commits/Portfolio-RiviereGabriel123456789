@@ -13,7 +13,7 @@ generate_index() {
         echo "<title>Liste des fichiers - ${dir}</title>"
         echo "<style>"
         echo "body { background:white; color:black; font-family:sans-serif; }"
-        echo "a { color:blue; }"
+        echo "a { color:blue; display:block; word-wrap:break-word; overflow-wrap:break-word; }"
         echo "a:visited { color:purple; }"
         echo "li { margin:4px 0; }"
         echo "</style>"
