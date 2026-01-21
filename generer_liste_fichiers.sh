@@ -13,7 +13,7 @@ generate_index() {
         echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
         echo "<title>Liste des fichiers - ${dir}</title>"
         echo "<style>"
-        echo "body { background:white; color:black; font-family:sans-serif; font-size:18px; line-height:1.6; }"
+        echo "body { background:white; color:black; font-family:sans-serif; font-size:18px; line-height:1; }"
         echo "a { 
           color:blue; 
           display:inline-block; 
