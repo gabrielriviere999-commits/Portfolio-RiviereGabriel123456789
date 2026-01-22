@@ -284,6 +284,8 @@ body {
         onchange="
             if(this.value==='__darkmode__'){
                 myFunction();
+            } else if(this.value==='__search__'){
+                window.open('search.html','_blank');
             } else if(this.value!==''){
                 location.href=this.value;
             }
@@ -291,6 +293,7 @@ body {
         ">
     <option value="">≡</option>
     <option value="search.html">Rechercher</option>
+    <option value="__search__">Rechercher nouvel onglet</option>
     <option value="liste_fichiers.html">Liste des fichiers</option>
     <option value="__darkmode__">Mode sombre</option>
     <option value="donations.html">Soutenir le site</option>
