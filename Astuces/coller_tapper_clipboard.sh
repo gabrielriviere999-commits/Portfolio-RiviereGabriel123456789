@@ -2,8 +2,8 @@
 # coller_tapper_clipboard.sh
 
 echo "Clique sur la fenêtre cible (xdotool attend ton clic, 10s max)..."
-# timeout de 10 secondes
-win_id=$(timeout 10 xdotool selectwindow)
+# timeout de 5 secondes
+win_id=$(timeout 5 xdotool selectwindow)
 
 # Vérifier si une fenêtre a été sélectionnée
 if [ -z "$win_id" ]; then
