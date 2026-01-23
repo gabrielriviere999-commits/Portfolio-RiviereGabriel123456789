@@ -1,0 +1,19 @@
+# 1. Télécharger et installer l’extension TOTP
+cd /tmp
+wget https://downloads.apache.org/guacamole/1.6.0/binary/guacamole-auth-totp-1.6.0.tar.gz
+tar -xvzf guacamole-auth-totp-1.6.0.tar.gz
+sudo cp guacamole-auth-totp-1.6.0/guacamole-auth-totp-1.6.0.jar /etc/guacamole/extensions/
+
+# 2. Vérifier que ton fichier guacamole.properties contient bien JDBC
+sudo tee /etc/guacamole/guacamole.properties > /dev/null <<EOF
+mysql-hostname: 127.0.0.1
+mysql-port: 3306
+mysql-database: guacadb
+mysql-username: guaca_nachos
+mysql-password: TonMotDePasse
+auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
+EOF
+
+# 3. Redémarrer les services
+sudo systemctl restart guacd
+sudo systemctl restart tomcat9
