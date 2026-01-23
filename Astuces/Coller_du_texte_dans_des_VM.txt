@@ -8,9 +8,9 @@ Coller ce contenu :
 #!/bin/bash
 # coller_tapper_clipboard.sh
 
-echo "Clique sur la fenêtre cible (xdotool attend ton clic, 10s max)..."
-# timeout de 10 secondes
-win_id=$(timeout 10 xdotool selectwindow)
+echo "Clique sur la fenêtre cible (xdotool attend ton clic, 5s max)..."
+# timeout de 5 secondes
+win_id=$(timeout 5 xdotool selectwindow)
 
 # Vérifier si une fenêtre a été sélectionnée
 if [ -z "$win_id" ]; then
@@ -42,7 +42,9 @@ chmod +x coller_tapper.sh
 
 On peut ajouter ce fichier à la barre des tâches et/ou un raccourci clavier.
 Il faut copier le texte voulu dans le presse papier, puis exécuter le fichier
-et enfin cliquer dans la VM et le texte est tappé automatiquement. 
+et enfin cliquer dans la VM et le texte est tappé automatiquement.
+Si vous attendez 5 secondes après avoir exécuté le script mais sans avoir cliqué
+dans la fenêtre, vous quittez le script.
 
 Note : vers certaines VM comme Windows ou des linux sans interface graphique, (n'utilisant pas X11),
 des caractères comme < et > peuvent poser problèmes, il faut les remplacer par d'autres caractères

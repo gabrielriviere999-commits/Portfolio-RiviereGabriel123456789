@@ -1,7 +1,7 @@
 #!/bin/bash
 # coller_tapper_clipboard.sh
 
-echo "Clique sur la fenêtre cible (xdotool attend ton clic, 10s max)..."
+echo "Clique sur la fenêtre cible (xdotool attend ton clic, 5s max)..."
 # timeout de 5 secondes
 win_id=$(timeout 5 xdotool selectwindow)
 
