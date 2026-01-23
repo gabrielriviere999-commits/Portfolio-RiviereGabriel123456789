@@ -220,7 +220,6 @@ mysql-port: 3306
 mysql-database: guacadb
 mysql-username: guaca_nachos
 mysql-password: TonMotDePasse
-auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
 
 ### Définir GUACAMOLE_HOME
 sudo mkdir -p /etc/systemd/system/tomcat9.service.d
@@ -253,4 +252,5 @@ Identifiants initiaux :
 - Créer tes propres utilisateurs.
 - Ajouter des connexions RDP/SSH/VNC via l’interface web.
 - (Optionnel) Configurer un reverse proxy Nginx/Apache pour HTTPS.
+
 
