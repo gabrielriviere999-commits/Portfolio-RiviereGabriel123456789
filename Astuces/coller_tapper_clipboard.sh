@@ -1,9 +1,15 @@
 #!/bin/bash
 # coller_tapper_clipboard.sh
 
-echo "Clique sur la fenêtre cible (xdotool attend ton clic)..."
-win_id=$(xdotool selectwindow)
-[ -z "$win_id" ] && echo "Aucune fenêtre sélectionnée." && exit 1
+echo "Clique sur la fenêtre cible (xdotool attend ton clic, 10s max)..."
+# timeout de 10 secondes
+win_id=$(timeout 10 xdotool selectwindow)
+
+# Vérifier si une fenêtre a été sélectionnée
+if [ -z "$win_id" ]; then
+    echo "Aucune fenêtre sélectionnée dans le délai imparti."
+    exit 1
+fi
 
 sleep 1
 xdotool windowfocus "$win_id"
