@@ -25,7 +25,13 @@ else
 fi
 
 # Lecture ligne par ligne et frappe
+lines=$(printf "%s\n" "$clipboard")
+last_line=$(printf "%s\n" "$clipboard" | tail -n 1)
+
 while IFS= read -r ligne || [ -n "$ligne" ]; do
     xdotool type --window "$win_id" --clearmodifiers --delay 50 -- "$ligne"
-    xdotool key --window "$win_id" Return
-done <<< "$clipboard"
+    # N'ajouter Return que si ce n'est pas la dernière ligne
+    if [ "$ligne" != "$last_line" ]; then
+        xdotool key --window "$win_id" Return
+    fi
+done <<< "$lines"
