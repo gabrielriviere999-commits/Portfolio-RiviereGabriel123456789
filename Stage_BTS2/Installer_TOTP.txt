@@ -13,12 +13,9 @@ mysql-database: guacadb
 mysql-username: guaca_nachos
 mysql-password: Lypipo25jo
 
-# Authentification JDBC
-auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
-
 # --- Extension TOTP ---
 totp-keys: jdbc
-totp-mode: time-based
+totp-mode: sha1
 totp-period: 30
 totp-window: 3
 
