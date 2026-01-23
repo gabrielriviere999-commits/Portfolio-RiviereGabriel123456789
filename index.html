@@ -909,6 +909,11 @@ Problèmes rencontrés : permissions de Tomcat 9 qui empêchait son démarrage e
 inaccessible.
 Après installation et configuration de TOTP, j'ai pu mettre mon identifiant/motdepasse sur le web, il m'a
 demandé un QR Code une seule fois, j'ai installé FreeOTP sur mon téléphone puis le code ne fonctionne pas.
+Résolution : 
+- Dans le fichier /etc/guacamole/guacamole.properties , supprimer
+auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider et remplacer
+totp-mode: time-based par totp-mode: sha1
+- sudo rm /etc/guacamole/extensions/guacamole-auth-jdbc-mysql-1.5.5.jar
 </pre>
 <div class="slideshow-container" data-group="Stage_BTS2">
 
