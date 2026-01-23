@@ -1,3 +1,4 @@
+Checklist permissions Tomcat9
 # 1. Donner les droits complets à www-data sur tout Tomcat
 sudo chown -R www-data:www-data /opt/tomcat9
 
