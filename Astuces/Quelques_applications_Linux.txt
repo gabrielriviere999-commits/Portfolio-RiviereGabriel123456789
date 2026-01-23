@@ -1,4 +1,4 @@
-Quelques applications :                                   
+Quelques applications Linux :                                   
 
 Pdf Arranger          Changer l'ordre des pages d'un pdf
 Okular                Visionneuse PDF
