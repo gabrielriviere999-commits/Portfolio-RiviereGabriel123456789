@@ -10,7 +10,7 @@ sudo chown -R www-data:www-data /var/lib/guacamole/recordings
 sudo chmod -R 770 /var/lib/guacamole/recordings
 
 # 3. Ajouter la configuration dans guacamole.properties
-sudo tee -a /etc/guacamole/guacamole.properties > /dev/null <<EOF
+sudo nano /etc/guacamole/guacamole.properties
 # Recording Storage Extension
 recording-search-path: /var/lib/guacamole/recordings
 EOF
