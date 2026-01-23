@@ -320,9 +320,26 @@ body {
 <!-- Contenu des onglets -->
 <div id="Accueil" class="tabcontent">
 <h2>Accueil</h2>
-<p><iframe src="Accueil/tableau_synthese_E5-2025.html" width="100%" height="800"></iframe></p>
+<div class="slideshow-container" data-group="Accueil">
+
+    <div class="mySlide" data-group="Accueil">
+        <iframe src="Accueil/tableau_synthese_E5-2025.html"></iframe>
+    </div>
+
+    <div class="mySlide" data-group="Accueil">
+        <iframe data-src="Accueil/CV_Riviere_Gabriel.pdf"></iframe>
+    </div>
+
+    <button class="prev" onclick="plusSlides(-1, 'Accueil')"><</button>
+    <button class="next" onclick="plusSlides(1, 'Accueil')">></button>
+    <div id="counter-Accueil" class="slide-counter"></div>
+</div>
+
+<div class="thumbnail-row">
+    <img class="thumbnail" data-group="Accueil" src="" onclick="currentSlide(1, 'Accueil')">
+    <img class="thumbnail" data-group="Accueil" src="" onclick="currentSlide(2, 'Accueil')">
+</div>
 <a href="Accueil/tableau_synthese_E5-2025.ods" download>Télécharger tableau_synthese_E5-2025.ods</a>
-<p><iframe src="Accueil/CV_Riviere_Gabriel.pdf" width="100%" height="800"></iframe></p>
 </div>
 
 <div id="Docs BTS" class="tabcontent">
@@ -1359,6 +1376,7 @@ function downloadFile(select) {
 
 <script>
 var slideIndex = {
+  Accueil: 0,
   IP_et_routage: 0,
   HAProxy: 0,
   GLPI: 0,
@@ -1442,6 +1460,12 @@ function showSlides(n, group) {
     counter.textContent = slideIndex[group] + " / " + slides.length;
   }
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    currentSlide(1, "Accueil");
+});
 </script>
 
 </body>
