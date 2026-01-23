@@ -2,19 +2,13 @@
 # coller_tapper_clipboard.sh
 
 echo "Clique sur la fenêtre cible (xdotool attend ton clic, 5s max)..."
-# timeout de 5 secondes
 win_id=$(timeout 5 xdotool selectwindow)
-
-# Vérifier si une fenêtre a été sélectionnée
-if [ -z "$win_id" ]; then
-    echo "Aucune fenêtre sélectionnée dans le délai imparti."
-    exit 1
-fi
+[ -z "$win_id" ] && echo "Aucune fenêtre sélectionnée dans le délai imparti." && exit 1
 
 sleep 1
 xdotool windowfocus "$win_id"
 
-# Lire le presse-papiers (xclip ou xsel)
+# Lire le presse-papiers
 if command -v xclip >/dev/null 2>&1; then
     clipboard=$(xclip -o -selection clipboard)
 elif command -v xsel >/dev/null 2>&1; then
@@ -24,14 +18,16 @@ else
     exit 1
 fi
 
-# Lecture ligne par ligne et frappe
-lines=$(printf "%s\n" "$clipboard")
-last_line=$(printf "%s\n" "$clipboard" | tail -n 1)
+# Compter le nombre de lignes
+total_lines=$(printf "%s\n" "$clipboard" | wc -l)
+current_line=0
 
+# Lecture ligne par ligne et frappe
 while IFS= read -r ligne || [ -n "$ligne" ]; do
+    current_line=$((current_line + 1))
     xdotool type --window "$win_id" --clearmodifiers --delay 50 -- "$ligne"
-    # N'ajouter Return que si ce n'est pas la dernière ligne
-    if [ "$ligne" != "$last_line" ]; then
+    # Ajouter Return seulement si ce n'est pas la dernière ligne
+    if [ $current_line -lt $total_lines ]; then
         xdotool key --window "$win_id" Return
     fi
-done <<< "$lines"
+done <<< "$clipboard"
