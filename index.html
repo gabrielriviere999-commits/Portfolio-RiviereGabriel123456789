@@ -904,7 +904,9 @@ Mercredi 21 janvier 2026 : J'ai ajouté la doc Installer_Guacamole_avec_JDBC.txt
 J'ai ajouté une page de recherche de fichiers à mon portfolio.
 
 Vendredi 23 janvier 2026 : Mise à jour de Guacamole 1.5.5 vers 1.6.0, installer les extensions TOTP,
-enregistrement vidéo, partage de fichiers.
+Recording Storage, partage de fichiers.
+Problèmes rencontrés : permissions de Tomcat 9 qui empêchait son démarrage et l'interface Web était
+inaccessible.
 </pre>
 <div class="slideshow-container" data-group="Stage_BTS2">
 
@@ -939,6 +941,10 @@ enregistrement vidéo, partage de fichiers.
     <div class="mySlide" data-group="Stage_BTS2">
         <iframe src="Stage_BTS2/Installer_TOTP.txt"></iframe>
     </div>
+
+    <div class="mySlide" data-group="Stage_BTS2">
+        <iframe src="Stage_BTS2/Installer_Recording_Storage.txt"></iframe>
+    </div>
     <button class="prev" onclick="plusSlides(-1, 'Stage_BTS2')"><</button>
     <button class="next" onclick="plusSlides(1, 'Stage_BTS2')">></button>
     <div id="counter-Stage_BTS2" class="slide-counter"></div>
@@ -953,6 +959,7 @@ enregistrement vidéo, partage de fichiers.
     <img class="thumbnail" data-group="Stage_BTS2" src="" onclick="currentSlide(6, 'Stage_BTS2')">
     <img class="thumbnail" data-group="Stage_BTS2" src="" onclick="currentSlide(7, 'Stage_BTS2')">
     <img class="thumbnail" data-group="Stage_BTS2" src="" onclick="currentSlide(8, 'Stage_BTS2')">
+    <img class="thumbnail" data-group="Stage_BTS2" src="" onclick="currentSlide(9, 'Stage_BTS2')">
 </div>
 
 <select id="downloadStage_BTS2" onchange="downloadFile(this)">
@@ -980,6 +987,9 @@ enregistrement vidéo, partage de fichiers.
     </option>
     <option value="Stage_BTS2/Installer_TOTP.txt">
         Installer_TOTP.txt
+    </option>
+    <option value="Stage_BTS2/Installer_Recording_Storage.txt">
+        Installer_Recording_Storage.txt
     </option>
 </select>
         </div>
