@@ -4,16 +4,24 @@ wget https://downloads.apache.org/guacamole/1.6.0/binary/guacamole-auth-totp-1.6
 tar -xvzf guacamole-auth-totp-1.6.0.tar.gz
 sudo cp guacamole-auth-totp-1.6.0/guacamole-auth-totp-1.6.0.jar /etc/guacamole/extensions/
 
-# 2. Vérifier que ton fichier guacamole.properties contient bien JDBC
-sudo tee /etc/guacamole/guacamole.properties > /dev/null <<EOF
+# 2. Vérifier et corriger guacamole.properties
+sudo nano /etc/guacamole/guacamole.properties
 mysql-hostname: 127.0.0.1
 mysql-port: 3306
 mysql-database: guacadb
 mysql-username: guaca_nachos
-mysql-password: TonMotDePasse
+mysql-password: Lypipo25jo
 auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
 EOF
 
-# 3. Redémarrer les services
+# 3. Vérifier les permissions sur /opt/tomcat9
+sudo chown -R www-data:www-data /opt/tomcat9
+
+# 4. Recharger systemd et relancer les services
+sudo systemctl daemon-reload
 sudo systemctl restart guacd
 sudo systemctl restart tomcat9
+
+# 5. Vérifier que les services tournent
+systemctl status guacd --no-pager
+systemctl status tomcat9 --no-pager
