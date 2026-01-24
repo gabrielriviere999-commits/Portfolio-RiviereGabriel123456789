@@ -220,7 +220,10 @@ body {
   object-fit: cover;
   border: 2px solid #000;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 22px;
+  user-select: none; /* Texte non sélectionnable */
+  -webkit-user-select: none; /* iPhone / Safari */
+  -ms-user-select: none; /* vieux Edge */
 }
 
 .thumbnail:hover {
@@ -337,7 +340,7 @@ body {
 
 <div class="thumbnail-row">
     <img class="thumbnail" data-group="Accueil" src="" onclick="currentSlide(1, 'Accueil')">
-    <img class="thumbnail" data-group="Accueil" src="Accueil/icone_cv.jpg" loading="lazy" onclick="currentSlide(2, 'Accueil')">
+    <div class="thumbnail" data-group="Accueil" onclick="currentSlide(2, 'Accueil')">CV</div>
 </div>
 <a href="Accueil/tableau_synthese_E5-2025.ods" download>Télécharger tableau_synthese_E5-2025.ods</a>
 </div>
