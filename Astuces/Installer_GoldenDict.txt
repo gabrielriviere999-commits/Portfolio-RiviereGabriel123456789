@@ -1,4 +1,4 @@
-## 1. Installer GoldenDict (lecteur de dictionnaire hors ligne)**
+## 1. Installer GoldenDict (lecteur de dictionnaire hors ligne)
 
 sudo apt update
 sudo apt install goldendict
@@ -8,7 +8,7 @@ goldendict
 
 ---
 
-## 2. Installer un dictionnaire français complet**
+## 2. Installer un dictionnaire français complet
 
 ### a) Créer le dossier pour les dictionnaires
 
@@ -17,7 +17,7 @@ mkdir -p ~/dicos/fr_dict
 ### b) Télécharger le dictionnaire
 
 * Va sur : [Reader-Dict Français](https://www.reader-dict.com/download/fr)
-* Télécharge **“StarDict Full version” (`dict-fr-fr.zip`)** dans ton dossier Téléchargements
+* Télécharge “StarDict Full version” (dict-fr-fr.zip) dans ton dossier Téléchargements
 
 ### c) Décompresser le dictionnaire
 
@@ -32,40 +32,40 @@ dict-fr-fr.ifo
 
 ---
 
-## 3. Ajouter le dictionnaire à GoldenDict**
+## 3. Ajouter le dictionnaire à GoldenDict
 
-1. Ouvre **GoldenDict → Édition → Dictionnaires → Ajouter... → Dossier
+1. Ouvre GoldenDict → Édition → Dictionnaires → Ajouter... → Dossier
 2. Sélectionne le dossier :
 
 ~/dicos/fr_dict
 
 3. GoldenDict indexera automatiquement les fichiers
-4. Assure-toi que le dictionnaire est **coché** dans la liste des dictionnaires actifs
+4. Assure-toi que le dictionnaire est coché dans la liste des dictionnaires actifs
 
 ---
 
-## 4. Ajouter un dictionnaire Français ↔ Anglais (optionnel)**
+## 4. Ajouter un dictionnaire Français ↔ Anglais (optionnel)
 
 Pour avoir la traduction hors ligne :
 
-1. Télécharge **FreeDict Français → Anglais** : [https://freedict.org/en/download/](https://freedict.org/en/download/)
+1. Télécharge FreeDict Français → Anglais : [https://freedict.org/en/download/](https://freedict.org/en/download/)
 2. Décompresse-le dans un dossier, par exemple :
 
 mkdir -p ~/dicos/fra-eng
 tar xvjf freedict-fra-eng-*.tar.bz2 -C ~/dicos/fra-eng
 
-3. Ajoute le dossier dans GoldenDict (**Édition → Dictionnaires → Ajouter → Dossier)
-4. Répète la même opération pour **Anglais → Français** si nécessaire
+3. Ajoute le dossier dans GoldenDict (Édition → Dictionnaires → Ajouter → Dossier)
+4. Répète la même opération pour Anglais → Français si nécessaire
 
 ---
 
-## 5. Configurer pour une utilisation 100 % hors ligne**
+## 5. Configurer pour une utilisation 100 % hors ligne
 
 Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-## 6. Tester**
+## 6. Tester
 
 * Tape un mot français dans GoldenDict
 * Il devrait chercher dans dict-fr-fr
@@ -73,9 +73,9 @@ Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-## 7. Astuce pratique**
+## 7. Astuce pratique
 
-* Tu peux organiser tous tes dictionnaires dans `~/dicos/` :
+* Tu peux organiser tous tes dictionnaires dans ~/dicos/ :
 
 ~/dicos/fr_dict/         # dict-fr-fr
 ~/dicos/fra-eng/         # FreeDict FR→EN
@@ -85,9 +85,9 @@ Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-✅ **Résultat final** :
+✅ Résultat final :
 
-* **Dictionnaire français moderne complet (~2 M mots)**
-* **Traduction français ↔ anglais hors ligne**
-* **Recherche 100 % locale**
-* **Pas besoin d’internet pour chercher des mots**
+* Dictionnaire français moderne complet (~2 M mots)
+* Traduction français ↔ anglais hors ligne
+* Recherche 100 % locale
+* Pas besoin d’internet pour chercher des mots

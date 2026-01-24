@@ -5,10 +5,10 @@ Application de recherche de documents par leurs contenus.
 
 ### [Recoll Downloads & Installation Guide (site officiel)](https://www.recoll.org/pages/download.html)
     • Contient les instructions pour :
-    •   - Télécharger les paquets `.deb`, `.rpm`, ou Flatpak
+    •   - Télécharger les paquets .deb, .rpm, ou Flatpak
     •   - Compiler Recoll depuis les sources si nécessaire
     •   - Installer les dépendances pour les formats de fichiers spécifiques (PDF, DOC, etc.)
-    • - Mentionne les outils complémentaires comme **aspell** pour les suggestions orthographiques
+    • - Mentionne les outils complémentaires comme aspell pour les suggestions orthographiques
 
 ## 📚 Guide communautaire francophone
 

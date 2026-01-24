@@ -1,7 +1,7 @@
 # 🧭 Guide complet de nettoyage MX Linux  
 *(Flatpak, APT, Steam, caches, noyaux)*
 
-## 1. 🔍 Vérifier l’espace utilisé dans `/var`
+## 1. 🔍 Vérifier l’espace utilisé dans /var
 Pour comprendre ce qui prend de la place :
 sudo du -sh /var/* | sort -h
 
@@ -51,7 +51,7 @@ rm -rf ~/.var/app/ID_DE_L_APPLI
 
 # 3. 🧹 Suppression complète des traces de Steam
 Steam en Flatpak laisse des traces à trois endroits.
-## 3.1. Runtimes Steam (déjà supprimés par `--unused`)
+## 3.1. Runtimes Steam (déjà supprimés par --unused)
 Steam utilisait Freedesktop 23.08, KDE 5.15, Mesa 23.x, etc.  
 Tu les as déjà supprimés.
 
@@ -69,7 +69,7 @@ rm -rf ~/.var/app/com.valvesoftware.Steam
 
 ---
 
-## 3.3. Dossiers Steam dans `.local/share` ou `.steam`
+## 3.3. Dossiers Steam dans .local/share ou .steam
 du -sh ~/.local/share/Steam
 ls -la ~ | grep steam
 
