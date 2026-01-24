@@ -1,12 +1,12 @@
-👉 Le paquet **`nemo-actions` n’est plus fourni via les dépôts Mint/Ubuntu 22.04**.
-Mais **les actions personnalisées Nemo existent toujours** ✅ — il faut simplement les créer **manuellement**.
+👉 Le paquet nemo-actions n’est plus fourni via les dépôts Mint/Ubuntu 22.04.
+Mais les actions personnalisées Nemo existent toujours ✅ — il faut simplement les créer manuellement.
 
 ---
 
 ## ✅ Solution garantie (sans paquet à installer)
 
-Nous allons créer une **action Nemo à la main**.
-C’est propre, officiel, et 100 % compatible avec **Nemo** sur **Linux Mint 21.3**.
+Nous allons créer une action Nemo à la main.
+C’est propre, officiel, et 100 % compatible avec Nemo sur Linux Mint 21.3.
 
 ---
 
@@ -22,7 +22,7 @@ Ouvre un éditeur de texte :
 
 nano ~/.local/share/nemo/actions/envoyer-bluetooth.nemo_action
 
-Colle **exactement** ceci :
+Colle exactement ceci :
 
 [Nemo Action]
 Name=Envoyer par Bluetooth
@@ -34,9 +34,9 @@ Extensions=any;
 
 👉 Sauvegarde :
 
-* **Ctrl + O**
+* Ctrl + O
 * Entrée
-* **Ctrl + X**
+* Ctrl + X
 
 ---
 
@@ -51,12 +51,12 @@ Puis rouvre l’explorateur de fichiers.
 ## 🎉 Résultat
 
 * Sélectionne un ou plusieurs fichiers
-* **Clic droit → “Envoyer par Bluetooth”**
+* Clic droit → “Envoyer par Bluetooth”
 * La fenêtre Blueman s’ouvre 🔵
 
-⚠️ **Note importante**
-➡️ Cette méthode ajoute l’action **au menu contextuel**,
-mais **pas dans la barre d’outils** (limitation actuelle de Nemo sans extensions C).
+⚠️ Note importante
+➡️ Cette méthode ajoute l’action au menu contextuel,
+mais pas dans la barre d’outils (limitation actuelle de Nemo sans extensions C).
 
 ---
 
@@ -76,7 +76,7 @@ sudo apt install blueman
 
 Si tu veux un accès encore plus rapide :
 
-* ajoute un **raccourci clavier** vers :
+* ajoute un raccourci clavier vers :
 
 blueman-sendto %F
 
@@ -84,7 +84,7 @@ blueman-sendto %F
 
 ## 🧾 En résumé
 
-✔ `nemo-actions` supprimé → normal
+✔ nemo-actions supprimé → normal
 ✔ actions Nemo toujours supportées
 ✔ méthode manuelle = solution officielle
 ✔ fonctionne sur Mint 21.3
