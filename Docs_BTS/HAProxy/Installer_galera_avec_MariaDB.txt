@@ -2,11 +2,11 @@
 
 ## 1. Objectif
 
-Mettre en place un **cluster MariaDB Galera** hautement disponible avec :
+Mettre en place un cluster MariaDB Galera hautement disponible avec :
 
-* **2 nœuds MariaDB** : `web1`, `web2`
-* **1 HAProxy** pour l’accès applicatif
-* Réplication **synchrone** des données
+* 2 nœuds MariaDB : web1, web2
+* 1 HAProxy pour l’accès applicatif
+* Réplication synchrone des données
 * Bascule automatique en cas de panne
 
 ---
@@ -48,7 +48,7 @@ Clients / Applications
 
 ## 4. Installation MariaDB + Galera
 
-### Sur **web1** et **web2**
+### Sur web1 et web2
 
 sudo apt update
 sudo apt install mariadb-server galera-4 -y
@@ -96,7 +96,7 @@ wsrep_node_address="IP_WEB2"
 
 ### 6.1 Bootstrap du premier nœud
 
-Sur **web1 uniquement** :
+Sur web1 uniquement :
 
 sudo galera_new_cluster
 
@@ -104,7 +104,7 @@ sudo galera_new_cluster
 
 ### 6.2 Démarrage du second nœud
 
-Sur **web2** :
+Sur web2 :
 
 sudo systemctl start mariadb
 
@@ -135,11 +135,11 @@ SHOW STATUS LIKE 'wsrep_ready';
 
 ## 8. Test de réplication
 
-Sur **web1** :
+Sur web1 :
 
 CREATE DATABASE galera_test;
 
-Sur **web2** :
+Sur web2 :
 
 SHOW DATABASES LIKE 'galera_test';
 
@@ -149,9 +149,9 @@ SHOW DATABASES LIKE 'galera_test';
 
 ## 9. Problèmes connus / pièges
 
-### 9.1 `SHOW STATUS LIKE 'wsrep_on'` retourne `Empty set`
+### 9.1 SHOW STATUS LIKE 'wsrep_on' retourne Empty set
 
-✔️ **Normal avec MariaDB 10.11**
+✔️ Normal avec MariaDB 10.11
 👉 Utiliser :
 
 SHOW VARIABLES LIKE 'wsrep_on';
@@ -164,7 +164,7 @@ SHOW VARIABLES LIKE 'wsrep_on';
 
 systemctl restart mariadb
 
-pour le **premier démarrage du cluster**.
+pour le premier démarrage du cluster.
 
 Toujours utiliser :
 
@@ -176,12 +176,12 @@ galera_new_cluster
 
 ### ⚠️ Cluster à 2 nœuds
 
-Risque de **split-brain** si un nœud tombe.
+Risque de split-brain si un nœud tombe.
 
 ### Solutions recommandées :
 
-* Ajouter un **3ᵉ nœud Galera**
-* OU ajouter **garbd (Galera Arbitrator)**
+* Ajouter un 3ᵉ nœud Galera
+* OU ajouter garbd (Galera Arbitrator)
 
 ---
 
@@ -191,8 +191,8 @@ HAProxy :
 
 * Vérifie que le nœud est :
 
-  * `Primary`
-  * `wsrep_ready = ON`
+  * Primary
+  * wsrep_ready = ON
 * Redirige uniquement vers les nœuds sains
 
 (Il ne stocke aucune donnée)
@@ -213,17 +213,17 @@ SHOW STATUS LIKE 'wsrep_%';
 
 ## 13. Bonnes pratiques
 
-* Toujours arrêter les nœuds **un par un**
-* Toujours redémarrer **un seul nœud Galera à la fois**
+* Toujours arrêter les nœuds un par un
+* Toujours redémarrer un seul nœud Galera à la fois
 * Sauvegardes régulières (Galera ≠ backup)
-* Surveiller `wsrep_cluster_size`
+* Surveiller wsrep_cluster_size
 
 ---
 
 ## 14. Conclusion
 
-✔ MariaDB Galera est **correctement installé**
-✔ Le cluster est **fonctionnel et synchronisé**
+✔ MariaDB Galera est correctement installé
+✔ Le cluster est fonctionnel et synchronisé
 ✔ L’architecture est prête pour HAProxy
-⚠ Ajouter un **3ᵉ nœud ou garbd** pour la production
+⚠ Ajouter un 3ᵉ nœud ou garbd pour la production
 
