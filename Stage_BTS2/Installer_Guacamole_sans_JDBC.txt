@@ -78,7 +78,7 @@ libossp-uuid-dev libavcodec-dev libavutil-dev libswscale-dev freerdp2-dev \
 libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev \
 libssl-dev libvorbis-dev libwebp-dev openjdk-17-jdk -y
 
-⚠️ **Ne pas installer Tomcat10** → on utilisera Tomcat9.
+⚠️ Ne pas installer Tomcat10 → on utilisera Tomcat9.
 
 ---
 
@@ -262,7 +262,7 @@ puis le mot de passe de la machine Debian.
 ---
 
 ## ✅ Résumé corrigé
-- Guacamole 1.6.0 **n’est pas compatible avec Tomcat10** → utiliser Tomcat9.  
+- Guacamole 1.6.0 n’est pas compatible avec Tomcat10 → utiliser Tomcat9.  
 - Ton erreur 404 venait du fait que Tomcat utilisait encore '/opt/tomcat3'.  
 - Corrige le service systemd pour pointer vers '/opt/tomcat9'.  
 - Vérifie que 'ps aux | grep tomcat' montre bien '-Dcatalina.base=/opt/tomcat9'.  
