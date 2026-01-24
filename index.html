@@ -235,7 +235,7 @@ body {
   opacity: 1;
 }
 
-.prev, .next {
+.prev, .next, .openfullscreen {
   background: #C0C0C0; /* gris Windows 98 */
   border: 2px solid;
   border-color: #FFFFFF #808080 #808080 #FFFFFF; /* relief 3D */
@@ -249,7 +249,7 @@ body {
 }
 
 /* Effet bouton enfoncé */
-.prev:active, .next:active {
+.prev:active, .next:active, .openfullscreen:active {
   border-color: #808080 #FFFFFF #FFFFFF #808080;
   background: #B0B0B0;
 }
@@ -335,6 +335,7 @@ body {
 
     <button class="prev" onclick="plusSlides(-1, 'Accueil')"><</button>
     <button class="next" onclick="plusSlides(1, 'Accueil')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('Accueil')">□</button>
     <div id="counter-Accueil" class="slide-counter"></div>
 </div>
 
@@ -376,6 +377,7 @@ body {
     
     <button class="prev" onclick="plusSlides(-1, 'IP_et_routage')"><</button>
     <button class="next" onclick="plusSlides(1, 'IP_et_routage')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('IP_et_routage')">□</button>
     <div id="counter-IP_et_routage" class="slide-counter"></div>
 </div>
 
@@ -405,6 +407,7 @@ body {
     
     <button class="prev" onclick="plusSlides(-1, 'HAProxy')"><</button>
     <button class="next" onclick="plusSlides(1, 'HAProxy')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('HAProxy')">□</button>
     <div id="counter-HAProxy" class="slide-counter"></div>
 </div>
 
@@ -426,6 +429,7 @@ body {
     </div>
     <button class="prev" onclick="plusSlides(-1, 'GLPI')"><</button>
     <button class="next" onclick="plusSlides(1, 'GLPI')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('GLPI')">□</button>
     <div id="counter-GLPI" class="slide-counter"></div>
 </div>
 
@@ -443,6 +447,7 @@ body {
 
     <button class="prev" onclick="plusSlides(-1, 'ITSM_NG')"><</button>
     <button class="next" onclick="plusSlides(1, 'ITSM_NG')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('ITSM_NG')">□</button>
     <div id="counter-ITSM_NG" class="slide-counter"></div>
 </div>
 
@@ -478,6 +483,7 @@ body {
 
     <button class="prev" onclick="plusSlides(-1, 'Infra_BTS')"><</button>
     <button class="next" onclick="plusSlides(1, 'Infra_BTS')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('Infra_BTS')">□</button>
     <div id="counter-Infra_BTS" class="slide-counter"></div>
 </div>
 
@@ -931,6 +937,7 @@ Remplacer totp-mode: time-based par totp-mode: sha1
     </div>
     <button class="prev" onclick="plusSlides(-1, 'Stage_BTS2')"><</button>
     <button class="next" onclick="plusSlides(1, 'Stage_BTS2')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('Stage_BTS2')">□</button>
     <div id="counter-Stage_BTS2" class="slide-counter"></div>
 </div>
 
@@ -1099,6 +1106,7 @@ Remplacer totp-mode: time-based par totp-mode: sha1
 
     <button class="prev" onclick="plusSlides(-1, 'MXLinux')"><</button>
     <button class="next" onclick="plusSlides(1, 'MXLinux')">></button>
+    <button class="openfullscreen" onclick="openFullscreen('MXLinux')">□</button>
     <div id="counter-MXLinux" class="slide-counter"></div>
 </div>
 
@@ -1462,6 +1470,43 @@ function showSlides(n, group) {
   if (counter) {
     counter.textContent = slideIndex[group] + " / " + slides.length;
   }
+}
+</script>
+
+<script>
+function openFullscreen(group) {
+    var index = slideIndex[group] || 1;
+    var slides = document.querySelectorAll('.mySlide[data-group="' + group + '"]');
+    if (slides.length === 0) return;
+
+    var activeSlide = slides[index - 1];
+    if (!activeSlide) return;
+
+    // 1) iframe (HTML, TXT, PDF)
+    var iframe = activeSlide.querySelector("iframe");
+    if (iframe) {
+        var url = iframe.src || iframe.getAttribute("data-src");
+        if (url) {
+            window.open(url, "_blank");
+            return;
+        }
+    }
+
+    // 2) image
+    var img = activeSlide.querySelector("img");
+    if (img && img.src) {
+        window.open(img.src, "_blank");
+        return;
+    }
+
+    // 3) vidéo
+    var video = activeSlide.querySelector("video");
+    if (video && video.src) {
+        window.open(video.src, "_blank");
+        return;
+    }
+
+    console.log("Aucun contenu ouvrable trouvé dans cette slide");
 }
 </script>
 
