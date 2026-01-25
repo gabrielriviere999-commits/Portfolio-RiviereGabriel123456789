@@ -85,7 +85,7 @@ Cliquer sur l'icône du dictionnaire située à droite de la barre d'outils
 
 ---
 
-✅ Résultat final :
+Résultat final :
 
 * Dictionnaire français moderne complet (~2 M mots)
 * Traduction français ↔ anglais hors ligne

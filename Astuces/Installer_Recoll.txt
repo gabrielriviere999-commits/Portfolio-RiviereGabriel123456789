@@ -10,7 +10,7 @@ Application de recherche de documents par leurs contenus.
     •   - Installer les dépendances pour les formats de fichiers spécifiques (PDF, DOC, etc.)
     • - Mentionne les outils complémentaires comme aspell pour les suggestions orthographiques
 
-## 📚 Guide communautaire francophone
+## Guide communautaire francophone
 
 ### [Wiki Ubuntu-fr : Recoll](https://doc.ubuntu-fr.org/recoll)
     • Explication claire des fonctionnalités
@@ -20,7 +20,7 @@ Application de recherche de documents par leurs contenus.
     • - Conseils pour configurer l’indexation et lancer la recherche
     • - Comparaison avec d’autres outils comme Spotlight ou Copernic
 
-## 🛠️ Installation via Flatpak (alternative)
+## 🛠Installation via Flatpak (alternative)
 
 ### [Recoll sur Flathub](https://flathub.org/fr/apps/org.recoll.recoll)
     • Si vous utilisez Flatpak, vous pouvez installer Recoll avec :

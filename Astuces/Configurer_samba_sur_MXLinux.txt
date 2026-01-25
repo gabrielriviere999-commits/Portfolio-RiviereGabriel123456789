@@ -1,13 +1,13 @@
-🛠️ Configuration d’un partage Samba sur MX Linux
-1. 📦 Installer Samba (si ce n’est pas déjà fait)
+Configuration d’un partage Samba sur MX Linux
+1. Installer Samba (si ce n’est pas déjà fait)
 sudo apt update
 sudo apt install samba
 
-2. 📁 Créer le dossier à partager
+2. Créer le dossier à partager
 mkdir -p /home/mxlinux/partage
 chmod 777 /home/mxlinux/partage
 
-3. 🧾 Modifier le fichier de configuration Samba
+3. Modifier le fichier de configuration Samba
 Ouvre le fichier :
 sudo nano /etc/samba/smb.conf
 Ajoute ou remplace le contenu par :
@@ -35,19 +35,19 @@ Ajoute ou remplace le contenu par :
    directory mask = 0777
 Enregistre avec Ctrl + O, puis quitte avec Ctrl + X.
 
-4. 🔁 Redémarrer Samba
+4. Redémarrer Samba
 sudo service smbd restart
 
-5. 🔥 Ouvrir les ports du pare-feu (si UFW est actif)
+5. Ouvrir les ports du pare-feu (si UFW est actif)
 sudo ufw allow 137,138/udp
 sudo ufw allow 139,445/tcp
 
-👤 Créer un utilisateur Samba (optionnel mais recommandé)
+Créer un utilisateur Samba (optionnel mais recommandé)
 Si tu veux un accès sécurisé avec identifiants :
 sudo smbpasswd -a mxlinux
 → Tu définis un mot de passe Samba pour l’utilisateur mxlinux.
 
-📱 Accéder au partage depuis MiXplorer (Android)
+Accéder au partage depuis MiXplorer (Android)
 Paramètres à entrer :
 +----------+--------------------------------------+
 | Champ    | Valeur à entrer                      |
@@ -63,39 +63,9 @@ Paramètres à entrer :
 | Path     | monpartage                           |
 +----------+--------------------------------------+
 
-🧪 Résolution des problèmes
-    • Lecture seule : vérifie writable = yes et les permissions du dossier (chmod 777) 
-    • Demande de mot de passe : utilise map to guest = Bad User et guest ok = yes 
-    • Deux partages visibles : supprime les doublons avec net usershare delete partage 
-    • Pas visible sur le réseau : vérifie browseable = yes et que le pare-feu autorise Samba
+Résolution des problèmes
+- Lecture seule : vérifie writable = yes et les permissions du dossier (chmod 777)
+- Demande de mot de passe : utilise map to guest = Bad User et guest ok = yes
+- Deux partages visibles : supprime les doublons avec net usershare delete partage
+- Pas visible sur le réseau : vérifie browseable = yes et que le pare-feu autorise Samba
 
-Config complète du fichier
-
-  GNU nano 7.2                             /etc/samba/smb.conf                                      
-[global]
-   workgroup = WORKGROUP
-   server string = MX Linux Samba Server
-   netbios name = MXLINUX
-   usershare path = /var/lib/samba/usershares
-   usershare max shares = 100
-   usershare allow guests = yes
-   usershare owner only = false
-   name resolve order = bcast host
-   local master = yes
-   preferred master = yes
-   os level = 255
-
-# Partage imprimante par défaut
-[printers]
-   comment = All Printers
-   browseable = no
-   path = /var/tmp
-   printable = yes
-   guest ok = no
-   read only = yes
-   create mask = 0700
-
-# Pilotes d'impression pour Windows
-                                      [ Lecture de 41 lignes ]
-^G Aide       ^O Écrire     ^W Chercher   ^K Couper     ^T Exécuter   ^C EmplacementM-U Annuler
-^X Quitter    ^R Lire fich. ^\ Remplacer  ^U Coller     ^J Justifier  ^/ Aller ligneM-E Refaire

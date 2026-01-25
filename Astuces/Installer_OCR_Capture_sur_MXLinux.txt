@@ -1,45 +1,45 @@
-📘 OCR rapide avec Flameshot et Tesseract sur MX Linux
-🧰 Prérequis
+OCR rapide avec Flameshot et Tesseract sur MX Linux
+Prérequis
 Assure-toi que les paquets suivants sont installés :
 sudo apt update
 sudo apt install flameshot tesseract-ocr tesseract-ocr-fra xclip
-    • flameshot : outil de capture d’écran interactif 
-    • tesseract-ocr : moteur de reconnaissance de texte 
-    • tesseract-ocr-fra : pack de langue française 
-    • xclip : pour copier le texte dans le presse-papiers 
+- flameshot : outil de capture d’écran interactif
+- tesseract-ocr : moteur de reconnaissance de texte
+- tesseract-ocr-fra : pack de langue française
+- xclip : pour copier le texte dans le presse-papiers
 
-📝 Création du script OCR
-    1. Ouvre un terminal 
-    2. Crée un fichier de script :
+Création du script OCR
+1. Ouvre un terminal
+2. Crée un fichier de script :
 nano ~/ocr_capture.sh
-    3. Colle ce contenu :
+3. Colle ce contenu :
  
 #!/bin/bash
 flameshot gui -r > /tmp/capture.png
 tesseract /tmp/capture.png stdout -l fra | xclip -selection clipboard
 
-    4. Enregistre avec Ctrl + O, puis quitte avec Ctrl + X 
-    5. Rends le script exécutable : 
+4. Enregistre avec Ctrl + O, puis quitte avec Ctrl + X
+5. Rends le script exécutable :
 chmod +x ~/ocr_capture.sh
 
-🚀 Utilisation du script
+Utilisation du script
 Lance simplement :
 ~/ocr_capture.sh
-    • Une interface de sélection s’ouvre (Flameshot) 
-    • Tu sélectionnes une zone de l’écran 
-    • Le texte est extrait et copié automatiquement dans ton presse-papiers 
-    • Tu peux ensuite le coller avec Ctrl + V 
+- Une interface de sélection s’ouvre (Flameshot)
+- Tu sélectionnes une zone de l’écran
+- Le texte est extrait et copié automatiquement dans ton presse-papiers
+- Tu peux ensuite le coller avec Ctrl + V
 
-⌨️ Ajouter un raccourci clavier
-    1. Ouvre Paramètres > Clavier > Raccourcis personnalisés 
-    2. Clique sur Ajouter 
-    3. Remplis : 
-        ◦ Nom : OCR Capture 
-        ◦ Commande : /home/ton_nom_utilisateur/ocr_capture.sh 
-        ◦ Raccourci : par exemple Ctrl + Alt + O 
+Ajouter un raccourci clavier
+1. Ouvre Paramètres > Clavier > Raccourcis personnalisés
+2. Clique sur Ajouter
+3. Remplis :
+Nom : OCR Capture
+Commande : /home/ton_nom_utilisateur/ocr_capture.sh
+Raccourci : par exemple Ctrl + Alt + O
 
-✅ Résultat
+Résultat
 Tu disposes maintenant d’un outil OCR rapide, fluide et précis :
-    • OCR en français ou autre langue (modifie -l fra si besoin) 
-    • Fonctionne hors ligne 
-    • Très léger et personnalisable 
+- OCR en français ou autre langue (modifie -l fra si besoin)
+- Fonctionne hors ligne
+- Très léger et personnalisable
