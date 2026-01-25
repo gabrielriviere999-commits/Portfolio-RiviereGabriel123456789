@@ -9,7 +9,7 @@ sudo apt install ocrmypdf tesseract-ocr tesseract-ocr-fra
     • tesseract-ocr : moteur de reconnaissance optique
     • tesseract-ocr-fra : langue française pour Tesseract
 
-Contenu du script ocr_batch.sh
+Contenu du script ocr_batch.sh :
 
 #!/bin/bash
 
@@ -38,6 +38,8 @@ for file in "$INPUT_DIR"/*.pdf; do
 done
 
 echo "Tous les fichiers PDF ont été convertis avec OCR."
+
+---
 
 Fonctionnement
 1. Le script vérifie et crée les dossiers nécessaires.

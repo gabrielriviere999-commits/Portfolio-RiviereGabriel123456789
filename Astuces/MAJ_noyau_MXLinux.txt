@@ -13,6 +13,7 @@ Le module CNVi (Intel) peut se bloquer. Le noyau Linux 6.1 aggrave
 ce comportement avec des timeouts firmware.
 
 ---
+
 2. Vérification du noyau installé
 Commande :
 uname -r
