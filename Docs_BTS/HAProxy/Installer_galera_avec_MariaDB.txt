@@ -1,4 +1,4 @@
-# 📘 Documentation – Cluster MariaDB Galera avec HAProxy
+# Documentation – Cluster MariaDB Galera avec HAProxy
 
 ## 1. Objectif
 
@@ -143,7 +143,7 @@ Sur web2 :
 
 SHOW DATABASES LIKE 'galera_test';
 
-✅ La base doit apparaitre immédiatement.
+La base doit apparaitre immédiatement.
 
 ---
 
@@ -151,23 +151,19 @@ SHOW DATABASES LIKE 'galera_test';
 
 ### 9.1 SHOW STATUS LIKE 'wsrep_on' retourne Empty set
 
-✔️ Normal avec MariaDB 10.11
-👉 Utiliser :
-
+Normal avec MariaDB 10.11
+Utiliser :
 SHOW VARIABLES LIKE 'wsrep_on';
 
 ---
 
 ### 9.2 Démarrage incorrect
 
-❌ Ne jamais faire :
-
+Ne jamais faire :
 systemctl restart mariadb
-
 pour le premier démarrage du cluster.
 
 Toujours utiliser :
-
 galera_new_cluster
 
 ---
