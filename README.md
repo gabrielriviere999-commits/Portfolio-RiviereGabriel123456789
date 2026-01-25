@@ -34,8 +34,8 @@ Note : Ce réglage n'affecte que Firefox Desktop.
 
 ---
 
-2) Firefox Android
-Firefox Mobile coupe les lignes dans les fichiers .txt
+2) Firefox Android et Chrome Android
+Firefox Mobile et Chrome coupe les lignes dans les fichiers .txt
 Il n'existe pas d'accès à about:config pour modifier ce comportement.
 
 Comportement :
@@ -56,19 +56,7 @@ Aucune option pour changer ce comportement.
 
 ---
 
-4) Chrome Android
-Chrome Android a le même comportement que Chrome Desktop.
-
-Comportement :
-- Pas de retour à la ligne automatique
-- Scroll horizontal si nécessaire
-- Affichage brut du fichier .txt
-
-Aucune option pour modifier ce comportement.
-
----
-
-5) Edge (Windows)
+4) Edge (Windows)
 Même comportement que Chrome :
 - Pas de retour à la ligne
 - Scroll horizontal
@@ -77,7 +65,7 @@ Aucune modification possible ou nécessaire.
 
 ---
 
-6) Safari (macOS, iOS)
+5) Safari (macOS, iOS)
 Safari ne coupe pas les lignes dans les fichiers .txt
 
 Comportement :
@@ -88,7 +76,7 @@ Aucune option de configuration.
 
 ---
 
-7) Navigateurs anciens / consoles (Nintendo 3DS)
+6) Navigateurs anciens / consoles (Nintendo 3DS)
 Le navigateur de la 3DS coupe toujours les lignes dans les fichiers .txt
 
 Comportement :
@@ -100,9 +88,8 @@ Comportement :
 
 Résumé rapide
 - Firefox Desktop : wrap configurable
-- Firefox Android : wrap forcé
+- Firefox Android et Chrome Android : wrap forcé
 - Chrome Desktop : pas de wrap
-- Chrome Android : pas de wrap
 - Edge : pas de wrap
 - Safari : pas de wrap
 - 3DS Browser : wrap forcé
@@ -145,8 +132,8 @@ Note: This setting affects only Firefox Desktop.
 
 ---
 
-2) Firefox Android
-Firefox Mobile cuts lines in .txt files
+2) Firefox Android and Chrome Android
+Firefox Mobile and Chrome cut lines in .txt files
 There is no access to about:config to modify this behavior.
 
 Behaviour:
@@ -167,19 +154,7 @@ No option to change this behavior.
 
 ---
 
-4) Android Chrome
-Chrome Android has the same behavior as Chrome Desktop.
-
-Behaviour:
-- No return to the automatic line
-- Horizontal scroll if necessary
-- Gross display of the .txt file
-
-No option to change this behavior.
-
----
-
-5) Edge (Windows)
+4) Edge (Windows)
 Same behavior as Chrome:
 - No return to the line
 - Horizontal scroll
@@ -188,7 +163,7 @@ No possible or necessary changes.
 
 ---
 
-6) Safari (macOS, iOS)
+5) Safari (macOS, iOS)
 Safari does not cut lines in .txt files
 
 Behaviour:
@@ -199,7 +174,7 @@ No configuration option.
 
 ---
 
-7) Old browsers / consoles (Nintendo 3DS)
+6) Old browsers / consoles (Nintendo 3DS)
 The 3DS browser always cuts lines in the .txt files
 
 Behaviour:
@@ -211,9 +186,8 @@ Behaviour:
 
 Quick summary
 - Firefox Desktop : configurable wrap
-- Firefox Android : forced wrap
+- Firefox Android and Chrome Android : forced wrap
 - Chrome Desktop : no wrap
-- Android Chrome : no wrap
 - Edge : no wrap
 - Safari : no wrap
 - 3DS Browser : forced wrap
