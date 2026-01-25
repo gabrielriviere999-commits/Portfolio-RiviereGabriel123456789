@@ -5,7 +5,7 @@ Pour voir le fichier dans un nouvel onglet, cliquez sur ☐
 
 Pour afficher le menu du site, cliquez sur le bouton ≡ en haut à gauche :
 Rechercher : ouvre la page de recherche de fichiers.
-Rechercher : ouvre la page de recherche de fichiers dans un nouvel onglet du navigateur.
+Rechercher nouvel onglet : ouvre la page de recherche de fichiers dans un nouvel onglet du navigateur.
 Liste des fichiers : ouvre la page d'explorateur de fichiers.
 Mode sombre : active/désactive le mode sombre du site principal.
 Soutenir le site : ouvre la page de dons.
@@ -115,12 +115,12 @@ On this site, you will find mainly txt, html, pdf files organized in the form of
 To see the files, you can click on the button.
 To see the file in a new tab, click on .
 
-To display the site menu, click on the top left button:
-Search: opens the file search page.
-Search: opens the file search page in a new browser tab.
-List of files: opens the file browser page.
-Dark mode: activates/deactivates the dark mode of the main site.
-Support the site: opens the donation page.
+To display the site menu, click on the top left button :
+Rechercher : opens the file search page.
+Rechercher nouvel onglet : opens the file search page in a new browser tab.
+Liste des fichiers : opens the file browser page.
+Mode sombre : activates/deactivates the dark mode of the main site.
+Soutenir le site : opens the donation page.
 
 The tab? button is used to go to a tab of the site, useful on small screens.
 
@@ -133,7 +133,7 @@ Displaying TXT files by browsers
 1) Firefox (Windows, Linux, macOS)
 Firefox automatically cuts off long lines in .txt files
 
-To disable the return to the automatic line:
+To disable the return to the automatic line :
 
 1. Open: about:config
 2. Search for: plain_text.wrap_long_lines
