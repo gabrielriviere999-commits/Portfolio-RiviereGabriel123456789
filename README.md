@@ -133,8 +133,8 @@ Firefox automatically cuts off long lines in .txt files
 
 To disable the return to the automatic line :
 
-1. Open: about:config
-2. Search for: plain_text.wrap_long_lines
+1. Open : about:config
+2. Search for : plain_text.wrap_long_lines
 3. 3. Put the value to: false
 
 Result:
@@ -210,10 +210,10 @@ Behaviour:
 ---
 
 Quick summary
-- Firefox Desktop: configurable wrap
-- Firefox Android: forced wrap
-- Chrome Desktop: no wrap
-- Android Chrome: no wrap
-- Edge: no wrap
-- Safari: no wrap
-- 3DS Browser: forced wrap
+- Firefox Desktop : configurable wrap
+- Firefox Android : forced wrap
+- Chrome Desktop : no wrap
+- Android Chrome : no wrap
+- Edge : no wrap
+- Safari : no wrap
+- 3DS Browser : forced wrap
