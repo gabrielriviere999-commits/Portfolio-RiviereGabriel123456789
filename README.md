@@ -14,9 +14,7 @@ Le bouton tab? sert à aller vers un onglet du site, utile sur petits écrans.
 
 ---
 
-================================================
 Affichage des fichiers TXT selon les navigateurs
-================================================
 
 1) Firefox (Windows, Linux, macOS)
 Firefox coupe automatiquement les longues lignes dans les fichiers .txt
@@ -108,7 +106,7 @@ Résumé rapide
 - Safari : pas de wrap
 - 3DS Browser : wrap forcé
 
-------------------------------------------------------------------------------------------------------------
+---
 
 🌐 English
 On this site, you will find mainly txt, html, pdf files organized in the form of galleries.
@@ -126,9 +124,7 @@ The tab? button is used to go to a tab of the site, useful on small screens.
 
 ---
 
-================================
 Displaying TXT files by browsers
-================================
 
 1) Firefox (Windows, Linux, macOS)
 Firefox automatically cuts off long lines in .txt files
