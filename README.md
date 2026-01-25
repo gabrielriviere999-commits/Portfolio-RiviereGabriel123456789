@@ -2,7 +2,7 @@
 
 Sur ce site, vous trouverez principalement des fichiers txt, html, pdf organisés sous forme de galeries.
 Pour voir les fichiers, vous pouvez cliquer sur le bouton < ou >
-Pour voir le fichier dans un nouvel onglet, cliquez sur ☐
+Pour voir le fichier dans un nouvel onglet, cliquez sur le bouton □
 
 Pour afficher le menu du site, cliquez sur le bouton ≡ en haut à gauche :
 Rechercher : ouvre la page de recherche de fichiers.
@@ -112,10 +112,10 @@ Résumé rapide
 🌐 English
 
 On this site, you will find mainly txt, html, pdf files organized in the form of galleries.
-To see the files, you can click on the button.
-To see the file in a new tab, click on .
+To see the files, you can click on the button < or >
+To see the file in a new tab, click on the button □
 
-To display the site menu, click on the top left button :
+To display the site menu, click on the top left button ≡ :
 Rechercher : opens the file search page.
 Rechercher nouvel onglet : opens the file search page in a new browser tab.
 Liste des fichiers : opens the file browser page.
