@@ -285,7 +285,7 @@ body {
 <main>
 <!-- Barre de navigation -->
 <div class="navbar">
-<select class="win98-select"
+<select class="win98-select" aria-label="Menu du site"
         onchange="
             if(this.value==='__darkmode__'){
                 myFunction();
@@ -305,7 +305,7 @@ body {
     <option value="donations.html">Soutenir le site</option>
 </select>
     <div class="tab">
-		<select class="win98-select" onchange="activateTab(this.value); this.selectedIndex = 0;">
+		<select class="win98-select" aria-label="Basculer vers onglet du site" onchange="activateTab(this.value); this.selectedIndex = 0;">
             <option value="">tab?</option>
             <option value="Accueil">Accueil</option>
             <option value="Docs BTS">Docs BTS</option>
