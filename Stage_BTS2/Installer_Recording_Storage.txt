@@ -13,7 +13,6 @@ sudo chmod -R 770 /var/lib/guacamole/recordings
 sudo nano /etc/guacamole/guacamole.properties
 # Recording Storage Extension
 recording-search-path: /var/lib/guacamole/recordings
-EOF
 
 # 4. Redémarrer les services
 sudo systemctl restart guacd
