@@ -176,7 +176,7 @@ Risque de split-brain si un nœud tombe.
 
 ### Solutions recommandées :
 
-* Ajouter un 3ᵉ nœud Galera
+* Ajouter un 3ème nœud Galera
 * OU ajouter garbd (Galera Arbitrator)
 
 ---
@@ -218,8 +218,8 @@ SHOW STATUS LIKE 'wsrep_%';
 
 ## 14. Conclusion
 
-✔ MariaDB Galera est correctement installé
-✔ Le cluster est fonctionnel et synchronisé
-✔ L’architecture est prête pour HAProxy
-⚠ Ajouter un 3ᵉ nœud ou garbd pour la production
+MariaDB Galera est correctement installé
+Le cluster est fonctionnel et synchronisé
+L’architecture est prête pour HAProxy
+⚠️ Ajouter un 3ème nœud ou garbd pour la production
 
