@@ -36,7 +36,7 @@ sftp://user@ip_du_serveur
 
 ---
 
-5) Configurer une connexion RDP dans Guacamole
+5) Configurer une connexion RDP
    1. Installation de xrdp
 sudo apt update
 sudo apt install xrdp -y
