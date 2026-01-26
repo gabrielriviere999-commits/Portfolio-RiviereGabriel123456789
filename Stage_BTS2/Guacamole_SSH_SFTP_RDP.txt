@@ -12,8 +12,8 @@ sudo apt install openssh-server -y
 Dans l’interface web Guacamole :
 - Aller dans : Paramètres → Connexions → Nouvelle connexion
 - Protocole : SSH
-- Hôte      : IP du serveur distant
-- Port      : 22
+- Hôte : IP du serveur distant
+- Port : 22
 - Nom d’utilisateur / mot de passe : identifiants du serveur
 
 ---
