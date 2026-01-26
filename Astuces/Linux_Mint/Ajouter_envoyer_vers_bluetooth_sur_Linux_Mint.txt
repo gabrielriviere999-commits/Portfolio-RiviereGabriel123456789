@@ -1,25 +1,24 @@
-👉 Le paquet nemo-actions n’est plus fourni via les dépôts Mint/Ubuntu 22.04.
-Mais les actions personnalisées Nemo existent toujours ✅ — il faut simplement les créer manuellement.
+Le paquet nemo-actions n’est plus fourni via les dépôts Mint/Ubuntu 22.04.
+Mais les actions personnalisées Nemo existent toujours — il faut simplement les créer manuellement.
 
 ---
 
-## ✅ Solution garantie (sans paquet à installer)
+## Solution garantie (sans paquet à installer)
 
 Nous allons créer une action Nemo à la main.
 C’est propre, officiel, et 100 % compatible avec Nemo sur Linux Mint 21.3.
 
 ---
 
-## 1️⃣ Créer le dossier des actions Nemo
+## 1. Créer le dossier des actions Nemo
 
 mkdir -p ~/.local/share/nemo/actions
 
 ---
 
-## 2️⃣ Créer l’action “Envoyer par Bluetooth”
+## 2.  Créer l’action “Envoyer par Bluetooth”
 
 Ouvre un éditeur de texte :
-
 nano ~/.local/share/nemo/actions/envoyer-bluetooth.nemo_action
 
 Colle exactement ceci :
@@ -32,59 +31,53 @@ Icon=bluetooth
 Selection=any
 Extensions=any;
 
-👉 Sauvegarde :
-
-* Ctrl + O
-* Entrée
-* Ctrl + X
+Sauvegarde :
+Ctrl X
+Y
+Entrée
 
 ---
 
-## 3️⃣ Redémarrer Nemo
+## 3. Redémarrer Nemo
 
 nemo -q
-
 Puis rouvre l’explorateur de fichiers.
 
 ---
 
-## 🎉 Résultat
+## Résultat
 
-* Sélectionne un ou plusieurs fichiers
-* Clic droit → “Envoyer par Bluetooth”
-* La fenêtre Blueman s’ouvre 🔵
+- Sélectionne un ou plusieurs fichiers
+- Clic droit → “Envoyer par Bluetooth”
+- La fenêtre Blueman s’ouvre
 
-⚠️ Note importante
-➡️ Cette méthode ajoute l’action au menu contextuel,
+Note importante
+Cette méthode ajoute l’action au menu contextuel,
 mais pas dans la barre d’outils (limitation actuelle de Nemo sans extensions C).
 
 ---
 
-## 🧪 Vérification rapide
+## Vérification rapide
 
 Assure-toi que Blueman est bien installé :
-
 which blueman-sendto
 
 Si rien ne s’affiche :
-
 sudo apt install blueman
 
 ---
 
-## 🧩 Bonus : bouton “presque comme un vrai”
+## Bonus : bouton “presque comme un vrai”
 
 Si tu veux un accès encore plus rapide :
-
-* ajoute un raccourci clavier vers :
-
+ajoute un raccourci clavier vers :
 blueman-sendto %F
 
 ---
 
-## 🧾 En résumé
+## En résumé
 
-✔ nemo-actions supprimé → normal
-✔ actions Nemo toujours supportées
-✔ méthode manuelle = solution officielle
-✔ fonctionne sur Mint 21.3
+- nemo-actions supprimé → normal
+- actions Nemo toujours supportées
+- méthode manuelle = solution officielle
+- fonctionne sur Mint 21.3
