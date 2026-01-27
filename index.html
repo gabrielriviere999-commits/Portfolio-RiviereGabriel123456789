@@ -263,6 +263,7 @@ body {
   font-size: 25px;
 }
 
+/* --- MODE MOBILE --- */
 @media screen and (max-device-width: 600px) {
     html, body {
         min-width: 950px;
@@ -320,6 +321,18 @@ body {
         font-size: 32px;
         bottom: 8px;
         left: 270px;
+    }
+}
+
+@media screen and (max-device-width: 950px) and (orientation: landscape) {
+    html, body {
+        min-width: 950px;
+    }
+
+    .prev,
+    .next,
+    .openfullscreen {
+        font-size: 28px;
     }
 }
 
