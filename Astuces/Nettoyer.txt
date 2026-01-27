@@ -15,10 +15,7 @@ C’est normal : Flatpak stocke tout ici.
 ## 2.1. Supprimer les runtimes inutilisés
 Flatpak garde des dépendances même après désinstallation d’applis (ex : Steam).
 
-Voir ce qui serait supprimé :
-flatpak uninstall --unused --dry-run
-
-Nettoyer réellement :
+Nettoyer :
 flatpak uninstall --unused
 
 ---
