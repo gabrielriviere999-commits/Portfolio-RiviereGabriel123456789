@@ -351,6 +351,39 @@ body {
 .dl-btn:hover {
     background-color: #3e8e41;
 }
+
+.donate-btn {
+  font-family: monospace;
+  font-size: 22px;
+  padding: 4px 10px;
+  background: #FFD700;
+  border: 2px solid;
+  border-color: #FFFFFF #808000 #808000 #FFFFFF;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* états */
+.donate-btn.hover {
+  background: #FFEA00;
+}
+
+.donate-btn.active {
+  background: #DAA520;
+  border-color: #808000 #FFFFFF #FFFFFF #808000;
+}
+
+/* mobile */
+@media screen and (max-device-width: 720px) {
+  .donate-btn {
+    font-size: 36px;
+    padding: 20px 30px;
+    border-width: 5px;
+  }
+}
 </style>
 
 </head>
@@ -1086,34 +1119,11 @@ J'ai testé la connexion SFTP avec la machine Guacamole et Debian 13.
 <h2>Astuces</h2>
 <p style="text-align:left;">
   <a href="donations.html"
-     style="
-       font-family: monospace;
-       font-size: 22px;
-       padding: 4px 10px;
-       background: #FFD700; /* or clair */
-       border: 2px solid;
-       border-color: #FFFFFF #808000 #808000 #FFFFFF; /* relief normal */
-       cursor: pointer;
-       box-sizing: border-box;
-       color: black;
-       text-decoration: none;
-       display: inline-block;
-     "
-     onmouseover="
-       this.style.background='#FFEA00'; /* or brillant (hover) */
-     "
-     onmouseout="
-       this.style.background='#FFD700'; /* retour or clair */
-       this.style.borderColor='#FFFFFF #808000 #808000 #FFFFFF'; /* relief normal */
-     "
-     onmousedown="
-       this.style.background='#DAA520'; /* or foncé (pressé) */
-       this.style.borderColor='#808000 #FFFFFF #FFFFFF #808000'; /* relief inversé */
-     "
-     onmouseup="
-       this.style.background='#FFEA00'; /* retour hover si la souris est dessus */
-       this.style.borderColor='#FFFFFF #808000 #808000 #FFFFFF'; /* relief normal */
-     "
+     class="donate-btn"
+     onmouseover="this.classList.add('hover');"
+     onmouseout="this.classList.remove('hover'); this.classList.remove('active');"
+     onmousedown="this.classList.add('active');"
+     onmouseup="this.classList.remove('active');"
   >
     Soutenir le site
   </a>
