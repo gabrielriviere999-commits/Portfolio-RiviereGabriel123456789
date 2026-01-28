@@ -11,6 +11,7 @@ ConvertAll            Convertisseur d'unités
 Geany                 Éditeur de texte et exécuteur de script
 Krita                 Édition photo
 Gimp                  Édition photo
+Gpick                 Extraire le code couleur à l'écran
 XnView MP             Convertisseur de photos et autres
 Gthumb                Visionneuse de photos
 sView                 Visionneuse de photos 360°
