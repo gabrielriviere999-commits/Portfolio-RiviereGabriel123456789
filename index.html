@@ -414,17 +414,13 @@ body {
 		<select class="win98-select" aria-label="Basculer vers onglet du site" onchange="activateTab(this.value); this.selectedIndex = 0;">
             <option value="">tab?</option>
             <option value="Accueil">Accueil</option>
-            <option value="Docs BTS">Docs BTS</option>
-            <option value="Infra BTS">Infra BTS</option>
+            <option value="BTS">BTS</option>
             <option value="Stages">Stages</option>
-            <option value="Veille technologique">Veille technologique</option>
             <option value="Astuces">Astuces</option>
         </select>
         <button class="tablinks" onclick="openCity(event, 'Accueil')">Accueil</button>
-        <button class="tablinks" onclick="openCity(event, 'Docs BTS')">Docs BTS</button>
-        <button class="tablinks" onclick="openCity(event, 'Infra BTS')">Infra BTS</button>
+        <button class="tablinks" onclick="openCity(event, 'BTS')">BTS</button>
         <button class="tablinks" onclick="openCity(event, 'Stages')">Stages</button>
-        <button class="tablinks" onclick="openCity(event, 'Veille technologique')">Veille technologique</button>
         <button class="tablinks" onclick="openCity(event, 'Astuces')">Astuces</button>
     </div>
 </div>
@@ -455,8 +451,16 @@ body {
 <a href="Accueil/tableau_synthese_E5-2025.ods" download>Télécharger tableau_synthese_E5-2025.ods</a>
 </div>
 
-<div id="Docs BTS" class="tabcontent">
-<h2>Docs BTS</h2>
+<div id="BTS" class="tabcontent">
+<h2>BTS</h2>
+<a href="Veille_technologique/Veille_technologique_les_logiciels_libres_pour_linux.html">Veille technologique</a>
+<p></p>
+<div class="tab">
+    <button onclick="switchTab('docs_bts', 'bts', this)" class="bts_btn">Docs BTS</button>
+    <button onclick="switchTab('infra_bts', 'bts', this)" class="bts_btn">Infra BTS</button>
+</div>
+
+<div id="docs_bts" class="bts" style="display:none;">
 <h3>IP et routage</h3>
 <div class="slideshow-container" data-group="IP_et_routage">
 
@@ -498,7 +502,7 @@ body {
     <img class="thumbnail" data-group="IP_et_routage" src="" onclick="currentSlide(5, 'IP_et_routage')">
     <img class="thumbnail" data-group="IP_et_routage" src="Docs_BTS/IP_et_routage/Poster_IPv6.png" loading="lazy" onclick="currentSlide(6, 'IP_et_routage')">
 </div>
-&nbsp;
+<p style="font-size:50px;"></p>
 <h3>HAProxy</h3>
 <div class="slideshow-container" data-group="HAProxy">
 
@@ -525,7 +529,7 @@ body {
     <img class="thumbnail" data-group="HAProxy" src="" onclick="currentSlide(2, 'HAProxy')">
     <img class="thumbnail" data-group="HAProxy" src="" onclick="currentSlide(3, 'HAProxy')">
 </div>
-&nbsp;
+<p style="font-size:50px;"></p>
 <h3>GLPI</h3>
 <div class="slideshow-container" data-group="GLPI">
 
@@ -546,7 +550,7 @@ body {
     <img class="thumbnail" data-group="GLPI" src="" onclick="currentSlide(1, 'GLPI')">
     <img class="thumbnail" data-group="GLPI" src="" onclick="currentSlide(2, 'GLPI')">
 </div>
-&nbsp;
+<p style="font-size:50px;"></p>
 <h3>ITSM-NG</h3>
 <div class="slideshow-container" data-group="ITSM_NG">
 
@@ -566,8 +570,8 @@ body {
 <a href="Docs_BTS/Docs_BTS.zip" download>Télécharger toutes les docs</a>
 </div>
 
-<div id="Infra BTS" class="tabcontent">
-<h2>Infra BTS</h2>
+<div id="infra_bts" class="bts" style="display:none;">
+<p></p>
 <div class="slideshow-container" data-group="Infra_BTS">
 
     <div class="mySlide" data-group="Infra_BTS">
@@ -634,6 +638,7 @@ body {
         --Tout télécharger--
     </option>
 </select>
+</div>
 
 </div>
 
@@ -1112,11 +1117,6 @@ Mardi 27 janvier 2026 : J'ai mieux adapté mon site pour les mobiles.
     </div>
 </div>
 
-<div id="Veille technologique" class="tabcontent">
-<h2>Veille technologique</h2>
-<p><iframe src="Veille_technologique/Veille_technologique_les_logiciels_libres_pour_linux.html" width="100%" height="800px"></iframe></p>
-</div>
-
 <div id="Astuces" class="tabcontent">
 <h2>Astuces</h2>
 <p style="text-align:left;">
@@ -1391,8 +1391,7 @@ Mardi 27 janvier 2026 : J'ai mieux adapté mon site pour les mobiles.
     </option>
 </select>
 </div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p style="font-size:150px;"></p>
 <!-- Scripts -->
 <script>
 function myFunction() {
