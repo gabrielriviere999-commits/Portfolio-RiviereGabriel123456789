@@ -7,7 +7,7 @@ Local Translate       Traducteur hors ligne
 GoldenDict            Lecteur de dictionnaire hors ligne
 QtQr                  Générateur de QR Codes
 Qalculate!            Calculatrice scientifique
-ConvertALL            Convertisseur d'unités
+ConvertAll            Convertisseur d'unités
 Geany                 Éditeur de texte et exécuteur de script
 Krita                 Édition photo
 Gimp                  Édition photo
