@@ -1,4 +1,4 @@
-Quelques applications Linux :                                   
+kQuelques applications :                                   
 
 Pdf Arranger          Changer l'ordre des pages d'un pdf
 Okular                Visionneuse PDF
@@ -16,7 +16,7 @@ Gthumb                Visionneuse de photos
 sView                 Visionneuse de photos 360°
 Kdenlive              Montage vidéo
 HandBrake             Compresseur vidéos et audios
-Meshviewer            Visionneuse 3D de fichiers FBX, OBJ, GLTF et GLB
+MeshViewer            Visionneuse 3D de fichiers FBX, OBJ, GLTF et GLB
 Onboard               Clavier virtuel
 SimpleScreenRecorder  Enregistreur d'écran
 TILP                  Alternative à TI Connect pour linux
