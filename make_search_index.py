@@ -12,7 +12,7 @@ def strip_tags(html):
 folder = "."
 output_file = "docs.js"
 
-TEXT_EXTENSIONS = (".html", ".txt", ".py", ".sh")
+TEXT_EXTENSIONS = (".html", ".txt",)
 IGNORE_FILES = {output_file, "liste_fichiers.html"}
 
 docs = []
