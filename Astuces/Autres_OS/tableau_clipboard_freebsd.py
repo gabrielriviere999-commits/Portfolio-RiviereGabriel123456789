@@ -3,6 +3,7 @@ import subprocess
 import csv
 import sys
 import textwrap
+import shutil
 
 # 🔧 Séparateur CSV
 sep = ";"   # ",", "\t", etc.
