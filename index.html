@@ -263,8 +263,8 @@ body {
   font-size: 25px;
 }
 
-/* Empêche les navigateurs de forcer un mode sombre dans les iframes */
-iframe {
+/* Empêche le dark mode forcé uniquement pour les iframes TXT/HTML */
+iframe:not([src$=".pdf"]):not([src$=".PDF"]) {
     color-scheme: light;
     background-color: #C0C0C0;
 }
